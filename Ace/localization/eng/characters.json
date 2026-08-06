@@ -1,0 +1,16 @@
+{
+  "ACE-ACE.aromaPrinciple": "Lore",
+  "ACE-ACE.banter.alive.endTurnPing": "Co-op hurry up end turn ping message",
+  "ACE-ACE.banter.dead.endTurnPing": "...",
+  "ACE-ACE.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
+  "ACE-ACE.cardsModifierTitle": "__ Cards",
+  "ACE-ACE.description": "Character Selection\nScreen Description",
+  "ACE-ACE.eventDeathPrevention": "Co-op survival line",
+  "ACE-ACE.goldMonologue": "Line spoken when obtaining a large amount of gold",
+  "ACE-ACE.possessiveAdjective": "his/her/its",
+  "ACE-ACE.pronounObject": "him/her/it",
+  "ACE-ACE.pronounPossessive": "his/hers/its",
+  "ACE-ACE.pronounSubject": "he/she/it",
+  "ACE-ACE.title": "The Ace",
+  "ACE-ACE.titleObject": "The Ace"
+}
