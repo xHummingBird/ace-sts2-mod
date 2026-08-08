@@ -1,4 +1,8 @@
 <Project>
+    <!-- Machine-local overrides (untracked). Imported first so it can pre-set Sts2Path/Sts2DataDir
+         before Sts2PathDiscovery.props runs, and relocate BaseIntermediateOutputPath. -->
+    <Import Project="$(MSBuildThisFileDirectory)local.props" Condition="Exists('$(MSBuildThisFileDirectory)local.props')"/>
+
     <PropertyGroup>
         <!-- Megadot current version is 4.5.1, and the game won't load your .pck if the Godot version used is newer. -->
         <!-- MegaDot / Godot 4.5.1 mono executable used for export-pack when publishing -->

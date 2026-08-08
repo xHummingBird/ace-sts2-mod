@@ -1,3 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Machine-local MSBuild overrides
+local.props
+
+# WSL/Linux build output (kept separate from Rider's obj/ and bin/)
+obj-wsl/
+bin-wsl/
