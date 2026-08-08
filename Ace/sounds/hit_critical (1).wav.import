@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ehjhxlx2qq1i"
+path="res://.godot/imported/hit_critical (1).wav-2433dc501a2dcf0b80446e0a6de01a2d.sample"
+
+[deps]
+
+source_file="res://Ace/sounds/hit_critical (1).wav"
+dest_files=["res://.godot/imported/hit_critical (1).wav-2433dc501a2dcf0b80446e0a6de01a2d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

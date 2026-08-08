@@ -8,7 +8,7 @@ public class AceCardPool : CustomCardPoolModel
 {
     public override string Title => Ace.CharacterId; //This is not a display name.
 
-    public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
+    public override string BigEnergyIconPath => "charui/energy_card.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
 
 
@@ -28,7 +28,7 @@ public class AceCardPool : CustomCardPoolModel
     }*/
 
     //Color of small card icons
-    public override Color DeckEntryCardColor => new("ffffff");
+    public override Color DeckEntryCardColor => new(Colors.DarkGray);
 
     public override bool IsColorless => false;
 }

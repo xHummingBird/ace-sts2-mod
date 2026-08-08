@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://d33svepe5lsnm"]
+
+[ext_resource type="Script" uid="uid://i7tgwhpgff07" path="res://AceCode/Nodes/AceNMerchantCharacter.cs" id="1_a68yi"]
+[ext_resource type="Texture2D" uid="uid://biuq0vis0cj63" path="res://Ace/images/spritesheets/new_idle/08_newIdle.png" id="1_h1sed"]
+[ext_resource type="Texture2D" uid="uid://bhd140lqah3sm" path="res://Ace/images/spritesheets/new_idle/09_newIdle.png" id="2_a68yi"]
+[ext_resource type="Texture2D" uid="uid://do3yb1kwtv25o" path="res://Ace/images/spritesheets/new_idle/10_newIdle.png" id="3_6yrjq"]
+[ext_resource type="Texture2D" uid="uid://bdveie62gxe2y" path="res://Ace/images/spritesheets/new_idle/11_newIdle.png" id="4_dnasj"]
+
+[sub_resource type="Animation" id="Animation_u6b58"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_13iul"]
+resource_name = "merchant"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_h1sed"), ExtResource("2_a68yi"), ExtResource("3_6yrjq"), ExtResource("4_dnasj")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hj7bu"]
+_data = {
+&"RESET": SubResource("Animation_u6b58"),
+&"merchant": SubResource("Animation_13iul")
+}
+
+[node name="AceMerchant" type="Node2D"]
+script = ExtResource("1_a68yi")
+
+[node name="Visuals" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+scale = Vector2(-1.3, 1.3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Visuals")
+libraries = {
+&"": SubResource("AnimationLibrary_hj7bu")
+}
+autoplay = "merchant"

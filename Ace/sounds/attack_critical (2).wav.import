@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bik2tg3tqdtvk"
+path="res://.godot/imported/attack_critical (2).wav-274518d69e9810579e756fe1209890a9.sample"
+
+[deps]
+
+source_file="res://Ace/sounds/attack_critical (2).wav"
+dest_files=["res://.godot/imported/attack_critical (2).wav-274518d69e9810579e756fe1209890a9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

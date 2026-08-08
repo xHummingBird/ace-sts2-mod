@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpcr02e7au3pb"
+path="res://.godot/imported/attack_medium (12).wav-2e6f923ac0bb8cc9f53f46cfb7285f80.sample"
+
+[deps]
+
+source_file="res://Ace/sounds/attack_medium (12).wav"
+dest_files=["res://.godot/imported/attack_medium (12).wav-2e6f923ac0bb8cc9f53f46cfb7285f80.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

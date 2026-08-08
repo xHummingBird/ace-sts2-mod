@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bssxq3r33gpi4"
+path="res://.godot/imported/hit_medium (4).wav-91a18399bc3362ad75faa28f79312e7a.sample"
+
+[deps]
+
+source_file="res://Ace/sounds/hit_medium (4).wav"
+dest_files=["res://.godot/imported/hit_medium (4).wav-91a18399bc3362ad75faa28f79312e7a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

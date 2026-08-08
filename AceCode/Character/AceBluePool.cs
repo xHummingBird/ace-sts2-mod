@@ -1,8 +1,23 @@
-﻿namespace Ace.AceCode.Character;
+﻿using Ace.AceCode.Extensions;
+using BaseLib.Abstracts;
+using Godot;
 
-public class AceBluePool : AceCardPool
+namespace Ace.AceCode.Character;
+
+public class AceBluePool : CustomCardPoolModel
 {
+    public override string Title => Ace.CharacterId; //This is not a display name.
+
+    public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
+    public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
+    
     public override float H => 0.6f; //Hue; changes the color.
     public override float S => 1.15f; //Saturation
     public override float V => 1.05f; //Brightness
+    
+    public override Color DeckEntryCardColor => new(Colors.Blue);
+    
+    public override bool IsShared => true;
+
+    public override bool IsColorless => false;
 }

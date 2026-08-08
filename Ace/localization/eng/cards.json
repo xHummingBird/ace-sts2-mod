@@ -5,10 +5,10 @@
   "ACE-STRIKE_RED.description": "Deal {Damage:diff()} damage.",
   "ACE-STRIKE_RED.title": "Strike",
 
-  "ACE-STRIKE_WHITE.description": "Deal {Damage:diff()} damage.",
+  "ACE-STRIKE_WHITE.description": "Deal {Damage:diff()} damage. \nApply {WeakPower:diff()} [gold]Weak[/gold].",
   "ACE-STRIKE_WHITE.title": "Strike",
 
-  "ACE-STRIKE_YELLOW.description": "Deal {Damage:diff()} damage.",
+  "ACE-STRIKE_YELLOW.description": "Deal {Damage:diff()} damage 2 times.",
   "ACE-STRIKE_YELLOW.title": "Strike",
 
   "ACE-DEFEND_RED.description": "Gain {Block:diff()} [gold]Block[/gold].",
@@ -20,6 +20,9 @@
   "ACE-DEFEND_YELLOW.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "ACE-DEFEND_YELLOW.title": "Defend",
 
-  "ACE-DEFEND_WHITE.description": "Gain {Block:diff()} [gold]Block[/gold].",
-  "ACE-DEFEND_WHITE.title": "Defend"
+  "ACE-DEFEND_WHITE.description": "Gain {Block:diff()} [gold]Block[/gold]. \nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
+  "ACE-DEFEND_WHITE.title": "Defend",
+
+  "ACE-FLOURISH.description": "Deal {Damage:diff()} damage 3 times.",
+  "ACE-FLOURISH.title": "Flourish"
 }

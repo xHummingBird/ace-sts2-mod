@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bissv4ipdmytd"
+path="res://.godot/imported/attack_medium (5).wav-29f558e7410aa114c2e5e4e044153910.sample"
+
+[deps]
+
+source_file="res://Ace/sounds/attack_medium (5).wav"
+dest_files=["res://.godot/imported/attack_medium (5).wav-29f558e7410aa114c2e5e4e044153910.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

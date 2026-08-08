@@ -1,4 +1,5 @@
 ﻿using Ace.AceCode.Character;
+using Ace.AceCode.Extensions;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,8 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Basic;
 
-[Pool(typeof(AceBluePool))]
-public class StrikeBlue() : AceCard(1, CardType.Attack,
+public class StrikeBlue() : AceBlueCard(1, CardType.Attack,
     CardRarity.Basic, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
@@ -21,10 +21,25 @@ public class StrikeBlue() : AceCard(1, CardType.Attack,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, play).Targeting(play.Target)
-            .WithValueProp(ValueProp.Unpowered)
-            .WithHitFx(null)
-            .Execute(choiceContext);
+        var ownerCreature = Owner?.Creature;
+
+        if (ownerCreature != null && Owner?.Character is Character.Ace ace)
+        {
+            AudioHelper.PlayRandomAttack();
+            float duration = ace.PlayAnimation(ownerCreature, "attack").total;
+            await Task.Delay((int)(0.2f * 1000f));
+            SfxCmd.Play("res://Ace/sfx/card_throw.wav");
+            await Task.Delay((int)(0.1f * 1000f));
+            ace.PlayVfxOnTarget(
+                play.Target,
+                "res://Ace/scenes/vfx.tscn",
+                "card_hit_1"
+            );
+            await CommonActions.CardAttack(this, play.Target)
+                .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
+                .Execute(choiceContext);
+            await Task.Delay((int)(0.2f * 1000f));
+        };
     }
 
     protected override void OnUpgrade()
