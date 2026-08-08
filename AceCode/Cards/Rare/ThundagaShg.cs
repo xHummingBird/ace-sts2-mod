@@ -1,6 +1,7 @@
-﻿namespace Ace.AceCode.Cards.Rare;
-
-public class ThundagaShg
+namespace Ace.AceCode.Cards.Rare
 {
+    public class ThundagaShg
+    {
     
+    }
 }

@@ -3,22 +3,23 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
 
-namespace Ace.AceCode;
-
-[ModInitializer(nameof(Initialize))]
-public partial class MainFile : Node
+namespace Ace.AceCode
 {
-    public const string ModId = "Ace"; //Used for resource filepath
-    public const string ResPath = $"res://{ModId}";
-
-    public static MegaCrit.Sts2.Core.Logging.Logger Logger { get; } =
-        new(ModId, MegaCrit.Sts2.Core.Logging.LogType.Generic);
-
-    public static void Initialize()
+    [ModInitializer(nameof(Initialize))]
+    public partial class MainFile : Node
     {
-        Harmony harmony = new(ModId);
-        var assembly = Assembly.GetExecutingAssembly();
-        Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(assembly);
-        harmony.PatchAll(assembly);
+        public const string ModId = "Ace"; //Used for resource filepath
+        public const string ResPath = $"res://{ModId}";
+
+        public static MegaCrit.Sts2.Core.Logging.Logger Logger { get; } =
+            new(ModId, MegaCrit.Sts2.Core.Logging.LogType.Generic);
+
+        public static void Initialize()
+        {
+            Harmony harmony = new(ModId);
+            var assembly = Assembly.GetExecutingAssembly();
+            Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(assembly);
+            harmony.PatchAll(assembly);
+        }
     }
 }

@@ -1,6 +1,3 @@
-﻿namespace Ace.AceCode.Cards.Basic;
-
-public class ShowOfHands
-{
-    
+namespace Ace.AceCode.Cards.Basic {
+public class ShowOfHands {}
 }

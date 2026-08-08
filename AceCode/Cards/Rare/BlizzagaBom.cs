@@ -1,6 +1,7 @@
-﻿namespace Ace.AceCode.Cards.Rare;
-
-public class BlizzagaBom
+namespace Ace.AceCode.Cards.Rare
 {
+    public class BlizzagaBom
+    {
     
+    }
 }

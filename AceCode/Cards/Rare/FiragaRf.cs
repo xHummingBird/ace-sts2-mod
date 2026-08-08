@@ -1,6 +1,7 @@
-﻿namespace Ace.AceCode.Cards.Rare;
-
-public class FiragaRf
+namespace Ace.AceCode.Cards.Rare
 {
+    public class FiragaRf
+    {
     
+    }
 }
