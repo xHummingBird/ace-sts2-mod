@@ -1,4 +1,5 @@
-﻿using BaseLib.Extensions;
+﻿using Ace.AceCode.Character;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -31,8 +32,4 @@ public class StrikeWhite() : AceCard(1, CardType.Attack,
     {
         DynamicVars.Damage.UpgradeValueBy(3m);
     }
-}
-
-public class AceWhitePool
-{
 }
