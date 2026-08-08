@@ -15,18 +15,37 @@ public interface IStockingCard {
 public static class Stock {
   public const int MaxSlots = 4;
 
-  private sealed class StockState {
-    public readonly List<AceColor> Items = [];
-  }
+  // Keyed on Player so the stock rides along in SerializablePlayer, which is
+  // part of the multiplayer rejoin payload. Player lives for the whole run, so
+  // AceStockModel has to clear this at the start of every combat.
+  private static readonly SavedSpireField<Player, List<AceColor>> Field =
+      new(() => [], "stock") {
+        Serializer =
+            (items, writer) => {
+              writer.WriteInt(items.Count);
+              foreach (var item in items)
+                writer.WriteInt((int)item);
+            },
+        Deserializer =
+            reader => {
+              var count = reader.ReadInt();
+              var items = new List<AceColor>(count);
+              for (var i = 0; i < count; i++)
+                items.Add((AceColor)reader.ReadInt());
+              return items;
+            },
+      };
 
-  // Keyed on PlayerCombatState, which is rebuilt every combat, so the stock
-  // clears itself without a reset hook.
-  private static readonly NotNullSpireField<PlayerCombatState, StockState>
-      Field = new(() => new StockState());
+  // Without this the class is beforefieldinit and the runtime is free to skip
+  // the field setup when Register is called.
+  static Stock() {}
 
-  private static List<AceColor>? Mutable(Player player) =>
-      player.PlayerCombatState is {}
-  combatState? Field[combatState].Items : null;
+  // The SavedSpireField registers itself when the field above is built, so
+  // something has to touch Stock before BaseLib collects the fields.
+  public static void Register() {}
+
+  internal static List<AceColor>? Mutable(Player? player) =>
+      player is null ? null : Field[player];
 
   private static readonly AceColor[] Empty = [];
 
@@ -57,19 +76,7 @@ public static class Stock {
     items.Add(color);
   }
 
-  // Stock is a stack, so Flip takes from the back.
-  public static IReadOnlyList<AceColor> ConsumeLast(Player player, int amount) {
-    if (Mutable(player) is not {} items)
-      return [];
-
-    var taken = new List<AceColor>();
-    for (var i = 0; i < amount && items.Count > 0; i++) {
-      taken.Add(items[^1]);
-      items.RemoveAt(items.Count - 1);
-    }
-
-    return taken;
-  }
+  public static void Clear(Player player) => Mutable(player)?.Clear();
 
   // Every card has a different color, only counts once the stock is full.
   public static bool IsRainbow(Player player) {

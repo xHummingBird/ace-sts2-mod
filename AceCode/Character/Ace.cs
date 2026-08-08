@@ -55,7 +55,8 @@ public class Ace : PlaceholderCharacterModel
 		ModelDb.Card<DefendBlue>(),
 		ModelDb.Card<DefendYellow>(),
 		ModelDb.Card<DefendWhite>(),
-		ModelDb.Card<Flourish>()
+		ModelDb.Card<Flourish>(),
+		ModelDb.Card<ShowOfHands>()
 		//ModelDb.Card<CutCards>(),
 	];
 

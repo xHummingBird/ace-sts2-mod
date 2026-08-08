@@ -2,6 +2,9 @@
 .godot/
 /android/
 
+# Machine-local Claude Code settings (personal model/effort preferences)
+.claude/settings.local.json
+
 # Machine-local MSBuild overrides
 local.props
 

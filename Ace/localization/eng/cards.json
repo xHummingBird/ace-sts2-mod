@@ -24,5 +24,8 @@
   "ACE-DEFEND_WHITE.title": "Defend",
 
   "ACE-FLOURISH.description": "Deal {Damage:diff()} damage 3 times.",
-  "ACE-FLOURISH.title": "Flourish"
+  "ACE-FLOURISH.title": "Flourish",
+
+  "ACE-SHOW_OF_HANDS.description": "[gold]Flip[/gold] the majority color in your stock.",
+  "ACE-SHOW_OF_HANDS.title": "Show of Hands"
 }

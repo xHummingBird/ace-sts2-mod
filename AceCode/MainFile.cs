@@ -1,4 +1,6 @@
 using System.Reflection;
+using Ace.AceCode.Mechanics;
+using BaseLib.Patches.Saves;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
@@ -16,6 +18,11 @@ namespace Ace.AceCode
 
         public static void Initialize()
         {
+            // Has to happen before BaseLib collects the saved fields, otherwise
+            // the stock is dropped from the save and the rejoin payload.
+            ExtendedSaveTypes.RegisterListSaveType<AceColor>();
+            Stock.Register();
+
             Harmony harmony = new(ModId);
             var assembly = Assembly.GetExecutingAssembly();
             Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(assembly);
