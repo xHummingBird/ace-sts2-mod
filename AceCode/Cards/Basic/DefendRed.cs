@@ -7,8 +7,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Basic;
 
-[Pool(typeof(AceRedPool))]
-public class DefendRed() : AceCard(1, CardType.Skill,
+public class DefendRed() : AceRedCard(1, CardType.Skill,
     CardRarity.Basic, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];

@@ -1,90 +1,448 @@
-﻿using Ace.AceCode.Cards.Basic;
+using Ace.AceCode.Cards.Basic;
 using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using Ace.AceCode.Extensions;
+using Ace.AceCode.Relics;
 using Godot;
+using HarmonyLib;
+using MegaCrit.Sts2.Core.Animation;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Multiplayer;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Extensions;
+using MegaCrit.Sts2.Core.GameActions;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
+using MegaCrit.Sts2.Core.Nodes;
+using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Screens.CardSelection;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
+using MegaCrit.Sts2.Core.Runs;
+using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Character;
 
 
 public class Ace : PlaceholderCharacterModel
 {
-    public const string CharacterId = "Ace";
+	public const string CharacterId = "Ace";
 
-    public static readonly Color Color = new("ffffff");
+	public static readonly Color Color = new("ffffff");
+	
+	private Vector2? _originalPosition;
+	public override Color NameColor => Color;
+	public override CharacterGender Gender => CharacterGender.Masculine;
+	public override int StartingHp => 65;
 
-    public override Color NameColor => Color;
-    public override CharacterGender Gender => CharacterGender.Neutral;
-    public override int StartingHp => 65;
+	public override IEnumerable<CardModel> StartingDeck =>
+	[
+		ModelDb.Card<StrikeRed>(),
+		ModelDb.Card<StrikeBlue>(),
+		ModelDb.Card<StrikeWhite>(),
+		ModelDb.Card<StrikeYellow>(),
+		ModelDb.Card<DefendRed>(),
+		ModelDb.Card<DefendBlue>(),
+		ModelDb.Card<DefendYellow>(),
+		ModelDb.Card<DefendWhite>(),
+		ModelDb.Card<Flourish>()
+		//ModelDb.Card<CutCards>(),
+	];
 
-    public override IEnumerable<CardModel> StartingDeck =>
-    [
-        ModelDb.Card<StrikeRed>(),
-        ModelDb.Card<StrikeRed>(),
-        ModelDb.Card<StrikeBlue>(),
-        ModelDb.Card<StrikeWhite>(),
-        ModelDb.Card<StrikeYellow>(),
-        ModelDb.Card<DefendRed>(),
-        ModelDb.Card<DefendBlue>(),
-        ModelDb.Card<DefendBlue>(),
-        ModelDb.Card<DefendYellow>(),
-        ModelDb.Card<DefendWhite>(),
-        //ModelDb.Card<CutCards>(),
-    ];
+	public override IReadOnlyList<RelicModel> StartingRelics =>
+	[
+		ModelDb.Relic<PlayingCards>()
+	];
 
-    public override IReadOnlyList<RelicModel> StartingRelics =>
-    [
-        ModelDb.Relic<BurningBlood>()
-    ];
-    
-    public static bool IsRed(CardModel card)
-        => card.Pool is AceRedPool;
+	public override CardPoolModel CardPool => ModelDb.CardPool<AceCardPool>();
+	public override RelicPoolModel RelicPool => ModelDb.RelicPool<AceRelicPool>();
+	public override PotionPoolModel PotionPool => ModelDb.PotionPool<AcePotionPool>();
 
-    public static bool IsBlue(CardModel card)
-        => card.Pool is AceBluePool;
+	/*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
+		override all the other methods that define those assets.
+		These are just some of the simplest assets, given some placeholders to differentiate your character with.
+		You don't have to, but you're suggested to rename these images. */
+	public override Control CustomIcon
+	{
+		get
+		{
+			var icon = NodeFactory<Control>.CreateFromResource(CustomIconTexturePath);
+			icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+			return icon;
+		}
+	}
+	
+	public override CustomEnergyCounter? CustomEnergyCounter =>
+		new CustomEnergyCounter(EnergyCounterPaths, new Color(0.2f, 0.2f, 0.2f), new Color(1f, 1f, 1f));
+	
+	private string EnergyCounterPaths(int i)
+	{
+		return i switch
+		{
+			2 => "charui/big_energy.png".ImagePath(),
+			_ => "charui/blank.png".ImagePath()
+		};
+	}
 
-    public static bool IsYellow(CardModel card)
-        => card.Pool is AceYellowPool;
+	 public override string CustomIconTexturePath => "character_icon_ace.png".CharacterUiPath();
+	public override string CustomCharacterSelectIconPath => "char_select_ace.png".CharacterUiPath();
+	public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
+	public override string CustomMapMarkerPath => "map_marker_ace.png".CharacterUiPath();
+	
+	private const string CustomVisualScenePath = "res://Ace/scenes/ace.tscn";
+	public override string CustomRestSiteAnimPath => "res://Ace/scenes/ace_rest_site.tscn";
+	
+	public override string CustomCharacterSelectBg => "res://Ace/images/charui/char_selection_bg_ace.tscn";
+	public override string CustomMerchantAnimPath => "res://Ace/scenes/ace_merchant.tscn";
+	public override string CharacterSelectSfx => "res://Ace/sounds/run_start.wav";
+	
+	public override NCreatureVisuals? CreateCustomVisuals()
+	{
+		// AceAssets.EnsurePreloaded();
+		return NodeFactory<NCreatureVisuals>.CreateFromScene(CustomVisualScenePath);
+	}
+	
+	public override CreatureAnimator? GenerateAnimator(MegaSprite controller) => null;
+	
+	public (float total, float[] impacts) PlayAnimation(Creature creature, string trigger)
+	{
+		if (creature == null || string.IsNullOrEmpty(trigger))
+			return (0f, Array.Empty<float>());
 
-    public static bool IsWhite(CardModel card)
-        => card.Pool is AceWhitePool;
+		var node = NCombatRoom.Instance?.GetCreatureNode(creature);
+		if (node?.Visuals == null)
+			return (0f, Array.Empty<float>());
 
-    public override CardPoolModel CardPool => ModelDb.CardPool<AceCardPool>();
-    public override RelicPoolModel RelicPool => ModelDb.RelicPool<AceRelicPool>();
-    public override PotionPoolModel PotionPool => ModelDb.PotionPool<AcePotionPool>();
+		var animPlayer = node.Visuals.GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
+		if (animPlayer == null)
+			return (0f, Array.Empty<float>());
 
-    /*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
-        override all the other methods that define those assets.
-        These are just some of the simplest assets, given some placeholders to differentiate your character with.
-        You don't have to, but you're suggested to rename these images. */
-    public override Control CustomIcon
-    {
-        get
-        {
-            var icon = NodeFactory<Control>.CreateFromResource(CustomIconTexturePath);
-            icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
-            return icon;
-        }
-    }
-    
-    public override CustomEnergyCounter? CustomEnergyCounter =>
-        new CustomEnergyCounter(EnergyCounterPaths, new Color(0.2f, 0.2f, 0.2f), new Color(1f, 1f, 1f));
-    
-    private string EnergyCounterPaths(int i)
-    {
-        return i switch
-        {
-            1 => "charui/big_energy.png".ImagePath(),
-            _ => "charui/blank.png".ImagePath()
-        };
-    }
+		string godotTrigger = trigger.ToLowerInvariant() switch
+		{
+			"hit" => "hurt",
+			"idle" => "idle",
+			"attack" => "attack_ace",
+			"dead" => "die",
+			"die" => "die",
+			_ => trigger
+		};
 
-    public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
-    public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
-    public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
-    public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+		if (!animPlayer.HasAnimation(godotTrigger))
+			return (0f, Array.Empty<float>());
+
+		var anim = animPlayer.GetAnimation(godotTrigger);
+		float totalLength = (float)anim.Length;
+
+		animPlayer.Play(godotTrigger);
+		
+		if (godotTrigger != "idle" && godotTrigger != "die")
+			animPlayer.Queue("idle");
+		
+		return (totalLength, Array.Empty<float>());
+	} 
+	
+	public async Task DashTo(
+		Creature player,
+		Creature target,
+		float durationSeconds = 0.3f,
+		float distance = 200f,
+		bool dashBehind = false,
+		string? overrideAnim = null)
+	{
+		var node = NCombatRoom.Instance?.GetCreatureNode(player);
+		var targetNode = NCombatRoom.Instance?.GetCreatureNode(target);
+		if (node == null || targetNode == null) return;
+
+		if (!_originalPosition.HasValue)
+			_originalPosition = node.GlobalPosition;
+		
+		PlayAnimation(player, overrideAnim ??"dash");
+		
+		bool playerIsLeftOfTarget = node.GlobalPosition.X < targetNode.GlobalPosition.X;
+		
+		Vector2 offsetDir = playerIsLeftOfTarget ? Vector2.Left : Vector2.Right;
+		
+		if (dashBehind)
+			offsetDir = -offsetDir;
+
+		Vector2 targetPos = targetNode.GlobalPosition + offsetDir * distance;
+
+		var tween = node.CreateTween();
+		tween.TweenProperty(node, "global_position", targetPos, durationSeconds)
+			.SetTrans(Tween.TransitionType.Quad)
+			.SetEase(Tween.EaseType.Out);
+
+		await node.ToSignal(tween, Tween.SignalName.Finished);
+	}
+	
+	public async Task DashPast(
+		Creature player,
+		Creature target,
+		string? attackAnim = null,
+		float durationSeconds = 0.3f,
+		float behindDistance = 200f,
+		float overshoot = 0f)
+	{
+		var node = NCombatRoom.Instance?.GetCreatureNode(player);
+		var targetNode = NCombatRoom.Instance?.GetCreatureNode(target);
+		if (node == null || targetNode == null) return;
+
+		if (!_originalPosition.HasValue)
+			_originalPosition = node.GlobalPosition;
+
+		Vector2 frontDir = (player.Side == CombatSide.Player) ? Vector2.Left : Vector2.Right;
+		Vector2 behindDir = -frontDir;
+
+		Vector2 endPos = targetNode.GlobalPosition + behindDir * (behindDistance + overshoot);
+
+		PlayAnimation(player, attackAnim);
+
+		var tween = node.CreateTween();
+		tween.TweenProperty(node, "global_position", endPos, durationSeconds)
+			.SetTrans(Tween.TransitionType.Quad)
+			.SetEase(Tween.EaseType.Out);
+
+		await node.ToSignal(tween, Tween.SignalName.Finished);
+	}
+	
+	
+	public async Task Retreat(
+		Creature player,
+		string? animation = "retreat",
+		bool goIdle = true,
+		float duration = 0.3f)
+	{
+		var node = NCombatRoom.Instance?.GetCreatureNode(player);
+		if (node == null || !_originalPosition.HasValue) return;
+
+		if (!string.IsNullOrEmpty(animation))
+			PlayAnimation(player, animation);
+
+		var tween = node.CreateTween();
+		tween.TweenProperty(node, "global_position", _originalPosition.Value, duration)
+			.SetTrans(Tween.TransitionType.Quad)
+			.SetEase(Tween.EaseType.InOut);
+
+		await node.ToSignal(tween, Tween.SignalName.Finished);
+
+		_originalPosition = null;
+
+		var visuals = node.Visuals.GetNodeOrNull<Node2D>("Visuals");
+		if (visuals != null)
+			visuals.Position = Vector2.Zero;
+
+		if (goIdle)
+			PlayAnimation(player, "idle");
+	}
+	
+	public void DoScreenShake(ShakeStrength strength = ShakeStrength.Medium,
+		ShakeDuration duration = ShakeDuration.Short)
+	{
+		NGame.Instance?.ScreenShake(strength, duration);
+	}
+
+	public Node2D PlayVfxOnTarget(Creature target, string path, string animName)
+	{
+		var targetNode = NCombatRoom.Instance?.GetCreatureNode(target);
+		if (targetNode?.Visuals == null)
+			return null;
+
+		var scene = GD.Load<PackedScene>(path);
+		var vfx = scene.Instantiate<Node2D>();
+
+		targetNode.Visuals.AddChild(vfx);
+		vfx.Position = Vector2.Zero;
+
+		var animPlayer = vfx.GetNode<AnimationPlayer>("AnimationPlayer");
+
+		if (animPlayer.HasAnimation(animName))
+			animPlayer.Play(animName);
+
+		return vfx;
+	}
+	
+	[HarmonyPatch(typeof(NCreature), nameof(NCreature.SetAnimationTrigger))]
+	public static class NCreatureSetTriggerPatch
+	{
+		[HarmonyPrefix]
+		public static bool Prefix(NCreature __instance, string trigger)
+		{
+			// This ensures the engine's triggers automatically drive your AnimationPlayer.
+			if (__instance.Entity?.Player?.Character is Ace character)
+			{
+				character.PlayAnimation(__instance.Entity, trigger);
+				return false; // skip default skeletal animation path
+			}
+			return true;
+		}
+	}
+
+	[HarmonyPatch(typeof(NCreature), nameof(NCreature.StartDeathAnim))]
+	public static class AceStartDeathAnimPatch
+	{
+		[HarmonyPostfix]
+		public static void Postfix(NCreature __instance, ref float __result)
+		{
+			if (__instance.Entity?.Player?.Character is Ace character)
+			{
+				AudioHelper.PlayRandomGameover();
+				character.PlayAnimation(__instance.Entity, "die");
+				var animPlayer = __instance.Visuals.GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
+				__result = animPlayer?.GetAnimation("die")?.Length ?? 1.5f;
+			}
+		}
+	}
+	
+	[HarmonyPatch(typeof(Hook), nameof(Hook.AfterCombatVictory))]
+	public static class AceVictoryAnimationPatch
+	{
+		[HarmonyPostfix]
+		public static void Postfix(IRunState runState, CombatState? combatState)
+		{
+			var creatures = combatState?.Creatures?.Where(c => c.IsPlayer);
+
+			if (creatures == null)
+				return;
+
+			foreach (var creature in creatures)
+			{
+				if (creature.Player?.Character is not Ace)
+					continue;
+
+				var node = NCombatRoom.Instance?.GetCreatureNode(creature);
+				var animPlayer = node?.Visuals?.GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
+				
+				if (animPlayer == null)
+					continue;
+				AudioHelper.PlayRandomVictory();
+				animPlayer.Play("victory_before");
+				if (animPlayer.HasAnimation("victory"))
+					animPlayer.Queue("victory");
+			}
+		}
+	}
+	
+   [HarmonyPatch(typeof(Hook), nameof(Hook.AfterDamageReceived))]
+	public static class AceDamageAnimationPatch
+	{
+		[HarmonyPostfix]
+		public static void Postfix(Creature target, DamageResult result, ValueProp props, Creature? dealer)
+		{
+			if (target.Player?.Character is not Ace character)
+				return;
+			
+			if (dealer == null || dealer.Side != CombatSide.Enemy)
+				return;
+			
+			if (props.HasFlag(ValueProp.SkipHurtAnim) || props.HasFlag(ValueProp.Unpowered))
+				return;
+
+			if (result.WasFullyBlocked && result.BlockedDamage > 0)
+			{
+				character.PlayAnimation(target, "block"); 
+			}
+			
+			else if (result.UnblockedDamage > 0 && !target.IsDead)
+			{
+				character.PlayAnimation(target, "hit");
+				if (target.CurrentHp < 20)
+				{
+					AudioHelper.PlayRandomDamagedCritical();
+				}
+				else if (result.UnblockedDamage < 10)
+				{
+					AudioHelper.PlayRandomDamaged();
+				}
+				else
+				{
+					AudioHelper.PlayRandomDamagedHigh();
+				}
+			}
+		}
+	}
+	
+	[HarmonyPatch(typeof(CardSelectCmd), nameof(CardSelectCmd.FromChooseACardScreen))]
+	public static class AceCardSelectCmdFromChooseACardScreenPatch
+	{
+		[HarmonyPrefix]
+		public static bool Prefix(
+			PlayerChoiceContext context,
+			IReadOnlyList<CardModel> cards,
+			Player player,
+			bool canSkip,
+			ref Task<CardModel?> __result)
+		{
+			__result = PatchedChoose(context, cards, player, canSkip);
+			return false; 
+		}
+	
+		private static async Task<CardModel?> PatchedChoose(
+			PlayerChoiceContext context,
+			IReadOnlyList<CardModel> cards,
+			Player player,
+			bool canSkip)
+		{
+			if (cards.Count > 5)
+			{
+				throw new ArgumentException("Only works with 5 or fewer cards", nameof(cards));
+			}
+	
+			if (cards.Count == 0)
+			{
+				return null;
+			}
+	
+			uint choiceId = RunManager.Instance.PlayerChoiceSynchronizer.ReserveChoiceId(player);
+	
+			await context.SignalPlayerChoiceBegun(player, PlayerChoiceOptions.None);
+	
+			CardModel? result;
+			 
+			if (LocalContext.IsMe(player))
+			{
+				NPlayerHand.Instance?.CancelAllCardPlay();
+	
+				var screen = NChooseACardSelectionScreen.ShowScreen(cards, canSkip);
+	
+				if (screen == null)
+				{
+					await context.SignalPlayerChoiceEnded();
+					return null;
+				}
+				
+				foreach (var card in cards)
+				{
+					SaveManager.Instance.MarkCardAsSeen(card);
+				}
+	
+				result = (await screen.CardsSelected()).FirstOrDefault();
+	
+				int index = cards.IndexOf(result);
+				var choiceResult = PlayerChoiceResult.FromIndex(index);
+	
+				RunManager.Instance.PlayerChoiceSynchronizer.SyncLocalChoice(player, choiceId, choiceResult);
+			}
+			else
+			{
+				int index = (await RunManager.Instance.PlayerChoiceSynchronizer
+						.WaitForRemoteChoice(player, choiceId))
+					.AsIndex();
+	
+				result = index < 0 ? null : cards[index];
+			}
+	
+			await context.SignalPlayerChoiceEnded();
+	
+			return result;
+		}
+	}
 }
