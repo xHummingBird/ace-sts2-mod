@@ -4,11 +4,11 @@ using Godot;
 
 namespace Ace.AceCode.Character;
 
-public class AceBluePool : CustomCardPoolModel
+public class AceBluePool : AceCardPool
 {
     public override string Title => Ace.CharacterId; //This is not a display name.
 
-    public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
+    public override string BigEnergyIconPath => "charui/energy_card.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
     
     public override float H => 0.6f; //Hue; changes the color.

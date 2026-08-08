@@ -88,7 +88,8 @@ public class Ace : PlaceholderCharacterModel
 	{
 		return i switch
 		{
-			2 => "charui/big_energy.png".ImagePath(),
+			1 => "charui/big_energy_1.png".ImagePath(),
+			2 => "charui/big_energy_2.png".ImagePath(),
 			_ => "charui/blank.png".ImagePath()
 		};
 	}
