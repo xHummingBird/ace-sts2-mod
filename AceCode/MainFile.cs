@@ -1,4 +1,6 @@
 using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using Ace.AceCode.Mechanics;
 using BaseLib.Patches.Saves;
 using Godot;
@@ -20,6 +22,12 @@ namespace Ace.AceCode
         {
             // Has to happen before BaseLib collects the saved fields, otherwise
             // the stock is dropped from the save and the rejoin payload.
+            ExtendedSaveTypes.RegisterAdditionalSaveType<AceColor>((resolver, options) => {
+                var jsonTypeInfo = JsonMetadataServices.CreateValueInfo<AceColor>(
+                    options, JsonMetadataServices.GetEnumConverter<AceColor>(options));
+                jsonTypeInfo.OriginatingResolver = resolver;
+                return jsonTypeInfo;
+            });
             ExtendedSaveTypes.RegisterListSaveType<AceColor>();
             Stock.Register();
 

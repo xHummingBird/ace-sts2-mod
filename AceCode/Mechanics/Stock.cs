@@ -40,8 +40,11 @@ public static class Stock {
   // the field setup when Register is called.
   static Stock() {}
 
+  // Bascially a Hack
   // The SavedSpireField registers itself when the field above is built, so
   // something has to touch Stock before BaseLib collects the fields.
+  // i.e. called in MaineFile.cs to ensure that BaseLib constructs the
+  // SavedSpireField Field rather than lazy initialize it
   public static void Register() {}
 
   internal static List<AceColor>? Mutable(Player? player) =>
