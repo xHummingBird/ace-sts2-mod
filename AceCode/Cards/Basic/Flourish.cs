@@ -54,9 +54,8 @@ public class Flourish() : AceCard(1, CardType.Attack,
                 .WithValueProp(ValueProp.Unpowered)
                 .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                 .Execute(choiceContext);
-            await Task.Delay((int)(0.2f * 1000f));
             AudioHelper.PlayRandomAttackHard();
-            await Task.Delay((int)(0.167f * 1000f));
+            await Task.Delay((int)(0.367f * 1000f));
             SfxCmd.Play("res://Ace/sfx/card_throw.wav");
             await Task.Delay((int)(0.1f * 1000f));
             ace.PlayVfxOnTarget(
