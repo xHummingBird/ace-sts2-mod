@@ -1,6 +1,7 @@
-﻿namespace Ace.AceCode.Cards.Basic;
-
-public class CutCards
+namespace Ace.AceCode.Cards.Basic
 {
+    public class CutCards
+    {
     
+    }
 }

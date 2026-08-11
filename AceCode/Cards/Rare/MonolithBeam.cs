@@ -1,6 +1,7 @@
-﻿namespace Ace.AceCode.Cards.Rare;
-
-public class MonolithBeam
+namespace Ace.AceCode.Cards.Rare
 {
+    public class MonolithBeam
+    {
     
+    }
 }

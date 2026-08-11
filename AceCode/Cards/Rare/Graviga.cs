@@ -1,6 +1,7 @@
-﻿namespace Ace.AceCode.Cards.Rare;
-
-public class Graviga
+namespace Ace.AceCode.Cards.Rare
 {
+    public class Graviga
+    {
     
+    }
 }

@@ -1,6 +1,7 @@
-﻿namespace Ace.AceCode.Cards.Common;
-
-public class BlizzardBom
+namespace Ace.AceCode.Cards.Common
 {
+    public class BlizzardBom
+    {
     
+    }
 }
