@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
@@ -7,276 +7,252 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 
 namespace Ace.AceCode.Mechanics;
 
-public partial class CardDisplayOverlay : Control
-{
-    public static CardDisplayOverlay? Instance { get; private set; }
+public partial class CardDisplayOverlay : Control {
+  public static CardDisplayOverlay? Instance { get; private set; }
 
-    private Control? _cardDisplay;
+  private Control? _cardDisplay;
 
-    private TextureRect? _orb;
+  private TextureRect? _orb;
 
-    private TextureRect? _card1;
-    private TextureRect? _card2;
-    private TextureRect? _card3;
-    private TextureRect? _card4;
+  private TextureRect[]? _slots;
 
-    private RichTextLabel? _orbLabel;
+  private RichTextLabel? _orbLabel;
 
-    private Player? _player;
+  private Player? _player;
 
-    private bool _exiting;
-    
-    
+  private bool _exiting;
 
-    public override void _Ready()
-    {
-        Instance = this;
-        Name = "CardDisplayOverlay";
+  private static readonly Dictionary<AceColor, Texture2D?> CardTextures =
+      new() {
+        [AceColor.Red] = LoadCardUi("card_red"),
+        [AceColor.Blue] = LoadCardUi("card_blue"),
+        [AceColor.Yellow] = LoadCardUi("card_yellow"),
+        [AceColor.White] = LoadCardUi("card_white"),
+      };
 
-        MouseFilter = MouseFilterEnum.Pass;
+  private static readonly Dictionary<AceColor, Texture2D?> OrbTextures = new() {
+    [AceColor.Red] = LoadCardUi("orb_red"),
+    [AceColor.Blue] = LoadCardUi("orb_blue"),
+    [AceColor.Yellow] = LoadCardUi("orb_yellow"),
+    [AceColor.White] = LoadCardUi("orb_white"),
+  };
 
-        CallDeferred(nameof(Setup));
-    }
+  private static readonly Texture2D? OrbNoneTexture = LoadCardUi("orb_none");
+  private static readonly Texture2D? OrbAllTexture = LoadCardUi("orb_all");
 
-    private async void Setup()
-    {
-        if (!IsInsideTree())
-            return;
+  //
+  // Cached so the textures are only reassigned when the stock changes
+  //
+  private readonly List<AceColor> _shown = [];
+  private bool _shownValid;
 
-        for (int i = 0; i < 60; i++)
-        {
-            if (_exiting || !IsInsideTree())
-                return;
+  private static Texture2D? LoadCardUi(string name) =>
+      GD.Load<Texture2D>($"res://Ace/images/card_ui/{name}.png");
 
-            var state =
-                CombatManager.Instance?.DebugOnlyGetState();
+  public override void _Ready() {
+    Instance = this;
+    Name = "CardDisplayOverlay";
 
-            var player =
-                state?.Players.FirstOrDefault(
-                    p => LocalContext.IsMe(p)
-                );
+    MouseFilter = MouseFilterEnum.Pass;
 
-            if (player != null)
-            {
-                if (player.Character is not Character.Ace)
-                {
-                    QueueFree();
-                    return;
-                }
+    CallDeferred(nameof(Setup));
+  }
 
-                _player = player;
-                break;
-            }
+  private async void Setup() {
+    if (!IsInsideTree())
+      return;
 
-            await ToSignal(
-                GetTree(),
-                SceneTree.SignalName.ProcessFrame
-            );
-            
-            
+    for (int i = 0; i < 60; i++) {
+      if (_exiting || !IsInsideTree())
+        return;
+
+      var state = CombatManager.Instance?.DebugOnlyGetState();
+
+      var player = state?.Players.FirstOrDefault(p => LocalContext.IsMe(p));
+
+      if (player != null) {
+        if (player.Character is not Character.Ace) {
+          QueueFree();
+          return;
         }
 
-        if (_player == null)
-        {
-            QueueFree();
-            return;
-        }
+        _player = player;
+        break;
+      }
 
-        var scene = GD.Load<PackedScene>(
-            "res://Ace/scenes/card_holder_display.tscn"
-        );
-
-        if (scene == null)
-        {
-            GD.PushError(
-                "[Ace] Failed to load card_holder_display.tscn"
-            );
-
-            QueueFree();
-            return;
-        }
-
-        _cardDisplay = scene.Instantiate<Control>();
-
-        AddChild(_cardDisplay);
-
-        _cardDisplay.MouseFilter =
-            MouseFilterEnum.Pass;
-
-        _cardDisplay.SetAnchorsPreset(
-            LayoutPreset.BottomLeft
-        );
-
-        //
-        // Tweak as needed
-        //
-        _cardDisplay.Position =
-            new Vector2(-135, -100);
-
-        _orb =
-            _cardDisplay.GetNodeOrNull<TextureRect>(
-                "%Orb"
-            );
-
-        _card1 =
-            _cardDisplay.GetNodeOrNull<TextureRect>(
-                "%Card1"
-            );
-
-        _card2 =
-            _cardDisplay.GetNodeOrNull<TextureRect>(
-                "%Card2"
-            );
-
-        _card3 =
-            _cardDisplay.GetNodeOrNull<TextureRect>(
-                "%Card3"
-            );
-
-        _card4 =
-            _cardDisplay.GetNodeOrNull<TextureRect>(
-                "%Card4"
-            );
-
-        _orbLabel =
-            _cardDisplay.GetNodeOrNull<RichTextLabel>(
-                "%OrbLabel"
-            );
-
-        if (_orbLabel != null)
-        {
-            SetupLabel(_orbLabel);
-            _orbLabel.Position += new Vector2(0, 17);
-        }
-
-        RefreshDisplay();
+      await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 
-    public override void _Process(double delta)
-    {
-        if (_exiting)
-            return;
-
-        if (_player == null)
-            return;
-
-        if (!CombatManager.Instance.IsInProgress)
-            return;
-
-        RefreshDisplay();
+    if (_player == null) {
+      QueueFree();
+      return;
     }
 
-    private void SetupLabel(
-        RichTextLabel label)
-    {
-        var font =
-            GD.Load<Font>(
-                "res://themes/kreon_bold_shared.tres"
-            );
+    var scene =
+        GD.Load<PackedScene>("res://Ace/scenes/card_holder_display.tscn");
 
-        if (font != null)
-        {
-            label.AddThemeFontOverride(
-                "font",
-                font
-            );
+    if (scene == null) {
+      GD.PushError("[Ace] Failed to load card_holder_display.tscn");
 
-            label.AddThemeFontOverride(
-                "normal_font",
-                font
-            );
+      QueueFree();
+      return;
+    }
+
+    _cardDisplay = scene.Instantiate<Control>();
+
+    AddChild(_cardDisplay);
+
+    _cardDisplay.MouseFilter = MouseFilterEnum.Pass;
+
+    _cardDisplay.SetAnchorsPreset(LayoutPreset.BottomLeft);
+
+    //
+    // Tweak as needed
+    //
+    _cardDisplay.Position = new Vector2(-135, -100);
+
+    _orb = _cardDisplay.GetNodeOrNull<TextureRect>("Orb");
+
+    //
+    // The node names do not follow the layout, so the slots are ordered by
+    // where they actually sit. Oldest card on the left.
+    //
+    _slots = new[] { "Card1", "Card2", "Card3", "Card4" }
+                 .Select(name => _cardDisplay.GetNodeOrNull<TextureRect>(name))
+                 .Where(rect => rect != null)
+                 .OrderBy(rect => rect!.Position.X)
+                 .ToArray()!;
+
+    _orbLabel = _cardDisplay.GetNodeOrNull<RichTextLabel>("OrbLabel");
+
+    if (_orbLabel != null) {
+      SetupLabel(_orbLabel);
+      _orbLabel.Position += new Vector2(0, 17);
+    }
+
+    RefreshDisplay();
+  }
+
+  public override void _Process(double delta) {
+    if (_exiting)
+      return;
+
+    if (_player == null)
+      return;
+
+    if (!CombatManager.Instance.IsInProgress)
+      return;
+
+    RefreshDisplay();
+  }
+
+  private void SetupLabel(RichTextLabel label) {
+    var font = GD.Load<Font>("res://themes/kreon_bold_shared.tres");
+
+    if (font != null) {
+      label.AddThemeFontOverride("font", font);
+
+      label.AddThemeFontOverride("normal_font", font);
+    }
+
+    label.BbcodeEnabled = true;
+
+    label.AddThemeColorOverride("default_color", Colors.White);
+
+    label.AddThemeColorOverride("font_outline_color", Colors.Black);
+
+    label.AddThemeConstantOverride("outline_size", 8);
+
+    label.AddThemeFontSizeOverride("normal_font_size", 32);
+
+    label.MouseFilter = MouseFilterEnum.Ignore;
+  }
+
+  private void RefreshDisplay() {
+    if (_player == null)
+      return;
+
+    var items = Stock.Items(_player);
+
+    if (_shownValid && _shown.SequenceEqual(items))
+      return;
+
+    _shown.Clear();
+    _shown.AddRange(items);
+    _shownValid = true;
+
+    if (_slots != null) {
+      for (int i = 0; i < _slots.Length; i++) {
+        var slot = _slots[i];
+
+        if (i < items.Count) {
+          slot.Texture = CardTextures[items[i]];
+
+          slot.Visible = true;
+        } else {
+          slot.Visible = false;
         }
-
-        label.BbcodeEnabled = true;
-
-        label.AddThemeColorOverride(
-            "default_color",
-            Colors.White
-        );
-
-        label.AddThemeColorOverride(
-            "font_outline_color",
-            Colors.Black
-        );
-
-        label.AddThemeConstantOverride(
-            "outline_size",
-            8
-        );
-
-        label.AddThemeFontSizeOverride(
-            "normal_font_size",
-            32
-        );
-
-        label.MouseFilter =
-            MouseFilterEnum.Ignore;
+      }
     }
 
-    private void RefreshDisplay()
-    {
-        //
-        // TEMP TEST VALUE
-        //
-
-        const int stockCount = 4;
-
-        if (_orbLabel != null)
-        {
-            _orbLabel.Text =
-                $"[center]{stockCount}[/center]";
-        }
+    if (_orb != null) {
+      _orb.Texture = GetOrbTexture();
     }
 
-    public override void _ExitTree()
-    {
-        _exiting = true;
-
-        _orb = null;
-
-        _card1 = null;
-        _card2 = null;
-        _card3 = null;
-        _card4 = null;
-
-        _orbLabel = null;
-
-        _cardDisplay = null;
-        _player = null;
-
-        if (Instance == this)
-            Instance = null;
+    if (_orbLabel != null) {
+      _orbLabel.Text = $"[center]{items.Count}[/center]";
     }
+  }
+
+  private Texture2D? GetOrbTexture() {
+    if (_player == null)
+      return OrbNoneTexture;
+
+    if (Stock.Count(_player) == 0)
+      return OrbNoneTexture;
+
+    if (Stock.IsRainbow(_player))
+      return OrbAllTexture;
+
+    return Stock.Majority(_player) is {}
+    color ? OrbTextures[color] : OrbNoneTexture;
+  }
+
+  public override void _ExitTree() {
+    _exiting = true;
+
+    _orb = null;
+
+    _slots = null;
+
+    _orbLabel = null;
+
+    _cardDisplay = null;
+    _player = null;
+
+    if (Instance == this)
+      Instance = null;
+  }
 }
 
-[HarmonyPatch(
-    typeof(NEnergyCounter),
-    nameof(NEnergyCounter._Ready)
-)]
-public static class CardDisplayOverlayPatch
-{
-    public static void Postfix(
-        NEnergyCounter __instance)
-    {
-        if (__instance == null)
-            return;
+[HarmonyPatch(typeof(NEnergyCounter), nameof(NEnergyCounter._Ready))]
+public static class CardDisplayOverlayPatch {
+  public static void Postfix(NEnergyCounter __instance) {
+    if (__instance == null)
+      return;
 
-        if (!GodotObject.IsInstanceValid(__instance))
-            return;
+    if (!GodotObject.IsInstanceValid(__instance))
+      return;
 
-        if (__instance.IsQueuedForDeletion())
-            return;
+    if (__instance.IsQueuedForDeletion())
+      return;
 
-        if (__instance.GetNodeOrNull<CardDisplayOverlay>(
-                "CardDisplayOverlay") != null)
-            return;
+    if (__instance.GetNodeOrNull<CardDisplayOverlay>("CardDisplayOverlay") !=
+        null)
+      return;
 
-        var overlay =
-            new CardDisplayOverlay
-            {
-                Name = "CardDisplayOverlay"
-            };
+    var overlay = new CardDisplayOverlay { Name = "CardDisplayOverlay" };
 
-        __instance.AddChild(overlay);
-    }
+    __instance.AddChild(overlay);
+  }
 }

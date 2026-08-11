@@ -1,6 +1,7 @@
-﻿namespace Ace.AceCode.Cards.Common;
-
-public class FireRf
+namespace Ace.AceCode.Cards.Common
 {
+    public class FireRf
+    {
     
+    }
 }

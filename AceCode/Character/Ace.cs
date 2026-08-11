@@ -1,7 +1,8 @@
-using Ace.AceCode.Cards.Basic;
+﻿using Ace.AceCode.Cards.Basic;
 using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using Ace.AceCode.Extensions;
+using Ace.AceCode.Mechanics;
 using Ace.AceCode.Relics;
 using Godot;
 using HarmonyLib;
@@ -54,7 +55,8 @@ public class Ace : PlaceholderCharacterModel
 		ModelDb.Card<DefendBlue>(),
 		ModelDb.Card<DefendYellow>(),
 		ModelDb.Card<DefendWhite>(),
-		ModelDb.Card<Flourish>()
+		ModelDb.Card<Flourish>(),
+		ModelDb.Card<ShowOfHands>()
 		//ModelDb.Card<CutCards>(),
 	];
 

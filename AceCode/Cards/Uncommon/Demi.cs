@@ -1,6 +1,7 @@
-﻿namespace Ace.AceCode.Cards.Uncommon;
-
-public class Demi
+namespace Ace.AceCode.Cards.Uncommon
 {
+    public class Demi
+    {
     
+    }
 }
