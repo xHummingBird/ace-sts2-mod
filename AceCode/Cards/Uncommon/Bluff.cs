@@ -8,9 +8,10 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Uncommon;
 
-public class Bluff() : AceCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+//Apply 1 vulnerable and for each white card stocked. Exhaust
+public class Bluff() : AceWhiteCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<VulnerablePower>(3m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<VulnerablePower>(1m)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
@@ -19,6 +20,6 @@ public class Bluff() : AceCard(1, CardType.Skill, CardRarity.Uncommon, TargetTyp
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<VulnerablePower>().UpgradeValueBy(1m);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

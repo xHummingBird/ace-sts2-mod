@@ -8,7 +8,8 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Uncommon;
 
-public class RoyalFlush() : AceWhiteCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+// Use same animation as CardFan. Deal double damage if current stock is rainbow
+public class RoyalFlush() : AceWhiteCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(16m, ValueProp.Move), new PowerVar<VulnerablePower>(2m)];
 

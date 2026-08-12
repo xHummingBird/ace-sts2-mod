@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Uncommon;
 
+// first coloured card you play each turn is stocked twice. Create the corresponding mementoPower
 public class Memento() : AceWhiteCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<StrengthPower>(2m)];

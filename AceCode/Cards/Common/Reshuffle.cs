@@ -8,7 +8,8 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common;
 
-public class Reshuffle() : AceCard(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+// Draw 3 cards. Put 2 cards on your Hand on top of your draw pile. Draw 4 for upgraded
+public class Reshuffle() : AceYellowCard(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<WeakPower>(2m)];
 

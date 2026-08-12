@@ -6,7 +6,8 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Uncommon;
 
-public class ChainLightning() : AceYellowCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
+//hit 3 random target, 5 damage. Increase hit count for each yellow card stocked
+public class ChainLightning() : AceYellowCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9m, ValueProp.Move)];
 
