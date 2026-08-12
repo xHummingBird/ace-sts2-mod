@@ -12,7 +12,7 @@ public class AceWhitePool : AceCardPool
     
     public override float H => 0f; //Hue; changes the color.
     public override float S => 0f; //Saturation
-    public override float V => 2.4f; //Brightness
+    public override float V => 1.7f; //Brightness
     
     public override Color DeckEntryCardColor => new(Colors.White);
     public override bool IsShared => true;

@@ -23,9 +23,15 @@
   "ACE-DEFEND_WHITE.description": "Gain {Block:diff()} [gold]Block[/gold]. \nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
   "ACE-DEFEND_WHITE.title": "Defend",
 
-  "ACE-FLOURISH.description": "Deal {Damage:diff()} damage 3 times.",
+  "ACE-FLOURISH.description": "Deal {Damage:diff()} damage 3 times. \nGain additional effects based on [gold]Majority[/gold] colour in your stock",
   "ACE-FLOURISH.title": "Flourish",
 
-  "ACE-SHOW_OF_HANDS.description": "[gold]Flip[/gold] the majority color in your stock.",
-  "ACE-SHOW_OF_HANDS.title": "Show of Hands"
+  "ACE-SHOW_OF_HANDS.description": "[gold]Flip[/gold] the [gold]Majority[/gold] colour in your stock.",
+  "ACE-SHOW_OF_HANDS.title": "Show of Hands",
+  
+  "ACE-FLURRY.description": "Deal {Damage:diff()} damage 4 times. \nYour next attack cost 0 {Energy:energyIcons()}",
+  "ACE-FLURRY.title": "Flurry",
+
+  "ACE-CARD_BARRIER.description": "",
+  "ACE-CARD_BARRIER.title": "Card Barrier"
 }

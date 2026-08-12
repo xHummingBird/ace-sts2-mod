@@ -31,7 +31,7 @@ namespace Ace.AceCode.Relics
                         ModelDb.CardPool<AceBluePool>(),
                         ModelDb.CardPool<AceRedPool>(),
                         ModelDb.CardPool<AceYellowPool>(),
-                        ModelDb.CardPool<AceWhitePool>()
+                        ModelDb.CardPool<AceWhitePool>(),
                     ])
                     .Distinct()
             );

@@ -7,10 +7,10 @@
   "ACE-ACE.description": "Character Selection\nScreen Description",
   "ACE-ACE.eventDeathPrevention": "Co-op survival line",
   "ACE-ACE.goldMonologue": "Line spoken when obtaining a large amount of gold",
-  "ACE-ACE.possessiveAdjective": "his/her/its",
-  "ACE-ACE.pronounObject": "him/her/it",
-  "ACE-ACE.pronounPossessive": "his/hers/its",
-  "ACE-ACE.pronounSubject": "he/she/it",
-  "ACE-ACE.title": "The Ace",
-  "ACE-ACE.titleObject": "The Ace"
+  "ACE-ACE.possessiveAdjective": "his",
+  "ACE-ACE.pronounObject": "him",
+  "ACE-ACE.pronounPossessive": "his",
+  "ACE-ACE.pronounSubject": "he",
+  "ACE-ACE.title": "Class Zero",
+  "ACE-ACE.titleObject": "Class Zero Ace"
 }

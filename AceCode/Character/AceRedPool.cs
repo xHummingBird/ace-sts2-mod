@@ -9,7 +9,7 @@ public class AceRedPool : AceCardPool
 
     public override string BigEnergyIconPath => "charui/energy_card.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
-    public override float H => 0f; //Hue; changes the color.
+    public override float H => 1f; //Hue; changes the color.
     public override float S => 1f; //Saturation
     public override float V => 1f; //Brightness
     

@@ -57,7 +57,7 @@ public partial class CardDisplayOverlay : Control {
 
     CallDeferred(nameof(Setup));
   }
-
+  
   private async void Setup() {
     if (!IsInsideTree())
       return;
@@ -200,7 +200,19 @@ public partial class CardDisplayOverlay : Control {
     }
 
     if (_orbLabel != null) {
-      _orbLabel.Text = $"[center]{items.Count}[/center]";
+      // Rainbow stock (all 4 colors present)
+      if (Stock.IsRainbow(_player)) {
+        _orbLabel.Text = "";
+      } else {
+        var majority = Stock.Majority(_player);
+
+        if (majority is {} color) {
+          var count = items.Count(x => x == color);
+          _orbLabel.Text = $"[center]{count}[/center]";
+        } else {
+          _orbLabel.Text = "";
+        }
+      }
     }
   }
 

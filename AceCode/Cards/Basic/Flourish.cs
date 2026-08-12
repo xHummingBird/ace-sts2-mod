@@ -36,7 +36,8 @@ public class Flourish() : AceCard(1, CardType.Attack,
                 "res://Ace/scenes/vfx.tscn",
                 "card_hit_1"
             );
-            CommonActions.CardAttack(this, play.Target)
+            await DamageCmd.Attack(damage).FromCard(this, play).Targeting(play.Target)
+                .WithValueProp(ValueProp.Unpowered)
                 .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                 .Execute(choiceContext);
             
@@ -63,10 +64,10 @@ public class Flourish() : AceCard(1, CardType.Attack,
                 "res://Ace/scenes/vfx.tscn",
                 "card_hit_3"
             );
-            await DamageCmd.Attack(damage).FromCard(this, play).Targeting(play.Target)
-                .WithValueProp(ValueProp.Unpowered)
+            await CommonActions.CardAttack(this, play.Target)
                 .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                 .Execute(choiceContext);
+           
             await Task.Delay((int)(0.25f * 1000f));
             
         }

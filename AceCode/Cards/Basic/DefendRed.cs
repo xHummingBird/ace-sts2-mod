@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Basic
-{
+{ 
     public class DefendRed() : AceRedCard(1, CardType.Skill,
         CardRarity.Basic, TargetType.Self)
     {

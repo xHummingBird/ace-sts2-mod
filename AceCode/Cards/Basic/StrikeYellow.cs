@@ -37,6 +37,10 @@ namespace Ace.AceCode.Cards.Basic
                     "res://Ace/scenes/vfx.tscn",
                     "card_hit_1"
                 );
+                DamageCmd.Attack(damage).FromCard(this, play).Targeting(play.Target)
+                    .WithValueProp(ValueProp.Unpowered)
+                    .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
+                    .Execute(choiceContext);
                 CommonActions.CardAttack(this, play.Target)
                     .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                     .Execute(choiceContext);
@@ -51,8 +55,7 @@ namespace Ace.AceCode.Cards.Basic
                     "res://Ace/scenes/vfx.tscn",
                     "card_hit_2"
                 );
-                await DamageCmd.Attack(damage).FromCard(this, play).Targeting(play.Target)
-                    .WithValueProp(ValueProp.Unpowered)
+                await CommonActions.CardAttack(this, play.Target)
                     .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                     .Execute(choiceContext);
                 await Task.Delay((int)(0.2f * 1000f));
