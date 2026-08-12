@@ -106,7 +106,7 @@ public class Ace : PlaceholderCharacterModel
 	
 	public override string CustomCharacterSelectBg => "res://Ace/images/charui/char_selection_bg_ace.tscn";
 	public override string CustomMerchantAnimPath => "res://Ace/scenes/ace_merchant.tscn";
-	public override string CharacterSelectSfx => "res://Ace/sounds/run_start.wav";
+	public override string CharacterSelectSfx => "res://Ace/sounds/victory_7.wav";
 	
 	public override NCreatureVisuals? CreateCustomVisuals()
 	{

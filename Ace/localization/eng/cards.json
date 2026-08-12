@@ -33,5 +33,11 @@
   "ACE-FLURRY.title": "Flurry",
 
   "ACE-CARD_BARRIER.description": "",
-  "ACE-CARD_BARRIER.title": "Card Barrier"
+  "ACE-CARD_BARRIER.title": "Card Barrier",
+
+  "ACE-TRUE_JACKPOT_SHOT.description": "Deal {Damage:diff()} damage to ALL enemies.",
+  "ACE-TRUE_JACKPOT_SHOT.title": "True Jackpot Shot",
+
+  "ACE-JACKPOT_SHOT.description": "Deal {Damage:diff()} damage to ALL enemies.",
+  "ACE-JACKPOT_SHOT.title": "Jackpot Shot"
 }

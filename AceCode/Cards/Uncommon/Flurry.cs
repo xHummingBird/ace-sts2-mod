@@ -70,7 +70,7 @@ public class Flurry() : AceRedCard(2, CardType.Attack,
                 .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                 .Execute(choiceContext);
             await Task.Delay((int)(0.2f * 1000f));
-            AudioHelper.PlayRandomAttackCritical();
+            AudioHelper.PlayRandomLastHit();
             await Task.Delay((int)(0.4f * 1000f));
             SfxCmd.Play("res://Ace/sfx/card_throw.wav");
             await Task.Delay((int)(0.1f * 1000f));
