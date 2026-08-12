@@ -17,7 +17,7 @@ namespace Ace.AceCode.Extensions
                 Creature attacker,
                 Creature target,
                 string? hitSfx,
-                string animName,
+                string? animName,
                 string? hitVfx = null)
             {
                 if (target == null)

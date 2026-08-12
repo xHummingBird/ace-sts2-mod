@@ -60,7 +60,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="AceCode\Cards\Ancient\" />
         <Folder Include="Ace\images\card_portraits\big\"/>
         <Folder Include="Ace\images\powers\big\"/>
         <Folder Include="Ace\images\relics\big\"/>

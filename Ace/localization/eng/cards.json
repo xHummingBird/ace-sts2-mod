@@ -167,4 +167,8 @@
   "ACE-VERMILION_BIRD.title": "Vermilion Bird",
   "ACE-AGITOS_RESOLVE.description": "Gain {StrengthPower:diff()} [gold]Strength[/gold]. \nGain {ArtifactPower:diff()} [gold]Artifact[/gold].",
   "ACE-AGITOS_RESOLVE.title": "Agito's Resolve"
+  "ACE-TRUE_JACKPOT_SHOT.description": "Deal {Damage:diff()} damage to ALL enemies.",
+  "ACE-TRUE_JACKPOT_SHOT.title": "True Jackpot Shot",
+  "ACE-JACKPOT_SHOT.description": "Deal {Damage:diff()} damage to ALL enemies.",
+  "ACE-JACKPOT_SHOT.title": "Jackpot Shot"
 }
