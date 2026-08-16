@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace Ace.AceCode.Cards.Flip;
 
 public class GigaCharge() : AceFlipCard(0, CardType.Skill,
-  CardRarity.Common, TargetType.Self)
+  CardRarity.Rare, TargetType.Self)
 {
   public override IEnumerable<CardKeyword> CanonicalKeywords =>
   [

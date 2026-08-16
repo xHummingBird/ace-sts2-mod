@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -19,6 +20,11 @@ public class CardFan() : AceRedCard(2, CardType.Attack, CardRarity.Common, Targe
         new CalculationBaseVar(9m),
         new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => Stock.Count(card.Owner, AceColor.Red))
+    ];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        AceStaticHoverTip.Stock,
     ];
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

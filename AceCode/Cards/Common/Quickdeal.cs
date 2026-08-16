@@ -19,8 +19,7 @@ public class Quickdeal() : AceRedCard(1, CardType.Skill, CardRarity.Common, Targ
     [
         AceStaticHoverTip.Majority
     ];
-
-
+    
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
        await CardPileCmd.AutoPlayFromDrawPile(choiceContext, base.Owner, 1, CardPilePosition.Top, forceExhaust: true);

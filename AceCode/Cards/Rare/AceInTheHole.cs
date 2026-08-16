@@ -1,4 +1,5 @@
 using Ace.AceCode.Cards.Ancient;
+using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -26,7 +27,8 @@ public class AceInTheHole() : AceCard(2, CardType.Skill, CardRarity.Rare, Target
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromCard<JackpotShot>()
+        HoverTipFactory.FromCard<JackpotShot>(),
+        AceStaticHoverTip.Flip,
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

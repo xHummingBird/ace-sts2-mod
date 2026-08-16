@@ -15,6 +15,11 @@ public class SuperBurst() : AceFlipCard(0, CardType.Attack,
     [
         new DamageVar(12m, ValueProp.Move),
     ];
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

@@ -13,7 +13,6 @@ namespace Ace.AceCode.Cards.Uncommon;
 public class DelayDeal() : AceRedCard(1, CardType.Attack,
     CardRarity.Rare, TargetType.AnyEnemy), IStockingCard
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(10m, ValueProp.Move),

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8nadywtbgn1r"
-path="res://.godot/imported/fated_hand.png-75e9b33098ef6984cfa2d5e3d7c802c2.ctex"
+uid="uid://cu3iac8j5t23u"
+path="res://.godot/imported/static_deal.png-d971a602423ffeaa2c91688340fbd11e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ace/images/card_portraits/big/fated_hand.png"
-dest_files=["res://.godot/imported/fated_hand.png-75e9b33098ef6984cfa2d5e3d7c802c2.ctex"]
+source_file="res://Ace/images/card_portraits/big/static_deal.png"
+dest_files=["res://.godot/imported/static_deal.png-d971a602423ffeaa2c91688340fbd11e.ctex"]
 
 [params]
 

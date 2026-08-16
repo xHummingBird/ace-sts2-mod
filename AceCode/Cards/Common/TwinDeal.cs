@@ -18,16 +18,28 @@ public class TwinDeal() : AceCard(1, CardType.Skill, CardRarity.Uncommon, Target
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         AceStaticHoverTip.Flip,
+        AceStaticHoverTip.Majority
     ];
 
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await Ace.AceCode.Mechanics.Flip.Majority(choiceContext, this, play, 0, 2);
+        if (Stock.IsRainbow(Owner))
+        {
+            await Ace.AceCode.Mechanics.Flip.Spectrum(
+                choiceContext,
+                this,
+                play);
+        }
+        else
+        {
+            await Ace.AceCode.Mechanics.Flip.Majority(choiceContext, this, play, 0, 2);
+        }
+        
     }
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://fgvoribkajud"]
+[gd_scene load_steps=154 format=3 uid="uid://fgvoribkajud"]
 
 [ext_resource type="Texture2D" uid="uid://caistlukr2o76" path="res://Ace/images/spritesheets/idle/00_idle.png" id="1_fijmo"]
 [ext_resource type="Texture2D" uid="uid://b68c67ifrvmlr" path="res://Ace/images/spritesheets/vfx/explosion/explosion_1.png" id="1_owxhg"]
@@ -120,8 +120,23 @@
 [ext_resource type="Texture2D" uid="uid://cfv0vo5n8opv5" path="res://Ace/images/spritesheets/vfx/exploding_card/18_exploding_card.png" id="118_vyjo7"]
 [ext_resource type="Texture2D" uid="uid://dhnsqoraqs64s" path="res://Ace/images/spritesheets/vfx/exploding_card/19_exploding_card.png" id="119_jrbbm"]
 [ext_resource type="Texture2D" uid="uid://dsk11uen8n4og" path="res://Ace/images/spritesheets/vfx/exploding_card/20_exploding_card.png" id="120_v5fat"]
-[ext_resource type="AudioStream" uid="uid://7aa4xrsml57l" path="res://Ace/sfx/burst_damage.wav" id="121_4db2r"]
-[ext_resource type="AudioStream" uid="uid://b7gvtc4ej5qiu" path="res://Ace/sfx/burst_2.wav" id="122_bmpcw"]
+[ext_resource type="Texture2D" uid="uid://bwhdvf7phsnip" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-3.png" id="121_71442"]
+[ext_resource type="Texture2D" uid="uid://dvtmihn1mpid1" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-4.png" id="122_e3ooy"]
+[ext_resource type="Texture2D" uid="uid://jc3k0dxa6j4y" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-5.png" id="123_iugf8"]
+[ext_resource type="Texture2D" uid="uid://bxnsvfrjwh8ow" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-6.png" id="124_7dyx7"]
+[ext_resource type="Texture2D" uid="uid://dt1v171cgvqxy" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-7.png" id="125_wq27p"]
+[ext_resource type="Texture2D" uid="uid://bjg3jtoboxq3w" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-8.png" id="126_xq8ic"]
+[ext_resource type="Texture2D" uid="uid://bpsnj5nnuxs1i" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-9.png" id="127_kfjte"]
+[ext_resource type="Texture2D" uid="uid://dgi3h3cltp5r4" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-10.png" id="128_s50wm"]
+[ext_resource type="Texture2D" uid="uid://c3u2ivsciwyso" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-11.png" id="129_qil4o"]
+[ext_resource type="Texture2D" uid="uid://85mec7c8s8ar" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-12.png" id="130_egs0f"]
+[ext_resource type="Texture2D" uid="uid://wmbj5c6iddao" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-13.png" id="131_31plr"]
+[ext_resource type="Texture2D" uid="uid://cjwrk3qvkdtev" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-14.png" id="132_rbk45"]
+[ext_resource type="Texture2D" uid="uid://dpt1q6op31inw" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-15.png" id="133_8yn6j"]
+[ext_resource type="Texture2D" uid="uid://d3ti2tvvg37f3" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-16.png" id="134_ms1ct"]
+[ext_resource type="Texture2D" uid="uid://do3q2fpihnx1j" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-17.png" id="135_6h3sb"]
+[ext_resource type="Texture2D" uid="uid://bcsb3ku16k1vt" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-18.png" id="136_d2gnm"]
+[ext_resource type="Texture2D" uid="uid://dgd3re255mhpq" path="res://Ace/images/spritesheets/vfx/spiral_gambit/Genesis-Tile-2-19.png" id="137_wnr6b"]
 
 [sub_resource type="Animation" id="Animation_00gry"]
 length = 0.001
@@ -401,6 +416,154 @@ tracks/22/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("card_vfx:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_71442"]
+resource_name = "burst"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("card_vfx:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.4, 0.53333336, 0.6666667, 0.8, 0.93333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("106_a5axa"), ExtResource("107_bp0ka"), ExtResource("108_5mapr"), ExtResource("109_o1as8"), ExtResource("110_twf1i"), ExtResource("111_0217i"), ExtResource("112_2iwl0"), ExtResource("113_r8smo"), ExtResource("114_4v2x3"), ExtResource("115_88cqa"), ExtResource("116_lbiav"), ExtResource("117_gu1vt"), ExtResource("118_vyjo7"), ExtResource("119_jrbbm"), ExtResource("120_v5fat")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("card_vfx:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-94, -55)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("card_vfx:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("card_vfx:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("card_hit:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("reference:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("flood:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("explosion:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ice:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("demi:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("card_vfx:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_h081h"]
 resource_name = "card_hit_1"
@@ -572,6 +735,18 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("card_vfx:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_qrlrv"]
@@ -745,6 +920,18 @@ tracks/13/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("card_vfx:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_qqx47"]
 resource_name = "card_hit_3"
@@ -917,6 +1104,18 @@ tracks/13/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("card_vfx:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_1o4am"]
 resource_name = "card_hit_4"
@@ -1088,6 +1287,18 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("card_vfx:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_m4ebo"]
@@ -1601,6 +1812,142 @@ tracks/6/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_71koq"]
+resource_name = "hit"
+length = 0.267
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("card_vfx:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("98_6eyn4"), ExtResource("99_b6a5n"), ExtResource("100_7wsmi"), ExtResource("101_71koq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("card_vfx:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, -108.00001)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("card_vfx:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1.5, 1.5), Vector2(-1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("card_vfx:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("card_hit:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("reference:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("flood:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("explosion:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ice:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("demi:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("card_vfx:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_t50e0"]
 resource_name = "ice_1"
 length = 0.6
@@ -1825,9 +2172,9 @@ tracks/7/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_71koq"]
-resource_name = "hit"
-length = 0.267
+[sub_resource type="Animation" id="Animation_ltdp4"]
+resource_name = "spiral_gambit"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1835,10 +2182,10 @@ tracks/0/path = NodePath("card_vfx:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667, 0.53333336, 0.6, 0.6666667, 0.73333335, 0.8, 0.8666667, 0.93333334, 1, 1.0666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("98_6eyn4"), ExtResource("99_b6a5n"), ExtResource("100_7wsmi"), ExtResource("101_71koq")]
+"values": [ExtResource("121_71442"), ExtResource("122_e3ooy"), ExtResource("123_iugf8"), ExtResource("124_7dyx7"), ExtResource("125_wq27p"), ExtResource("126_xq8ic"), ExtResource("127_kfjte"), ExtResource("128_s50wm"), ExtResource("129_qil4o"), ExtResource("130_egs0f"), ExtResource("131_31plr"), ExtResource("132_rbk45"), ExtResource("133_8yn6j"), ExtResource("134_ms1ct"), ExtResource("135_6h3sb"), ExtResource("136_d2gnm"), ExtResource("137_wnr6b")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1850,7 +2197,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(15, -108.00001)]
+"values": [Vector2(53, -872)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1859,10 +2206,10 @@ tracks/2/path = NodePath("card_vfx:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.13333334),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(1.5, 1.5), Vector2(-1.5, 1.5)]
+"values": [Vector2(5, 5)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1871,7 +2218,7 @@ tracks/3/path = NodePath("card_vfx:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 1.1666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -1948,160 +2295,6 @@ tracks/9/keys = {
 "update": 1,
 "values": [false]
 }
-
-[sub_resource type="Animation" id="Animation_71442"]
-resource_name = "burst"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("card_vfx:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.4, 0.53333336, 0.6666667, 0.8, 0.93333334, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("106_a5axa"), ExtResource("107_bp0ka"), ExtResource("108_5mapr"), ExtResource("109_o1as8"), ExtResource("110_twf1i"), ExtResource("111_0217i"), ExtResource("112_2iwl0"), ExtResource("113_r8smo"), ExtResource("114_4v2x3"), ExtResource("115_88cqa"), ExtResource("116_lbiav"), ExtResource("117_gu1vt"), ExtResource("118_vyjo7"), ExtResource("119_jrbbm"), ExtResource("120_v5fat")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("card_vfx:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-61, -78)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("card_vfx:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(-1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("card_vfx:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("card_hit:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("reference:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("flood:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("explosion:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("ice:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("demi:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "audio"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("AudioStreamPlayer2D")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("121_4db2r")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/10/use_blend = true
-tracks/11/type = "audio"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("AudioStreamPlayer2D")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("122_bmpcw")
-}],
-"times": PackedFloat32Array(0.4)
-}
-tracks/11/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wx4fb"]
 _data = {
@@ -2118,6 +2311,7 @@ _data = {
 &"flood": SubResource("Animation_c25sb"),
 &"hit": SubResource("Animation_71koq"),
 &"ice_1": SubResource("Animation_t50e0"),
+&"spiral_gambit": SubResource("Animation_ltdp4"),
 &"water": SubResource("Animation_scvv3")
 }
 

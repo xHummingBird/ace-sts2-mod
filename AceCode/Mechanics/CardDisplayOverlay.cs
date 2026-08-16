@@ -245,7 +245,7 @@ public partial class CardDisplayOverlay : Control {
     //
     // Tweak as needed
     //
-    _cardDisplay.Position = new Vector2(-135, -130);
+    _cardDisplay.Position = new Vector2(-135, -120);
 
     _orb = _cardDisplay.GetNodeOrNull<TextureRect>("Orb");
     

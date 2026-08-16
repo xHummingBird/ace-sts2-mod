@@ -6,9 +6,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Ace.AceCode.Cards.Uncommon;
+namespace Ace.AceCode.Cards.Common;
 
-public class CardVolley() : AceRedCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.RandomEnemy)
+public class CardVolley() : AceRedCard(2, CardType.Attack, CardRarity.Common, TargetType.RandomEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move), new RepeatVar(3)];
 

@@ -2,6 +2,7 @@ using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using Ace.AceCode.Extensions;
 using Godot;
+using MegaCrit.Sts2.Core.Localization;
 
 namespace Ace.AceCode.Powers
 {
@@ -11,4 +12,5 @@ namespace Ace.AceCode.Powers
         public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
         public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
     }
+    
 }

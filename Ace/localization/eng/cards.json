@@ -38,7 +38,7 @@
   "ACE-CARD_TOSS.description": "Deal {Damage:diff()} damage.",
   "ACE-CARD_TOSS.title": "Card Toss",
   
-  "ACE-TWIN_DEAL.description": "Flip up to 2 [gold]Stocks[/gold] of your [gold]Majority[/gold] color.",
+  "ACE-TWIN_DEAL.description": "[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} or up to 2 [gold]Stocks[/gold] of your [gold]Majority[/gold] color.",
   "ACE-TWIN_DEAL.title": "Twin Deal",
   
   "ACE-ANTE_UP.description": "All Attacks in your Hand are free to play this turn. You cannot gain [gold]Block[/gold] from cards this turn.",
@@ -119,7 +119,7 @@
   "ACE-ACE_IN_THE_HOLE.description": "[gold]Consume[/gold] 4 [gold]Stocks[/gold]. \nFlip as if you have {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} [gold]Stocked[/gold].",
   "ACE-ACE_IN_THE_HOLE.title": "Ace in the Hole",
   
-  "ACE-CARD_FAN.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies. \nDeal {ExtraDamage:diff:()} for every {RedIcon} [gold]Stocked[/gold].",
+  "ACE-CARD_FAN.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies. \nDeal {ExtraDamage:diff:()} additional damage for every {RedIcon} [gold]Stocked[/gold].",
   "ACE-CARD_FAN.title": "Card Fan",
   
   "ACE-SLEIGHT_OF_HAND.description": "Gain {Block:diff()} [gold]Block[/gold]. \nDraw {Cards:diff()} {Cards:plural:card|cards}",
@@ -152,7 +152,7 @@
   "ACE-KILLSIGHT.description": "Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold]. \nThe next Attack you play costs 0 {Energy:energyIcons()}.",
   "ACE-KILLSIGHT.title": "Killsight",
 
-  "ACE-CUT_CARDS.description": "Draw 2 Cards. \n[gold]Stock[/gold] the color of cards drawn this way.",
+  "ACE-CUT_CARDS.description": "Draw {Cards:diff()} {Cards:plural:card|cards}. \n[gold]Stock[/gold] the color of cards drawn this way.",
   "ACE-CUT_CARDS.title": "Cut Cards",
   
   "ACE-TRUE_JACKPOT_SHOT.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies. \nDeal 2 additional damage for each card played this combat.",
@@ -196,6 +196,18 @@
 
   "ACE-BIOGA.description": "Deal {Damage:diff()} damage. \nApply 2 [gold]Vulnerable[/gold] and [gold]Weak[/gold]. \nApply additional [gold]Vulnerable[/gold] and [gold]Weak[/gold] equal to {WhiteIcon} [gold]Stocked[/gold].",
   "ACE-BIOGA.title": "Bioga",
+
+  "ACE-TRIPLE_THREAT.description": "[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} or up to 3 [gold]Stocks[/gold] of your [gold]Majority[/gold] color.",
+  "ACE-TRIPLE_THREAT.title": "Triple Threat",
+
+  "ACE-SPIRAL_GAMBIT.description": "Deal {Damage:diff()} damage. \nCost 1 less {Energy:energyIcons()} for each Skill played this turn.",
+  "ACE-SPIRAL_GAMBIT.title": "Spiral Gambit",
+
+  "ACE-MASTER_RULES.description": "[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} or the [gold]Majority[/gold] color in your [gold]Stock[/gold]. \nIncrease its [gold]Flip[/gold] effect by 1. \n[gold]Consume[/gold] the rest of your [gold]Stock[/gold].",
+  "ACE-MASTER_RULES.title": "Master Rules",
+
+  "ACE-FALSE_CUT.description": "Draw 4 cards. \n[gold]Stock[/gold] the color of cards drawn this way.",
+  "ACE-FALSE_CUT.title": "False Cut",
   
   "ACE-CHARGE.description": "Draw 2 cards. \nGain {Energy:energyIcons()}.",
   "ACE-CHARGE.title": "Force",
