@@ -1,3 +1,13 @@
 {
+  "ACE_STOCK.title": "Card Stock",
+  "ACE_STOCK.description": "Playing colored cards adds their colors to your Stock. Stock can be [gold]Consumed[/gold] by effects or [gold]Flipped[/gold] to trigger powerful effects based on the colors and amount of Stock available.",
+
+  "ACE_FLIP.title": "Flip",
+  "ACE_FLIP.description": "Flip colors from your Stock and trigger their Flip effects. Flip effects become stronger the more [gold]Stocks[/gold] are Flipped.",
+
+  "ACE_UNSTOCKABLE.title": "Unstockable",
+  "ACE_UNSTOCKABLE.description": "This card has a color but does not add its color to your [gold]Stock[/gold] when played.",
   
+  "ACE_MAJORITY.title": "Majority",
+  "ACE_MAJORITY.description": "The color that appears most often in your Stock. If multiple colors are tied, the oldest tied color becomes the Majority."
 }

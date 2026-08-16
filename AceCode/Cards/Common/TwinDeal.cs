@@ -1,22 +1,33 @@
+using Ace.AceCode.Extensions;
+using Ace.AceCode.Mechanics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common;
 
-public class TwinDeal() : AceRedCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class TwinDeal() : AceCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy), IFlipCard
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move), new RepeatVar(2)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => 
+        [
+        ];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        AceStaticHoverTip.Flip,
+    ];
 
+    
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play, hitCount: DynamicVars.Repeat.IntValue).Execute(choiceContext);
+        await Ace.AceCode.Mechanics.Flip.Majority(choiceContext, this, play, 0, 2);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
+        RemoveKeyword(CardKeyword.Exhaust);
     }
 }

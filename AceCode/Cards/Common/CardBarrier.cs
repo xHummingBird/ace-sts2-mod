@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Ace.AceCode.Cards.Common;
 
 public class CardBarrier() : AceBlueCard(1, CardType.Skill,
-    CardRarity.Uncommon, TargetType.Self)
+    CardRarity.Uncommon, TargetType.Self), IStockingCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new BlockVar(5, ValueProp.Move),

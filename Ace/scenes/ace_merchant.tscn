@@ -20,6 +20,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [null]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.3, 1.3)]
+}
 
 [sub_resource type="Animation" id="Animation_13iul"]
 resource_name = "merchant"
@@ -37,6 +49,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("1_h1sed"), ExtResource("2_a68yi"), ExtResource("3_6yrjq"), ExtResource("4_dnasj")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.3, 1.3)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hj7bu"]
 _data = {
@@ -48,7 +72,7 @@ _data = {
 script = ExtResource("1_a68yi")
 
 [node name="Visuals" type="Sprite2D" parent="."]
-position = Vector2(0, -128)
+position = Vector2(0, -157)
 scale = Vector2(-1.3, 1.3)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

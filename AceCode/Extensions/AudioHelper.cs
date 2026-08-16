@@ -199,6 +199,11 @@ namespace Ace.AceCode.Extensions
         {
             PlayRandom(iceSfx);
         }
+        
+        public static void PlayRandomThunder()
+        {
+            PlayRandom(thunderSfx);
+        }
 
         public static void PlayRandom(string[] pool)
         {

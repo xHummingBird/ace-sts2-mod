@@ -1,4 +1,5 @@
 ﻿using Ace.AceCode.Extensions;
+using Ace.AceCode.Mechanics;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Ace.AceCode.Cards.Uncommon;
 
 public class Flurry() : AceRedCard(2, CardType.Attack,
-    CardRarity.Uncommon, TargetType.AnyEnemy)
+    CardRarity.Uncommon, TargetType.AnyEnemy), IStockingCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -89,8 +90,7 @@ public class Flurry() : AceRedCard(2, CardType.Attack,
             await CommonActions.CardAttack(this, play.Target, hitCount: DynamicVars.Repeat.IntValue)
                 .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                 .Execute(choiceContext);
-        await PowerCmd.Apply<FreeAttackPower>(choiceContext, base.Owner.Creature, 1m, base.Owner.Creature,
-            this);
+        Stock.Push(Owner, AceColor.Red);
     }
 
     protected override void OnUpgrade()

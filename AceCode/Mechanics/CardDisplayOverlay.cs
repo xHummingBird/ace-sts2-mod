@@ -1,9 +1,16 @@
+using Ace.AceCode.Cards.Ancient;
+using Ace.AceCode.Cards.Flip;
+using Ace.AceCode.Extensions;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.HoverTips;
+using Barrier = Ace.AceCode.Cards.Flip.Barrier;
 
 namespace Ace.AceCode.Mechanics;
 
@@ -17,10 +24,139 @@ public partial class CardDisplayOverlay : Control {
   private TextureRect[]? _slots;
 
   private RichTextLabel? _orbLabel;
+  
+  private IHoverTip? _flipHoverTip;
+  private IHoverTip? _stockHoverTip;
 
   private Player? _player;
 
   private bool _exiting;
+  
+  private Tween?[]? _slotTweens;
+  
+  private void UpdateCardPivots()
+  {
+    if (_slots == null)
+      return;
+
+    foreach (var slot in _slots)
+      SetPivotToCenter(slot);
+  }
+
+  private static void SetPivotToCenter(TextureRect? slot)
+  {
+    if (slot == null)
+      return;
+
+    slot.PivotOffset = slot.Size / 2f;
+  }
+  
+  private void OnHovered(
+    Control? control,
+    IHoverTip? hoverTip,
+    Vector2 offset)
+  {
+    if (control == null ||
+        hoverTip == null)
+    {
+      return;
+    }
+
+    NHoverTipSet.Clear();
+
+    var tip =
+      NHoverTipSet.CreateAndShow(
+        control,
+        hoverTip);
+
+    if (tip != null)
+    {
+      tip.MouseFilter =
+        MouseFilterEnum.Ignore;
+
+      tip.GlobalPosition =
+        control.GlobalPosition +
+        offset;
+    }
+  }
+  
+  private void ShowStockTip()
+  {
+    OnHovered(
+      _cardDisplay,
+      _stockHoverTip,
+      new Vector2(60f, -250f));
+  }
+
+  private void ShowFlipTip()
+  {
+    OnHovered(
+      _orb,
+      _flipHoverTip,
+      new Vector2(20f, -450f));
+  }
+
+  private void OnUnhovered(
+    Control? control)
+  {
+    if (control != null)
+    {
+      NHoverTipSet.Remove(control);
+    }
+  }
+
+  private void PlayCardDisappearAnimation(
+    TextureRect slot,
+    ref Tween? tween)
+  {
+    tween?.Kill();
+
+    slot.PivotOffset =
+      slot.Size / 2f;
+
+    slot.Scale =
+      Vector2.One;
+
+    slot.Modulate =
+      new Color(
+        1f,
+        1f,
+        1f,
+        0.99f);
+
+    tween =
+      CreateTween();
+
+    tween.Parallel()
+      .TweenProperty(
+        slot,
+        "scale",
+        new Vector2(1.3f, 1.3f),
+        0.4f)
+      .SetTrans(
+        Tween.TransitionType.Back)
+      .SetEase(
+        Tween.EaseType.Out);
+
+    tween.Parallel()
+      .TweenProperty(
+        slot,
+        "modulate:a",
+        0f,
+        0.4f);
+
+    tween.TweenCallback(
+      Callable.From(() =>
+      {
+        slot.Visible = false;
+
+        slot.Scale =
+          Vector2.One;
+
+        slot.Modulate =
+          Colors.White;
+      }));
+  }
 
   private static readonly Dictionary<AceColor, Texture2D?> CardTextures =
       new() {
@@ -109,9 +245,21 @@ public partial class CardDisplayOverlay : Control {
     //
     // Tweak as needed
     //
-    _cardDisplay.Position = new Vector2(-135, -100);
+    _cardDisplay.Position = new Vector2(-135, -130);
 
     _orb = _cardDisplay.GetNodeOrNull<TextureRect>("Orb");
+    
+    _stockHoverTip =
+      AceStaticHoverTip.Stock;
+
+    _cardDisplay.MouseFilter =
+      MouseFilterEnum.Pass;
+
+    _cardDisplay.MouseEntered += ShowStockTip;
+
+    _cardDisplay.MouseExited +=
+      () => OnUnhovered(
+        _cardDisplay);
 
     //
     // The node names do not follow the layout, so the slots are ordered by
@@ -122,8 +270,24 @@ public partial class CardDisplayOverlay : Control {
                  .Where(rect => rect != null)
                  .OrderBy(rect => rect!.Position.X)
                  .ToArray()!;
+    
+    _slotTweens = new Tween?[_slots.Length];
+
+    CallDeferred(nameof(UpdateCardPivots));
 
     _orbLabel = _cardDisplay.GetNodeOrNull<RichTextLabel>("OrbLabel");
+    
+    if (_orb != null)
+    {
+      _orb.MouseFilter =
+        MouseFilterEnum.Pass;
+
+      _orb.MouseEntered += ShowFlipTip;
+
+      _orb.MouseExited +=
+        () => OnUnhovered(
+          _orb);
+    }
 
     if (_orbLabel != null) {
       SetupLabel(_orbLabel);
@@ -144,6 +308,40 @@ public partial class CardDisplayOverlay : Control {
       return;
 
     RefreshDisplay();
+  }
+  
+  private void PlayCardAppearAnimation(
+    TextureRect slot,
+    ref Tween? tween)
+  {
+    tween?.Kill();
+    tween = null;
+
+    slot.PivotOffset =
+      slot.Size / 2f;
+
+    slot.Visible = true;
+
+    slot.Scale =
+      new Vector2(
+        1.3f,
+        1.3f);
+
+    slot.Modulate =
+      Colors.White;
+
+    tween =
+      CreateTween();
+
+    tween.TweenProperty(
+        slot,
+        "scale",
+        Vector2.One,
+        0.30f)
+      .SetTrans(
+        Tween.TransitionType.Back)
+      .SetEase(
+        Tween.EaseType.Out);
   }
 
   private void SetupLabel(RichTextLabel label) {
@@ -176,21 +374,62 @@ public partial class CardDisplayOverlay : Control {
 
     if (_shownValid && _shown.SequenceEqual(items))
       return;
+    
+    var previousCount = _shown.Count;
 
     _shown.Clear();
     _shown.AddRange(items);
     _shownValid = true;
+    
+    RefreshFlipHoverTip();
+    
+    var newCount = items.Count;
 
-    if (_slots != null) {
-      for (int i = 0; i < _slots.Length; i++) {
-        var slot = _slots[i];
+    if (_slots != null)
+    {
+      _slotTweens ??= new Tween?[_slots.Length];
 
-        if (i < items.Count) {
-          slot.Texture = CardTextures[items[i]];
+      for (int i = 0; i < _slots.Length; i++)
+      {
+        var slot =
+          _slots[i];
 
-          slot.Visible = true;
-        } else {
-          slot.Visible = false;
+        bool hasCard =
+          i < items.Count;
+
+        if (hasCard)
+        {
+          slot.Texture =
+            CardTextures[items[i]];
+
+          bool cardJustAdded =
+            i >= previousCount;
+
+          if (cardJustAdded)
+          {
+            PlayCardAppearAnimation(
+              slot,
+              ref _slotTweens[i]);
+          }
+          else
+          {
+            _slotTweens[i]?.Kill();
+            _slotTweens[i] = null;
+
+            slot.Visible = true;
+            slot.Scale = Vector2.One;
+            slot.Modulate = Colors.White;
+          }
+        }
+        else
+        {
+          if (slot.Visible &&
+              slot.Modulate.A > 0.01f)
+          {
+            PlayCardDisappearAnimation(
+              slot,
+              ref _slotTweens[i]);
+          }
         }
       }
     }
@@ -229,11 +468,41 @@ public partial class CardDisplayOverlay : Control {
     return Stock.Majority(_player) is {}
     color ? OrbTextures[color] : OrbNoneTexture;
   }
+  
+  private void RefreshFlipHoverTip()
+  {
+    if (_player == null)
+    {
+      _flipHoverTip = null;
+      return;
+    }
+
+    var card = Flip.Preview(_player);
+
+    _flipHoverTip =
+      card != null
+        ? HoverTipFactory.FromCard(card)
+        : null;
+  }
 
   public override void _ExitTree() {
     _exiting = true;
+    
+    NHoverTipSet.Remove(_orb);
+    NHoverTipSet.Remove(_cardDisplay);
+
+    _flipHoverTip = null;
+    _stockHoverTip = null;
 
     _orb = null;
+    
+    if (_slotTweens != null)
+    {
+      foreach (var tween in _slotTweens)
+        tween?.Kill();
+
+      _slotTweens = null;
+    }
 
     _slots = null;
 
@@ -244,6 +513,8 @@ public partial class CardDisplayOverlay : Control {
 
     if (Instance == this)
       Instance = null;
+    
+
   }
 }
 
@@ -267,4 +538,7 @@ public static class CardDisplayOverlayPatch {
 
     __instance.AddChild(overlay);
   }
+  
 }
+
+

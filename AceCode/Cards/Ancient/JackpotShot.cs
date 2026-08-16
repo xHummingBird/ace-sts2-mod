@@ -1,12 +1,14 @@
 ﻿using Ace.AceCode.Extensions;
 using BaseLib.Extensions;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Runs;
@@ -14,12 +16,19 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Ancient;
 
-public class JackpotShot() : AceCard(0, CardType.Attack,
+public class JackpotShot() : AceFlipCard(0, CardType.Attack,
     CardRarity.Ancient, TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(25m, ValueProp.Move),
+        new CalculationBaseVar(10m),
+        new ExtraDamageVar(1m),
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel _, Creature? _) => CombatManager.Instance.History.CardPlaysFinished.Count())
+    ];
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -99,7 +108,7 @@ public class JackpotShot() : AceCard(0, CardType.Attack,
             
         }
         else
-            await CommonActions.CardAttack(this, play.Target, hitCount: DynamicVars.Repeat.IntValue)
+            await CommonActions.CardAttack(this, play.Target)
                 .WithHitFx(null, "event:/sfx/characters/attack_fire")
                 .Execute(choiceContext);
         CenterCardCinematic.End(RunManager.Instance.NetService.NetId);
@@ -107,6 +116,5 @@ public class JackpotShot() : AceCard(0, CardType.Attack,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(5m);
     }
 }

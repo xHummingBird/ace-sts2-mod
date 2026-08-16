@@ -114,7 +114,7 @@ public class Ace : PlaceholderCharacterModel
 		return NodeFactory<NCreatureVisuals>.CreateFromScene(CustomVisualScenePath);
 	}
 	
-	public override CreatureAnimator? GenerateAnimator(MegaSprite controller) => null;
+	// public override CreatureAnimator? GenerateAnimator(MegaSprite controller) => null;
 	
 	public (float total, float[] impacts) PlayAnimation(Creature creature, string trigger)
 	{

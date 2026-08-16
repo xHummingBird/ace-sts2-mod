@@ -6,15 +6,58 @@ namespace Ace.AceCode.Mechanics;
 // card can decide what to do with them. Flip builds on top of this with the
 // standard effects, cards that want their own effects use these directly.
 public static class Consume {
+  public static IReadOnlyList<AceColor> Majority(
+    Player player,
+    int amount)
+  {
+    return Stock.Majority(player) is {} color
+      ? 
+      OfColor(player, color, amount)
+      : [];
+  }
+  
   public static IReadOnlyList<AceColor> Majority(Player player) =>
-      Stock.Majority(player) is {} color ? OfColor(player, color) : [];
-
-  public static IReadOnlyList<AceColor> OfColor(Player player, AceColor color) {
+    Stock.Majority(player) is {} color
+      ? OfColor(player, color)
+      : [];
+  
+  public static IReadOnlyList<AceColor> OfColor(
+    Player player,
+    AceColor color)
+  {
     if (Stock.Mutable(player) is not {} items)
       return [];
 
     var taken = items.Where(item => item == color).ToList();
+
     items.RemoveAll(item => item == color);
+
+    return taken;
+  }
+
+  public static IReadOnlyList<AceColor> OfColor(
+    Player player,
+    AceColor color,
+    int amount)
+  {
+    if (Stock.Mutable(player) is not {} items)
+      return [];
+
+    var taken = new List<AceColor>();
+
+    for (var i = 0;
+         i < items.Count && taken.Count < amount;)
+    {
+      if (items[i] == color)
+      {
+        taken.Add(items[i]);
+        items.RemoveAt(i);
+        continue;
+      }
+
+      i++;
+    }
+
     return taken;
   }
 

@@ -5,6 +5,7 @@ using Ace.AceCode.Character;
 using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Localization;
 
 namespace Ace.AceCode.Cards
 {
@@ -26,5 +27,27 @@ namespace Ace.AceCode.Cards
         //Uses card_portraits/card_name.png as image path. These should be smaller images.
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
         public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+        
+        protected override void AddExtraArgsToDescription(
+            LocString description)
+        {
+            base.AddExtraArgsToDescription(description);
+
+            description.Add(
+                "RedIcon",
+                "[img]res://Ace/images/card_backs/card_red.png[/img]");
+
+            description.Add(
+                "BlueIcon",
+                "[img]res://Ace/images/card_backs/card_blue.png[/img]");
+
+            description.Add(
+                "YellowIcon",
+                "[img]res://Ace/images/card_backs/card_yellow.png[/img]");
+
+            description.Add(
+                "WhiteIcon",
+                "[img]res://Ace/images/card_backs/card_white.png[/img]");
+        }
     }
 }

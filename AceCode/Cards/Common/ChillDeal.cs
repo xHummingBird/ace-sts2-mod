@@ -1,5 +1,7 @@
+using Ace.AceCode.Mechanics;
 using BaseLib.Extensions;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -8,19 +10,23 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common;
 
-public class ChillDeal() : AceBlueCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+//if yellow is majority, draw 1 more card
+public class ChillDeal() : AceYellowCard(1, CardType.Skill, CardRarity.Common, TargetType.Self), IStockingCard
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move), new PowerVar<FrailPower>(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new CardsVar(1),
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
-        await CommonActions.Apply<FrailPower>(choiceContext, this, play);
+        await CardPileCmd.Draw(choiceContext, 1, base.Owner);
+        if (Stock.Majority(base.Owner) == AceColor.Yellow) 
+            await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars.Power<FrailPower>().UpgradeValueBy(1m);
+        DynamicVars.Cards.UpgradeValueBy(1);
     }
 }

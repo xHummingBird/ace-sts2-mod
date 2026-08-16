@@ -1,5 +1,7 @@
+using Ace.AceCode.Cards;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Models;
 
 namespace Ace.AceCode.Mechanics;
 
@@ -8,9 +10,24 @@ public enum AceColor { Red, Blue, Yellow, White }
 // Cards define what stock color they represent
 // TODO: (low priority) have stock color auto detected rather than a card
 // explicitly defining the color
+
+
 public interface IStockingCard {
   AceColor StockColor { get; }
 }
+
+public interface IConsumeCard
+{
+  
+}
+
+public interface IFlipCard
+{
+  
+}
+
+
+
 
 public static class Stock {
   public const int MaxSlots = 4;
@@ -35,6 +52,18 @@ public static class Stock {
               return items;
             },
       };
+  
+  public static AceColor? GetColor(CardModel card)
+  {
+    return card switch
+    {
+      AceRedCard => AceColor.Red,
+      AceBlueCard => AceColor.Blue,
+      AceYellowCard => AceColor.Yellow,
+      AceWhiteCard => AceColor.White,
+      _ => null
+    };
+  }
 
   // Without this the class is beforefieldinit and the runtime is free to skip
   // the field setup when Register is called.
@@ -92,6 +121,9 @@ public static class Stock {
   public static AceColor? Majority(Player player) {
     var items = Items(player);
     if (items.Count == 0)
+      return null;
+
+    if (IsRainbow(player))
       return null;
 
     var most = items.GroupBy(item => item).Max(group => group.Count());
