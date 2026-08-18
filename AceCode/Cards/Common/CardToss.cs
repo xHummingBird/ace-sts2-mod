@@ -34,6 +34,7 @@ public class CardToss() : AceRedCard(1, CardType.Attack, CardRarity.Common, Targ
             .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
             .Execute(choiceContext);
         await Task.Delay((int)(0.2f * 1000f));
+        await Ace.AceCode.Mechanics.Flip.Color(choiceContext, this, play, AceColor.Red, 0, 1);
     }
 
     protected override void OnUpgrade()

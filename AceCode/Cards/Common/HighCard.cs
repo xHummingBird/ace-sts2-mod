@@ -18,6 +18,7 @@ public class HighCard() : AceWhiteCard(1, CardType.Attack, CardRarity.Common, Ta
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         AceStaticHoverTip.Flip,
+        AceStaticHoverTip.Unstockable
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

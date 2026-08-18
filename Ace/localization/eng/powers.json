@@ -1,5 +1,5 @@
 {
-  "ACE-KILLSIGHT_POWER.description": "",
-  "ACE-KILLSIGHT_POWER.smartDescription": "",
-  "ACE-KILLSIGHT_POWER.title": "Killsight"
+  "ACE-BREAKSIGHT_POWER.description": "Decrease damage dealt by [gold]75%[/gold]. Increase damage taken by [gold]75%[/gold].",
+  "ACE-BREAKSIGHT_POWER.smartDescription": "",
+  "ACE-BREAKSIGHT_POWER.title": "Breaksight"
 }

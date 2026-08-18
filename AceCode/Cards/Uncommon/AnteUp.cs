@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Uncommon;
 
-public class AnteUp() : AceRedCard(3, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class AnteUp() : AceRedCard(3, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [];
 

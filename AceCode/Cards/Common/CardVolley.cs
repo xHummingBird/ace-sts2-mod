@@ -1,4 +1,5 @@
 using Ace.AceCode.Extensions;
+using Ace.AceCode.Mechanics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -30,6 +31,7 @@ public class CardVolley() : AceRedCard(2, CardType.Attack, CardRarity.Common, Ta
             );
             await CommonActions.CardAttack(this, play, hitCount: DynamicVars.Repeat.IntValue).WithHitFx(null, "res://Ace/sfx/card_hit.wav").Execute(choiceContext);
             await Task.Delay((int)(0.2f * 1000f));
+            Stock.Push(Owner, AceColor.Red);
         };
     }
     

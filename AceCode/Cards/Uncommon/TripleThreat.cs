@@ -19,12 +19,6 @@ public class TripleThreat() : AceCard(1, CardType.Skill, CardRarity.Uncommon, Ta
         AceStaticHoverTip.Majority
     ];
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Exhaust
-    ];
-
-    
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (Stock.IsRainbow(Owner))

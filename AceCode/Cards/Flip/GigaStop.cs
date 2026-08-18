@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using Ace.AceCode.Powers;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -17,19 +18,16 @@ public class GigaStop() : AceFlipCard(0, CardType.Skill,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<WeakPower>(3m),
-        new PowerVar<VulnerablePower>(3m)
+        new PowerVar<BreaksightPower>(3m),
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<WeakPower>(),
-        HoverTipFactory.FromPower<VulnerablePower>()
+        HoverTipFactory.FromPower<BreaksightPower>(),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<WeakPower>(choiceContext, CombatState.HittableEnemies, DynamicVars.Weak.BaseValue, base.Owner.Creature, this);
-        await PowerCmd.Apply<VulnerablePower>(choiceContext, CombatState.HittableEnemies, DynamicVars.Weak.BaseValue, base.Owner.Creature, this);
+        await PowerCmd.Apply<BreaksightPower>(choiceContext, play.Target, DynamicVars["BreaksightPower"].BaseValue, base.Owner.Creature, this);
     }
 }

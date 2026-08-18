@@ -15,7 +15,7 @@ public class SuperCharge() : AceFlipCard(0, CardType.Skill,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new EnergyVar(2),
+        new EnergyVar(1),
     ];
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

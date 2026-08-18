@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common;
 
-public class TwinDeal() : AceCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy), IFlipCard
+public class TwinDeal() : AceCard(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy), IFlipCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => 
         [

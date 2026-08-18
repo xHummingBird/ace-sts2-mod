@@ -14,6 +14,7 @@ namespace Ace.AceCode.Cards.Common;
 public class Quickdraw() : AceRedCard(0, CardType.Attack,
     CardRarity.Common, TargetType.AnyEnemy)
 {
+    protected override bool ShouldGlowGoldInternal => (Stock.Majority(base.Owner) == AceColor.Red);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(5m, ValueProp.Move),

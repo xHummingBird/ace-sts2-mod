@@ -11,13 +11,12 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Rare;
 
-public class MysticVolley() : AceCard(3, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
+public class MysticVolley() : AceCard(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 {
     protected override bool ShouldGlowGoldInternal => Stock.IsRainbow(base.Owner);
     protected override IEnumerable<DynamicVar> CanonicalVars => 
     [
-        new DamageVar(20m, ValueProp.Move),
-        new EnergyVar(3)
+        new DamageVar(16m, ValueProp.Move),
     ];
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -43,10 +42,12 @@ public class MysticVolley() : AceCard(3, CardType.Attack, CardRarity.Rare, Targe
             .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
             .Execute(choiceContext);
         await Task.Delay((int)(0.2f * 1000f));
-        if (Stock.IsRainbow(base.Owner))
+        if (Stock.IsRainbow(Owner))
         {
-            await PlayerCmd.GainEnergy(3, base.Owner);
-            Consume.All(base.Owner);
+            await Ace.AceCode.Mechanics.Flip.Spectrum(
+                choiceContext,
+                this,
+                play);
         }
     }
 

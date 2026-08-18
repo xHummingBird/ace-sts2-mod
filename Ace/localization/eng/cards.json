@@ -29,7 +29,7 @@
   "ACE-SHOW_OF_HANDS.description": "[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} or the [gold]Majority[/gold] color in your [gold]Stock[/gold]. \n[gold]Consume[/gold] the rest of your [gold]Stock[/gold].",
   "ACE-SHOW_OF_HANDS.title": "Show of Hands",
   
-  "ACE-FLURRY.description": "Deal {Damage:diff()} damage 4 times. \n[gold]Stock[/gold] an additional {RedIcon}.",
+  "ACE-FLURRY.description": "Deal {Damage:diff()} damage 4 times. \n[gold]Flip[/gold] up to 2 {RedIcon}.",
   "ACE-FLURRY.title": "Flurry",
   
   "ACE-CARD_BARRIER.description": "Gain {Block:diff()} [gold]Block[/gold]. \nGain 2 additional [gold]Block[/gold] for each {BlueIcon} [gold]Stocked[/gold].",
@@ -50,7 +50,7 @@
   "ACE-DELAY_DEAL.description": "Deal {Damage:diff()} damage. \nNext turn, draw 2 cards.",
   "ACE-DELAY_DEAL.title": "Delay Deal",
 
-  "ACE-OVERCHARGE.description": "Gain {VigorPower:diff()} [gold]Vigor[/gold]. \nGain additional [gold]Vigor[/gold] equal to {RedIcon} [gold]Stocked[/gold.",
+  "ACE-OVERCHARGE.description": "Gain {VigorPower:diff()} [gold]Vigor[/gold]. \nGain additional [gold]Vigor[/gold] equal to {RedIcon} [gold]Stocked[/gold].",
   "ACE-OVERCHARGE.title": "Overcharge",
   
   "ACE-QUICKDRAW.description": "Deal {Damage:diff()} damage. \nIf current [gold]Majority[/gold] is {RedIcon}, draw 1 card.",
@@ -77,13 +77,13 @@
   "ACE-QUICKDEAL.description": "Play the top card of your [gold]Draw Pile[/gold] and [gold]Exhaust[/gold] it. \nIf current [gold]Majority[/gold] is {RedIcon}, play 2 cards instead.",
   "ACE-QUICKDEAL.title": "Quickdeal",
 
-  "ACE-DOUBLE_DOWN.description": "Draw {Cards:diff()} {Cards:plural:card|cards}. \n[gold]Exhaust all cards that are not {YellowIcon} drawn this way.",
+  "ACE-DOUBLE_DOWN.description": "Draw {Cards:diff()} {Cards:plural:card|cards}. \n[gold]Discard all cards that are not {YellowIcon} drawn this way.",
   "ACE-DOUBLE_DOWN.title": "Double Down",
 
-  "ACE-MP_CHARGE.description": "Gain {Energy:energyIcons()}. \nIf you have {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} [gold]Stocked[/gold], gain an additional {Energy:energyIcons()}.",
+  "ACE-MP_CHARGE.description": "Gain {Energy:energyIcons()}. \nStock an additional {YellowIcon}.",
   "ACE-MP_CHARGE.title": "MP Charge",
   
-  "ACE-CHAIN_LIGHTNING.description": "Deal {Damage:diff()} damage to a random enemy {Repeat:diff()} times. \n[gold]Consume all {YellowIcon}. Hit an additional time for each {YellowIcon} [gold]Consumed[/gold].",
+  "ACE-CHAIN_LIGHTNING.description": "Deal {Damage:diff()} damage to a random enemy {Repeat:diff()} times. \n[gold]Consume[/gold] all {YellowIcon}. Hit an additional time for each {YellowIcon} [gold]Consumed[/gold].",
   "ACE-CHAIN_LIGHTNING.title": "Chain Lightning",
   
   "ACE-RAPID_DRAW.description": "Draw cards until you draw a non-Attack card.",
@@ -92,7 +92,7 @@
   "ACE-MARK_THE_DECK.description": "Put a [gold]Skill[/gold] from your Draw Pile into your Hand. \nIf it is a {YellowIcon}, play it instead.",
   "ACE-MARK_THE_DECK.title": "Mark the Deck",
   
-  "ACE-LIFE_HAND.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "ACE-LIFE_HAND.description": "Gain {Block:diff()} [gold]Block[/gold]. \nIf {BlueIcon} is [gold]Majority[/gold], gain [gold]Block[/gold] another time.",
   "ACE-LIFE_HAND.title": "Life Hand",
   
   "ACE-CADETS_RESOLVE.description": "Gain {ArtifactPower:diff()} [gold]Artifact[/gold].",
@@ -104,13 +104,13 @@
   "ACE-HIGH_CARD.description": "Deal {Damage:diff()} damage. \n[gold]Flip[/gold] up to 2 {WhiteIcon}.",
   "ACE-HIGH_CARD.title": "High Card",
   
-  "ACE-DISCARD_READ.description": "Apply {WeakPower:diff()} [gold]Weak[/gold]. [gold]Exhaust[/gold] 1 card in your hand. \nIf [gold]Exhausted[/gold] card is {WhiteIcon}, [gold]Stock[/gold] it.",
+  "ACE-DISCARD_READ.description": "Apply {WeakPower:diff()} [gold]Weak[/gold]. \n[gold]Exhaust[/gold] 1 card in your hand. \nIf [gold]Exhausted[/gold] card is {WhiteIcon}, [gold]Stock[/gold] it.",
   "ACE-DISCARD_READ.title": "Discard Read",
 
   "ACE-ROYAL_FLUSH.description": "[gold]Flip[/gold] all your {RedIcon} [gold]Stock[/gold] and increase its effect by 1 level.",
   "ACE-ROYAL_FLUSH.title": "Royal Flush",
   
-  "ACE-MEMENTO.description": "Deal damage equal to your [gold]Block. \nDeal 3 additional damage for each {BlueIcon} [gold]Stocked[/gold].",
+  "ACE-MEMENTO.description": "Deal damage equal to your [gold]Block[/gold]. \nDeal 3 additional damage for each {BlueIcon} [gold]Stocked[/gold].",
   "ACE-MEMENTO.title": "Memento",
   
   "ACE-VERMILION_VOW.description": "Gain 1 [gold]Strength[/gold] and [gold]Dexterity[/gold]. Gain 2 additional [gold]Strength[/gold] and [gold]Dexterity[/gold] if you have {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon}.",
@@ -125,13 +125,13 @@
   "ACE-SLEIGHT_OF_HAND.description": "Gain {Block:diff()} [gold]Block[/gold]. \nDraw {Cards:diff()} {Cards:plural:card|cards}",
   "ACE-SLEIGHT_OF_HAND.title": "Sleight of Hand",
   
-  "ACE-EVASIVE_DEAL.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "ACE-EVASIVE_DEAL.description": "Gain {Block:diff()} [gold]Block[/gold]. \nif {BlueIcon} is [gold]Majority[/gold], gain the same [gold]Block[/gold] next turn",
   "ACE-EVASIVE_DEAL.title": "Evasive Deal",
   
   "ACE-REPLAY.description": "Shuffle ALL your cards into your Draw Pile. \nDraw 4 cards. \nIf you have {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} [gold]Stocked[/gold], draw 2 more cards.",
   "ACE-REPLAY.title": "Replay",
   
-  "ACE-LOADED_DECK.description": "Deal {CalculatedDamage:diff()} to ALL enemies. \n[gold]Consume[/gold] all [gold]Stocks[/gold]. Deal {ExtraDamage:diff()} additional damage for each [gold]Stock[/gold] consumed.",
+  "ACE-LOADED_DECK.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies. \n[gold]Consume[/gold] all [gold]Stocks[/gold]. Deal {ExtraDamage:diff()} additional damage for each [gold]Stock[/gold] consumed.",
   "ACE-LOADED_DECK.title": "Loaded Deck",
 
   "ACE-FIREBRAND.description": "Gain {VigorPower:diff()} [gold]Vigor[/gold].",
@@ -167,7 +167,7 @@
   "ACE-THUNDER_SHG.description": "Deal {Damage:diff()} damage to ALL enemies.",
   "ACE-THUNDER_SHG.title": "Thunder SHG",
   
-  "ACE-CARD_VOLLEY.description": "Deal {Damage:diff()} damage to a random enemy {Repeat:diff()} times.",
+  "ACE-CARD_VOLLEY.description": "Deal {Damage:diff()} damage to a random enemy {Repeat:diff()} times. \n[gold]Stock[/gold] an additional {RedIcon}",
   "ACE-CARD_VOLLEY.title": "Card Volley",
   
   "ACE-CARD_WALL.description": "Gain {PlatingPower:diff()} [gold]Plating[/gold]. \nGain additional [gold]Plating[/gold] equal to {BlueIcon} [gold]Stocked[/gold].",
@@ -209,7 +209,7 @@
   "ACE-FALSE_CUT.description": "Draw 4 cards. \n[gold]Stock[/gold] the color of cards drawn this way.",
   "ACE-FALSE_CUT.title": "False Cut",
   
-  "ACE-CHARGE.description": "Draw 2 cards. \nGain {Energy:energyIcons()}.",
+  "ACE-CHARGE.description": "Draw 2 cards.",
   "ACE-CHARGE.title": "Force",
   "ACE-GIGA_BURST.description": "Deal {Damage:diff()} damage to ALL enemies.",
   "ACE-GIGA_BURST.title": "Giga Burst",
