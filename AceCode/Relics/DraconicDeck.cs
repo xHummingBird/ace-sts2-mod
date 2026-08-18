@@ -1,7 +1,30 @@
-﻿namespace Ace.AceCode.Relics;
+using Ace.AceCode.Mechanics;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
 
-//Common While red is majority, gain 1 strength (this relic should increase attack damage by 1 when red is majority instead of giving the strength buff)
-public class DraconicDeck
+namespace Ace.AceCode.Relics;
+
+public class DraconicDeck() : AceRelic
 {
-    
+    public override RelicRarity Rarity => RelicRarity.Common;
+
+    public override decimal ModifyDamageAdditive(
+        Creature? target,
+        decimal amount,
+        ValueProp props,
+        Creature? dealer,
+        CardModel? cardSource,
+        CardPlay? cardPlay)
+    {
+        if (base.Owner is not { } owner || dealer != owner.Creature)
+            return 0m;
+
+        if (!props.IsPoweredAttack())
+            return 0m;
+
+        return Stock.Majority(owner) == AceColor.Red ? 1m : 0m;
+    }
 }

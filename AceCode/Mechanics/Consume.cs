@@ -32,6 +32,8 @@ public static class Consume {
 
     items.RemoveAll(item => item == color);
 
+    AceRelicTriggers.OnConsumed(player, taken);
+
     return taken;
   }
 
@@ -58,6 +60,8 @@ public static class Consume {
       i++;
     }
 
+    AceRelicTriggers.OnConsumed(player, taken);
+
     return taken;
   }
 
@@ -67,6 +71,9 @@ public static class Consume {
 
     var taken = items.ToList();
     items.Clear();
+
+    AceRelicTriggers.OnConsumed(player, taken);
+
     return taken;
   }
 
@@ -81,6 +88,8 @@ public static class Consume {
       items.RemoveAt(items.Count - 1);
     }
 
+    AceRelicTriggers.OnConsumed(player, taken);
+
     return taken;
   }
 
@@ -93,6 +102,8 @@ public static class Consume {
       taken.Add(items[0]);
       items.RemoveAt(0);
     }
+
+    AceRelicTriggers.OnConsumed(player, taken);
 
     return taken;
   }

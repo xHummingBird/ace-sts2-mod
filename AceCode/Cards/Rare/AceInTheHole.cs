@@ -36,6 +36,7 @@ public class AceInTheHole() : AceCard(2, CardType.Skill, CardRarity.Rare, Target
         Consume.All(base.Owner);
         var js = CombatState.CreateCard<JackpotShot>(base.Owner);
         await CardCmd.AutoPlay(choiceContext, js, play.Target);
+        await AceRelicTriggers.OnSpectrumPayoff(base.Owner);
     }
 
     protected override void OnUpgrade()

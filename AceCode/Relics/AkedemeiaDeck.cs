@@ -1,7 +1,8 @@
-﻿namespace Ace.AceCode.Relics;
+using MegaCrit.Sts2.Core.Entities.Relics;
 
-//Uncommon Whenever you consume or flip red, stock a red
-public class AkedemeiaDeck
+namespace Ace.AceCode.Relics;
+
+public class AkedemeiaDeck() : AceRelic
 {
-    
+    public override RelicRarity Rarity => RelicRarity.Uncommon;
 }

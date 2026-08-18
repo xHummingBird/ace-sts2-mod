@@ -1,7 +1,20 @@
-﻿namespace Ace.AceCode.Relics;
+using Ace.AceCode.Mechanics;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Entities.Relics;
 
-//Uncommon draw 1 additional card at the start of turn if yellow is majority
-public class MagiciansDeck
+namespace Ace.AceCode.Relics;
+
+public class MagiciansDeck() : AceRelic
 {
-    
+    public override RelicRarity Rarity => RelicRarity.Uncommon;
+
+    public override decimal ModifyHandDraw(
+        Player player,
+        decimal count)
+    {
+        if (base.Owner != player)
+            return count;
+
+        return Stock.Majority(player) == AceColor.Yellow ? count + 1m : count;
+    }
 }

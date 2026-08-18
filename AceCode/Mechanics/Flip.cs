@@ -145,7 +145,7 @@ public static class Flip
             return default;
 
         var level = Math.Clamp(
-            consumed.Count + levelBonus,
+            consumed.Count + levelBonus + AceRelicTriggers.FlipLevelBonus(sourceCard.Owner, flipped),
             1,
             MaxColorLevel);
 
@@ -186,7 +186,7 @@ public static class Flip
             return default;
 
         var level = Math.Clamp(
-            1 + levelBonus,
+            1 + levelBonus + AceRelicTriggers.FlipLevelBonus(sourceCard.Owner, null),
             1,
             MaxSpectrumLevel);
 
@@ -208,6 +208,8 @@ public static class Flip
             choiceContext,
             flipCard,
             sourcePlay);
+
+        await AceRelicTriggers.OnSpectrumPayoff(sourceCard.Owner);
 
         return new FlipResult(
             null,
@@ -287,16 +289,21 @@ public static class Flip
     public static CardModel? Preview(Player player)
     {
         if (Stock.IsRainbow(player))
-            return GetSpectrumFlipCard(1);
+            return GetSpectrumFlipCard(
+                Math.Clamp(
+                    1 + AceRelicTriggers.FlipLevelBonus(player, null),
+                    1,
+                    MaxSpectrumLevel));
 
         var color = Stock.Majority(player);
 
         if (color is null)
             return null;
 
-        var level = Math.Min(
-            Stock.Count(player, color.Value),
-            4);
+        var level = Math.Clamp(
+            Stock.Count(player, color.Value) + AceRelicTriggers.FlipLevelBonus(player, color),
+            1,
+            MaxColorLevel);
 
         return GetColorFlipCard(
             color.Value,

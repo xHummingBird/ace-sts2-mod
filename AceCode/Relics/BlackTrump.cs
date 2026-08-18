@@ -1,7 +1,8 @@
-﻿namespace Ace.AceCode.Relics;
+using MegaCrit.Sts2.Core.Entities.Relics;
 
-//Ancient Whenever you flip, increase flip level by 1
-public class BlackTrump
+namespace Ace.AceCode.Relics;
+
+public class BlackTrump() : AceRelic
 {
-    
+    public override RelicRarity Rarity => RelicRarity.Ancient;
 }
