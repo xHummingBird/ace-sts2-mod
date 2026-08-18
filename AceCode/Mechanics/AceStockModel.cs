@@ -24,7 +24,13 @@ public class AceStockModel() : CustomSingletonModel
     // filtered out.
     if (cardPlay.Player.Character is not Character.Ace)
       return Task.CompletedTask;
-
+    
+    if (cardPlay.Card is IFlipCard flipCard)
+      return Task.CompletedTask;
+    
+    if (cardPlay.Card is IConsumeCard consumeCard)
+      return Task.CompletedTask;
+    
     if (cardPlay.Card is not IStockingCard card)
       return Task.CompletedTask;
 

@@ -1,5 +1,5 @@
 {
-  "ACE-PLAYING_CARDS.description": "",
+  "ACE-PLAYING_CARDS.description": "You have 4 Stock slots. Colored cards Stock their color when played. Stocks can be Consumed or Flipped by card effects. Flipped cards become stronger based on the amount of Stock used.",
   "ACE-PLAYING_CARDS.flavor": "",
   "ACE-PLAYING_CARDS.title": "Playing Cards"
 }

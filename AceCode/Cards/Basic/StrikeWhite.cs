@@ -1,4 +1,6 @@
+using Ace.AceCode.Character;
 using Ace.AceCode.Extensions;
+using Ace.AceCode.Mechanics;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -12,7 +14,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Ace.AceCode.Cards.Basic
 {
     public class StrikeWhite() : AceWhiteCard(1, CardType.Attack,
-        CardRarity.Basic, TargetType.AnyEnemy)
+        CardRarity.Basic, TargetType.AnyEnemy), IStockingCard
     {
         protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
         protected override IEnumerable<DynamicVar> CanonicalVars =>
