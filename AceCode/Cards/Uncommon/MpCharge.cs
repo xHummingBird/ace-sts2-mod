@@ -23,12 +23,11 @@ public class MpCharge() : AceYellowCard(0, CardType.Skill, CardRarity.Uncommon, 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PlayerCmd.GainEnergy(1, base.Owner);
-        if (Stock.IsRainbow(base.Owner))
-            await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, base.Owner);
+        Stock.Push(Owner, AceColor.Yellow);
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Retain);
+        DynamicVars.Energy.UpgradeValueBy(1);
     }
 }

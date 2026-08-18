@@ -10,7 +10,7 @@ namespace Ace.AceCode.Cards.Rare;
 
 public class RapidDraw() : AceRedCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

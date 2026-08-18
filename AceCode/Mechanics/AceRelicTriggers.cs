@@ -16,8 +16,8 @@ public static class AceRelicTriggers
         if (player.GetRelic<ArcaneDeck>() is not null)
             Stock.Push(player, AceColor.White);
 
-        if (player.GetRelic<AkedemeiaDeck>() is not null && taken.Contains(AceColor.Red))
-            Stock.Push(player, AceColor.Red);
+        if (taken.Contains(AceColor.Red))
+            player.GetRelic<AkedemeiaDeck>()?.QueueTrigger();
     }
 
     public static int FlipLevelBonus(Player? player, AceColor? color)
@@ -36,10 +36,13 @@ public static class AceRelicTriggers
         return bonus;
     }
 
-    // Kept separate from the flip path so a Consume card (Ace in the Hole) can pay out Crazy Eights
-    // without picking up the flip level bonuses.
-    public static async Task OnSpectrumPayoff(Player? player)
+    // Callable on its own so a Consume card (Ace in the Hole) can pay out Crazy Eights without
+    // picking up the flip level bonuses.
+    public static async Task OnFlipPayoff(Player? player, int consumed, bool isSpectrum)
     {
+        if (!isSpectrum && consumed < Stock.MaxSlots)
+            return;
+
         if (player is null || player.GetRelic<CrazyEights>() is null)
             return;
 

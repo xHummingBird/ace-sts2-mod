@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common
 {
-public class ThunderShg() : AceYellowCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
+public class ThunderShg() : AceYellowCard(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [

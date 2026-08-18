@@ -13,6 +13,7 @@ namespace Ace.AceCode.Cards.Common;
 //Play the top card of the draw pile. If red is majority, play 2 cards instead. Reduce cost by 1
 public class Quickdeal() : AceRedCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
+    protected override bool ShouldGlowGoldInternal => (Stock.Majority(base.Owner) == AceColor.Red);
     protected override IEnumerable<DynamicVar> CanonicalVars => [];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

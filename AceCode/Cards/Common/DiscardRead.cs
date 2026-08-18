@@ -16,7 +16,7 @@ namespace Ace.AceCode.Cards.Common;
 
 public class DiscardRead() : AceWhiteCard(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy), IStockingCard
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<WeakPower>(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<WeakPower>(2m)];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -37,6 +37,6 @@ public class DiscardRead() : AceWhiteCard(1, CardType.Skill, CardRarity.Common, 
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<VulnerablePower>().UpgradeValueBy(1m);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

@@ -16,6 +16,12 @@ public class StaticDeal() : AceYellowCard(0, CardType.Attack, CardRarity.Common,
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         AceStaticHoverTip.Flip,
+        AceStaticHoverTip.Unstockable
+    ];
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
     ];
 
 
@@ -26,6 +32,6 @@ public class StaticDeal() : AceYellowCard(0, CardType.Attack, CardRarity.Common,
 
     protected override void OnUpgrade()
     {
-       
+       RemoveKeyword(CardKeyword.Exhaust);
     }
 }

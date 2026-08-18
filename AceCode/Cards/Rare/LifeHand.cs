@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Rare;
 
-public class LifeHand() : AceBlueCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self), IStockingCard
+public class LifeHand() : AceBlueCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self), IStockingCard
 {
     protected override bool ShouldGlowGoldInternal => Stock.Majority(base.Owner) == AceColor.Blue;
     

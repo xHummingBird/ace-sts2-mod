@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Rare;
 
-public class SeeingRed() : AceCard(3, CardType.Skill, CardRarity.Rare, TargetType.Self)
+public class SeeingRed() : AceCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

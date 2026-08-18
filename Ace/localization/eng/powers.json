@@ -1,31 +1,40 @@
 {
+  "ACE-BREAKSIGHT_POWER.description": "Decrease damage dealt by [gold]75%[/gold]. Increase damage taken by [gold]75%[/gold].",
+  "ACE-BREAKSIGHT_POWER.smartDescription": "",
+  "ACE-BREAKSIGHT_POWER.title": "Breaksight",
+
   "ACE-COUNTER_PLAY_POWER.description": "Whenever you gain [gold]Block[/gold] from a {BlueIcon} card, deal {Amount} damage to ALL enemies.",
   "ACE-COUNTER_PLAY_POWER.smartDescription": "Whenever you gain [gold]Block[/gold] from a blue card, deal damage to ALL enemies.",
   "ACE-COUNTER_PLAY_POWER.title": "Counterplay",
+
   "ACE-DOUBLE_PLAY_POWER.description": "The first {Amount} {RedIcon} card(s) you play each turn are played twice.",
   "ACE-DOUBLE_PLAY_POWER.smartDescription": "Your first red cards each turn are played twice.",
   "ACE-DOUBLE_PLAY_POWER.title": "Double Play",
+
   "ACE-GOLDEN_OPPORTUNITY_POWER.description": "At the start of your turn, gain {Amount} [gold]Energy[/gold].",
   "ACE-GOLDEN_OPPORTUNITY_POWER.smartDescription": "At the start of your turn, gain [gold]Energy[/gold].",
   "ACE-GOLDEN_OPPORTUNITY_POWER.title": "Golden Opportunity",
-  "ACE-KILLSIGHT_POWER.description": "",
-  "ACE-KILLSIGHT_POWER.smartDescription": "",
-  "ACE-KILLSIGHT_POWER.title": "Killsight",
+
   "ACE-NO_FOLD_POWER.description": "You no longer discard your hand at the end of your turn.",
   "ACE-NO_FOLD_POWER.smartDescription": "You no longer discard your hand at the end of your turn.",
   "ACE-NO_FOLD_POWER.title": "No Fold",
+
   "ACE-ONE_FOR_ONE_POWER.description": "Whenever you Exhaust a card, draw {Amount} card(s).",
   "ACE-ONE_FOR_ONE_POWER.smartDescription": "Whenever you Exhaust a card, draw cards.",
   "ACE-ONE_FOR_ONE_POWER.title": "One for One",
-  "ACE-RAISING_STAKES_POWER.description": "At the start of your turn, if {RedIcon} is your Majority, gain {Amount} [gold]Vigor[/gold].",
+
+  "ACE-RAISING_STAKES_POWER.description": "At the start of your turn, if {RedIcon} is your [gold]Majority[/gold], gain {Amount} [gold]Vigor[/gold].",
   "ACE-RAISING_STAKES_POWER.smartDescription": "At the start of your turn, if red is your Majority, gain [gold]Vigor[/gold].",
   "ACE-RAISING_STAKES_POWER.title": "Raising Stakes",
+
   "ACE-SAFE_BET_POWER.description": "The first {Amount} time(s) you gain [gold]Block[/gold] from a {BlueIcon} card each turn, double that [gold]Block[/gold].",
   "ACE-SAFE_BET_POWER.smartDescription": "The first times you gain [gold]Block[/gold] from a blue card each turn, double that [gold]Block[/gold].",
   "ACE-SAFE_BET_POWER.title": "Safe Bet",
+
   "ACE-TELL_POWER.description": "Whenever you apply [gold]Vulnerable[/gold] or [gold]Weak[/gold], draw {Amount} card(s).",
   "ACE-TELL_POWER.smartDescription": "Whenever you apply [gold]Vulnerable[/gold] or [gold]Weak[/gold], draw cards.",
   "ACE-TELL_POWER.title": "Tell",
+
   "ACE-WINNING_STREAK_POWER.description": "The first time you play a {RedIcon} card each turn, gain {Amount} [gold]Strength[/gold].",
   "ACE-WINNING_STREAK_POWER.smartDescription": "The first time you play a red card each turn, gain [gold]Strength[/gold].",
   "ACE-WINNING_STREAK_POWER.title": "Winning Streak"

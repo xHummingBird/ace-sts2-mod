@@ -12,8 +12,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common;
 
-public class ChillDeal() : AceYellowCard(1, CardType.Skill, CardRarity.Common, TargetType.Self), IStockingCard
+public class ChillDeal() : AceYellowCard(0, CardType.Skill, CardRarity.Common, TargetType.Self), IStockingCard
 {
+    protected override bool ShouldGlowGoldInternal => (Stock.Majority(base.Owner) == AceColor.Yellow);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),

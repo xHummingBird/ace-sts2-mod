@@ -14,9 +14,8 @@ namespace Ace.AceCode.Cards.Basic;
 // Colorless on purpose. A colored card would stock its own color right after
 // the flip, because AfterCardPlayed runs after OnPlay.
 public class ShowOfHands()
-    : AceCard(2, CardType.Skill, CardRarity.Basic, TargetType.AnyEnemy), IFlipCard
+    : AceCard(1, CardType.Skill, CardRarity.Basic, TargetType.AnyEnemy), IFlipCard
 {
-    
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         AceStaticHoverTip.Flip,

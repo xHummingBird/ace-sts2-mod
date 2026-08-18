@@ -22,7 +22,6 @@ public class Charge() : AceFlipCard(0, CardType.Skill,
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PlayerCmd.GainEnergy(1, base.Owner);
         await CardPileCmd.Draw(choiceContext, 2, base.Owner);
     }
 }

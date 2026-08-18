@@ -43,7 +43,7 @@ public class Ace : PlaceholderCharacterModel
 	private Vector2? _originalPosition;
 	public override Color NameColor => Color;
 	public override CharacterGender Gender => CharacterGender.Masculine;
-	public override int StartingHp => 65;
+	public override int StartingHp => 71;
 
 	public override IEnumerable<CardModel> StartingDeck =>
 	[
@@ -56,8 +56,8 @@ public class Ace : PlaceholderCharacterModel
 		ModelDb.Card<DefendYellow>(),
 		ModelDb.Card<DefendWhite>(),
 		ModelDb.Card<Flourish>(),
-		ModelDb.Card<ShowOfHands>()
-		//ModelDb.Card<CutCards>(),
+		ModelDb.Card<ShowOfHands>(),
+		ModelDb.Card<CutCards>(),
 	];
 
 	public override IReadOnlyList<RelicModel> StartingRelics =>

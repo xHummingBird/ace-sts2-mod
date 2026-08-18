@@ -14,13 +14,8 @@ public class AllIn() : AceRedCard(0, CardType.Attack, CardRarity.Rare, TargetTyp
 {
     protected override bool HasEnergyCostX => true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move)];
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Exhaust
-    ];
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         int hitCount = ResolveEnergyXValue() + Stock.Count(base.Owner, AceColor.Red);

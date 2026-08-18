@@ -52,6 +52,6 @@ public class Memento() : AceBlueCard(1, CardType.Attack, CardRarity.Uncommon, Ta
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<StrengthPower>().UpgradeValueBy(1m);
+        RemoveKeyword(CardKeyword.Exhaust);
     }
 }

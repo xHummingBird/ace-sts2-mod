@@ -169,6 +169,11 @@ public static class Flip
             flipCard,
             sourcePlay);
 
+        await AceRelicTriggers.OnFlipPayoff(
+            sourceCard.Owner,
+            consumed.Count,
+            isSpectrum: false);
+
         return new FlipResult(
             flipped,
             consumed.Count,
@@ -209,7 +214,10 @@ public static class Flip
             flipCard,
             sourcePlay);
 
-        await AceRelicTriggers.OnSpectrumPayoff(sourceCard.Owner);
+        await AceRelicTriggers.OnFlipPayoff(
+            sourceCard.Owner,
+            consumed.Count,
+            isSpectrum: true);
 
         return new FlipResult(
             null,
