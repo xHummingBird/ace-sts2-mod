@@ -4,16 +4,24 @@ using BaseLib.Utils;
 using Ace.AceCode.Character;
 using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
+using Godot;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization;
 
 namespace Ace.AceCode.Cards
 {
-    [Pool(typeof(AceYellowPool))]
+    [Pool(typeof(AceCardPool))]
     public abstract class AceYellowCard(int cost, CardType type, CardRarity rarity, TargetType target) :
         CustomCardModel(cost, type, rarity, target), IStockingCard
     {
         public virtual AceColor StockColor => AceColor.Yellow;
+        
+        public override Material? CreateCustomFrameMaterial =>
+            ShaderUtils.GenerateHsv(
+                0.14f, // H
+                1f, // S
+                1.1f  // V
+            );
 
         //Image size:
         //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)

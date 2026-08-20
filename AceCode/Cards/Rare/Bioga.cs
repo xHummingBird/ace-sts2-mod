@@ -1,10 +1,12 @@
 using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
+using Ace.AceCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -19,8 +21,14 @@ public class Bioga() : AceWhiteCard(2, CardType.Attack,
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new DamageVar(12m, ValueProp.Move),
-            new PowerVar<VulnerablePower>(2m),
-            new PowerVar<WeakPower>(2m)
+            new PowerVar<BreaksightPower>(1m),
+        ];
+        
+        protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [
+            AceStaticHoverTip.Consume,
+            AceStaticHoverTip.Unstockable,
+            HoverTipFactory.FromPower<BreaksightPower>(),
         ];
     
         protected override async Task OnPlay(PlayerChoiceContext choiceContext,
@@ -42,10 +50,9 @@ public class Bioga() : AceWhiteCard(2, CardType.Attack,
                     SfxCmd.Play("event:/sfx/characters/attack_fire");
                 })
                 .Execute(choiceContext);
-            int powerAmount = Stock.Count(Owner, AceColor.White) + 2;
+            int powerAmount = Stock.Count(Owner, AceColor.White) + 1;
             
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, powerAmount, base.Owner.Creature, this);
-            await PowerCmd.Apply<WeakPower>(choiceContext, play.Target, powerAmount, base.Owner.Creature, this);
+            await PowerCmd.Apply<BreaksightPower>(choiceContext, play.Target, powerAmount, base.Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

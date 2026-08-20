@@ -9,5 +9,10 @@
   "ACE_UNSTOCKABLE.description": "This card has a color but does not add its color to your [gold]Stock[/gold] when played.",
   
   "ACE_MAJORITY.title": "Majority",
-  "ACE_MAJORITY.description": "The color that appears most often in your Stock. If multiple colors are tied, the oldest tied color becomes the Majority."
+  "ACE_MAJORITY.description": "The color that appears most often in your Stock. If multiple colors are tied, the oldest tied color becomes the Majority.",
+
+  "ACE_CONSUME.title": "Consume",
+  "ACE_CONSUME.description": "Spend [gold]Stocks[/gold] to activate effects. Consumed [gold]Stocks[/gold] do NOT apply their [gold]Flip[/gold] effects.",
+  
+  
 }

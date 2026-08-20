@@ -1,4 +1,4 @@
-using Ace.AceCode.Powers;
+﻿using Ace.AceCode.Powers;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -24,6 +24,6 @@ public class SafeBet() : AceBlueCard(2, CardType.Power, CardRarity.Rare, TargetT
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<SafeBetPower>().UpgradeValueBy(1m);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

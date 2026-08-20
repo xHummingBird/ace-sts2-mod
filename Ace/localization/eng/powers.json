@@ -1,26 +1,26 @@
 {
   "ACE-BREAKSIGHT_POWER.description": "Decrease damage dealt by [gold]75%[/gold]. Increase damage taken by [gold]75%[/gold].",
-  "ACE-BREAKSIGHT_POWER.smartDescription": "",
+  "ACE-BREAKSIGHT_POWER.smartDescription": "Decrease damage dealt by [gold]75%[/gold]. Increase damage taken by [gold]75%[/gold]",
   "ACE-BREAKSIGHT_POWER.title": "Breaksight",
 
-  "ACE-COUNTER_PLAY_POWER.description": "Whenever you gain [gold]Block[/gold] from a {BlueIcon} card, deal {Amount} damage to ALL enemies.",
-  "ACE-COUNTER_PLAY_POWER.smartDescription": "Whenever you gain [gold]Block[/gold] from a blue card, deal damage to ALL enemies.",
+  "ACE-COUNTER_PLAY_POWER.description": "Whenever you gain [gold]Block[/gold] from a {BlueIcon} card, deal damage to ALL enemies.",
+  "ACE-COUNTER_PLAY_POWER.smartDescription": "Whenever you gain [gold]Block[/gold] from a blue card, deal {Amount} damage to ALL enemies.",
   "ACE-COUNTER_PLAY_POWER.title": "Counterplay",
 
-  "ACE-DOUBLE_PLAY_POWER.description": "The first {Amount} {RedIcon} card(s) you play each turn are played twice.",
-  "ACE-DOUBLE_PLAY_POWER.smartDescription": "Your first red cards each turn are played twice.",
+  "ACE-DOUBLE_PLAY_POWER.description": "Your first red card each turn is played twice.",
+  "ACE-DOUBLE_PLAY_POWER.smartDescription": "The first {Amount} {RedIcon} card(s) you play each turn are played twice.",
   "ACE-DOUBLE_PLAY_POWER.title": "Double Play",
 
-  "ACE-GOLDEN_OPPORTUNITY_POWER.description": "At the start of your turn, gain {Amount} [gold]Energy[/gold].",
-  "ACE-GOLDEN_OPPORTUNITY_POWER.smartDescription": "At the start of your turn, gain [gold]Energy[/gold].",
+  "ACE-GOLDEN_OPPORTUNITY_POWER.description": "At the start of your turn, gain [gold]Energy[/gold]",
+  "ACE-GOLDEN_OPPORTUNITY_POWER.smartDescription": "At the start of your turn, gain {Amount} [gold]Energy[/gold].",
   "ACE-GOLDEN_OPPORTUNITY_POWER.title": "Golden Opportunity",
 
   "ACE-NO_FOLD_POWER.description": "You no longer discard your hand at the end of your turn.",
   "ACE-NO_FOLD_POWER.smartDescription": "You no longer discard your hand at the end of your turn.",
   "ACE-NO_FOLD_POWER.title": "No Fold",
 
-  "ACE-ONE_FOR_ONE_POWER.description": "Whenever you Exhaust a card, draw {Amount} card(s).",
-  "ACE-ONE_FOR_ONE_POWER.smartDescription": "Whenever you Exhaust a card, draw cards.",
+  "ACE-ONE_FOR_ONE_POWER.description": "Whenever you Exhaust a card, draw 1 card.",
+  "ACE-ONE_FOR_ONE_POWER.smartDescription": "Whenever you Exhaust a card, draw {Amount} card(s)",
   "ACE-ONE_FOR_ONE_POWER.title": "One for One",
 
   "ACE-RAISING_STAKES_POWER.description": "At the start of your turn, if {RedIcon} is your [gold]Majority[/gold], gain {Amount} [gold]Vigor[/gold].",

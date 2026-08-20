@@ -19,6 +19,7 @@ protected override IEnumerable<IHoverTip> ExtraHoverTips =>
 
 protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 {
+    SfxCmd.Play("res://Ace/sounds/draw.wav");
     var cards = (await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner));
     foreach (var card in cards)
     {

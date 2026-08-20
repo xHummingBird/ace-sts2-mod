@@ -4,6 +4,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -13,6 +14,11 @@ namespace Ace.AceCode.Cards.Rare;
 public class WildCard() : AceCard(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(15m, ValueProp.Move)];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        AceStaticHoverTip.Flip,
+    ];
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
@@ -37,6 +43,7 @@ public class WildCard() : AceCard(2, CardType.Attack, CardRarity.Rare, TargetTyp
         await Task.Delay((int)(0.2f * 1000f));
         if (Stock.IsRainbow(Owner))
         {
+            SfxCmd.Play("res://Ace/sounds/open.wav");
             await Ace.AceCode.Mechanics.Flip.Spectrum(
                 choiceContext,
                 this,
@@ -44,6 +51,7 @@ public class WildCard() : AceCard(2, CardType.Attack, CardRarity.Rare, TargetTyp
         }
         else
         {
+            SfxCmd.Play("res://Ace/sounds/open.wav");
             await Ace.AceCode.Mechanics.Flip.Majority(
                 choiceContext,
                 this,

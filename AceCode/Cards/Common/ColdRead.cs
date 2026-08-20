@@ -17,6 +17,7 @@ public class ColdRead() : AceBlueCard(0, CardType.Skill, CardRarity.Common, Targ
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        SfxCmd.Play("res://Ace/sounds/draw.wav");
         CardModel cardModel = (await CardPileCmd.Draw(choiceContext, 1m, base.Owner)).FirstOrDefault();
         if (cardModel != null && cardModel is AceBlueCard)
         {

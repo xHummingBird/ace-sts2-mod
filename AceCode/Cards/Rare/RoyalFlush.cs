@@ -16,6 +16,7 @@ public class RoyalFlush() : AceRedCard(2, CardType.Skill, CardRarity.Rare, Targe
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         AceStaticHoverTip.Flip,
+        AceStaticHoverTip.Unstockable
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

@@ -48,7 +48,7 @@ public class AkedemeiaDeck() : AceRelic
                 choiceContext,
                 targets,
                 Damage,
-                ValueProp.Move,
+                ValueProp.Unpowered,
                 dealer);
         }
     }

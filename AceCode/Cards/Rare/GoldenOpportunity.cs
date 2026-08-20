@@ -1,4 +1,4 @@
-using Ace.AceCode.Powers;
+﻿using Ace.AceCode.Powers;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -9,7 +9,10 @@ namespace Ace.AceCode.Cards.Rare;
 
 public class GoldenOpportunity() : AceYellowCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GoldenOpportunityPower>(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new PowerVar<GoldenOpportunityPower>(1m),
+        new EnergyVar(1)
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

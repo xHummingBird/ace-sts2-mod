@@ -35,13 +35,13 @@
   "ACE-CARD_BARRIER.description": "Gain {Block:diff()} [gold]Block[/gold]. \nGain 2 additional [gold]Block[/gold] for each {BlueIcon} [gold]Stocked[/gold].",
   "ACE-CARD_BARRIER.title": "Card Barrier",
   
-  "ACE-CARD_TOSS.description": "Deal {Damage:diff()} damage.",
+  "ACE-CARD_TOSS.description": "Deal {Damage:diff()} damage. \nFlip 1 {RedIcon}.",
   "ACE-CARD_TOSS.title": "Card Toss",
   
   "ACE-TWIN_DEAL.description": "[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} or up to 2 [gold]Stocks[/gold] of your [gold]Majority[/gold] color.",
   "ACE-TWIN_DEAL.title": "Twin Deal",
   
-  "ACE-ANTE_UP.description": "All Attacks in your Hand are free to play this turn. You cannot gain [gold]Block[/gold] from cards this turn.",
+  "ACE-ANTE_UP.description": "All cards in your Hand are free to play this turn. You cannot gain [gold]Block[/gold] from cards this turn.",
   "ACE-ANTE_UP.title": "Ante Up",
 
   "ACE-COLD_READ.description": "Draw 1 Card. \nIf the drawn card is {BlueIcon}, gain {Block:diff()} [gold]Block[/gold].",
@@ -50,7 +50,7 @@
   "ACE-DELAY_DEAL.description": "Deal {Damage:diff()} damage. \nNext turn, draw 2 cards.",
   "ACE-DELAY_DEAL.title": "Delay Deal",
 
-  "ACE-OVERCHARGE.description": "Gain {VigorPower:diff()} [gold]Vigor[/gold]. \nGain additional [gold]Vigor[/gold] equal to {RedIcon} [gold]Stocked[/gold].",
+  "ACE-OVERCHARGE.description": "Gain {VigorPower:diff()} [gold]Vigor[/gold]. \nGain additional [gold]Vigor[/gold] equal to {YellowIcon} [gold]Stocked[/gold].",
   "ACE-OVERCHARGE.title": "Overcharge",
   
   "ACE-QUICKDRAW.description": "Deal {Damage:diff()} damage. \nIf current [gold]Majority[/gold] is {RedIcon}, draw 1 card.",
@@ -65,19 +65,19 @@
   "ACE-BLIZZARD_BOM.description": "Deal {Damage:diff()} damage. \nGain {Block:diff()} [gold]Block[/gold].",
   "ACE-BLIZZARD_BOM.title": "Blizzard BOM",
 
-  "ACE-EVASIVE_MANEUVER.description": "Gain {Block:diff()} [gold]Block[/gold]. \nGain {DexterityPower:diff()} [gold]Dexterity[/gold].",
+  "ACE-EVASIVE_MANEUVER.description": "Gain {Block:diff()} [gold]Block[/gold]. \nIf {BlueIcon} is [gold]Majority[/gold], gain {Block:diff()} next turn.",
   "ACE-EVASIVE_MANEUVER.title": "Evasive Maneuver",
 
   "ACE-LAST_STAND.description": "Gain {BufferPower:diff()} [gold]Buffer[/gold].",
   "ACE-LAST_STAND.title": "Last Stand",
   
-  "ACE-STATIC_DEAL.description": "Deal {Damage:diff()} damage 2 times.",
+  "ACE-STATIC_DEAL.description": "Flip 1 {YellowIcon}.",
   "ACE-STATIC_DEAL.title": "Static Deal",
   
   "ACE-QUICKDEAL.description": "Play the top card of your [gold]Draw Pile[/gold] and [gold]Exhaust[/gold] it. \nIf current [gold]Majority[/gold] is {RedIcon}, play 2 cards instead.",
   "ACE-QUICKDEAL.title": "Quickdeal",
 
-  "ACE-DOUBLE_DOWN.description": "Draw {Cards:diff()} {Cards:plural:card|cards}. \n[gold]Discard all cards that are not {YellowIcon} drawn this way.",
+  "ACE-DOUBLE_DOWN.description": "Draw {Cards:diff()} {Cards:plural:card|cards}. \nDiscard all cards drawn this way that are not {YellowIcon}.",
   "ACE-DOUBLE_DOWN.title": "Double Down",
 
   "ACE-MP_CHARGE.description": "Gain {Energy:energyIcons()}. \nStock an additional {YellowIcon}.",
@@ -91,12 +91,10 @@
   
   "ACE-MARK_THE_DECK.description": "Put a [gold]Skill[/gold] from your Draw Pile into your Hand. \nIf it is a {YellowIcon}, play it instead.",
   "ACE-MARK_THE_DECK.title": "Mark the Deck",
+  "ACE-MARK_THE_DECK.selectionScreenPrompt": "Select a Skill to put in your Hand.",
   
   "ACE-LIFE_HAND.description": "Gain {Block:diff()} [gold]Block[/gold]. \nIf {BlueIcon} is [gold]Majority[/gold], gain [gold]Block[/gold] another time.",
   "ACE-LIFE_HAND.title": "Life Hand",
-  
-  "ACE-CADETS_RESOLVE.description": "Gain {ArtifactPower:diff()} [gold]Artifact[/gold].",
-  "ACE-CADETS_RESOLVE.title": "Cadet's Resolve",
   
   "ACE-LAST_CARD.description": "[gold]Flip[/gold] all {YellowIcon}. If you have 0 cards in your [gold]Draw Pile[/gold].",
   "ACE-LAST_CARD.title": "Last Card",
@@ -134,7 +132,7 @@
   "ACE-LOADED_DECK.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies. \n[gold]Consume[/gold] all [gold]Stocks[/gold]. Deal {ExtraDamage:diff()} additional damage for each [gold]Stock[/gold] consumed.",
   "ACE-LOADED_DECK.title": "Loaded Deck",
 
-  "ACE-FIREBRAND.description": "Gain {VigorPower:diff()} [gold]Vigor[/gold].",
+  "ACE-FIREBRAND.description": "Gain {VigorPower:diff()} [gold]Vigor[/gold]. \nStock an additional {RedIcon}.",
   "ACE-FIREBRAND.title": "Firebrand",
   
   "ACE-WILD_CARD.description": "Deal {Damage:diff()} damage. \n[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} or the [gold]Majority[/gold] color in your [gold]Stock[/gold]. \n[gold]Consume[/gold] the rest of your [gold]Stock[/gold].",
@@ -161,7 +159,7 @@
   "ACE-JACKPOT_SHOT.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies. \nDeal additional damage equal to the number of cards played this combat.",
   "ACE-JACKPOT_SHOT.title": "Jackpot Shot",
   
-  "ACE-MYSTIC_VOLLEY.description": "Deal {Damage:diff()} damage to ALL enemies. \nIf you have {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} [gold]Stocked[/gold], [gold]Consume[/gold] them and gain {Energy:energyIcons()}.",
+  "ACE-MYSTIC_VOLLEY.description": "Deal {Damage:diff()} damage to ALL enemies. \n[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon}.",
   "ACE-MYSTIC_VOLLEY.title": "Mystic Volley",
   
   "ACE-THUNDER_SHG.description": "Deal {Damage:diff()} damage to ALL enemies.",
@@ -194,7 +192,7 @@
   "ACE-FIRAGA_RF.description": "Deal {Damage:diff()} damage. \n[gold]Flip up to {FlipAmount:diff()} {RedIcon}.",
   "ACE-FIRAGA_RF.title": "Firaga RF",
 
-  "ACE-BIOGA.description": "Deal {Damage:diff()} damage. \nApply 2 [gold]Vulnerable[/gold] and [gold]Weak[/gold]. \nApply additional [gold]Vulnerable[/gold] and [gold]Weak[/gold] equal to {WhiteIcon} [gold]Stocked[/gold].",
+  "ACE-BIOGA.description": "Deal {Damage:diff()} damage. \nApply [gold]Breaksight[/gold]. \nApply additional [gold]Breaksight[/gold] equal to {WhiteIcon} [gold]Stocked[/gold].",
   "ACE-BIOGA.title": "Bioga",
 
   "ACE-TRIPLE_THREAT.description": "[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} or up to 3 [gold]Stocks[/gold] of your [gold]Majority[/gold] color.",
@@ -219,11 +217,11 @@
   "ACE-SUPER_BARRIER.title": "Super Barrier",
   "ACE-GIGA_BARRIER.description": "Gain 2 [gold]Buffer[/gold].",
   "ACE-GIGA_BARRIER.title": "Giga Barrier",
-  "ACE-GIGA_STOP.description": "Apply 3 [gold]Vulnerable[/gold] and [gold]Weak[/gold] to ALL enemies.",
+  "ACE-GIGA_STOP.description": "Apply 3 [gold]Breaksight[/gold] to ALL enemies.",
   "ACE-GIGA_STOP.title": "Giga Stop",
   "ACE-MEGA_BURST.description": "Deal {Damage:diff()} damage to ALL enemies.",
   "ACE-MEGA_BURST.title": "Mega Burst",
-  "ACE-LONG_STOP.description": "Apply 2 [gold]Vulnerable[/gold] and [gold]Weak[/gold].",
+  "ACE-LONG_STOP.description": "Apply 2 [gold]Breaksight[/gold].",
   "ACE-LONG_STOP.title": "Long Stop",
   "ACE-SUPER_CHARGE.description": "Draw 2 cards. \nGain {Energy:energyIcons()}.",
   "ACE-SUPER_CHARGE.title": "Super Force",
@@ -231,11 +229,11 @@
   "ACE-FULLSTOP.title": "Full Stop",
   "ACE-MEGA_BARRIER.description": "Gain {PlatingPower:diff()} [gold]Plating[/gold].",
   "ACE-MEGA_BARRIER.title": "Mega Barrier",
-  "ACE-SHORT_STOP.description": "Apply 1 [gold]Vulnerable[/gold] and [gold]Weak[/gold].",
+  "ACE-SHORT_STOP.description": "Apply 2 [gold]Vulnerable[/gold] and [gold]Weak[/gold].",
   "ACE-SHORT_STOP.title": "Short Stop",
   "ACE-SUPER_BURST.description": "Deal {Damage:diff()} damage.",
   "ACE-SUPER_BURST.title": "Super Burst",
-  "ACE-MEGA_STOP.description": "Apply 2 [gold]Vulnerable[/gold] and [gold]Weak[/gold] to ALL enemies.",
+  "ACE-MEGA_STOP.description": "Apply 2 [gold]Breaksight[/gold] to ALL enemies.",
   "ACE-MEGA_STOP.title": "Mega Stop",
   "ACE-ULTIMATE_BURST.description": "Deal {Damage:diff()} damage to ALL enemies.",
   "ACE-ULTIMATE_BURST.title": "Ultimate Burst",
@@ -248,10 +246,10 @@
   "ACE-GIGA_CHARGE.description": "Draw 2 cards. \nAll Skills in your hand are free this turn.",
   "ACE-GIGA_CHARGE.title": "Giga Force",
   
-  "ACE-COUNTERPLAY.description": "Whenever you gain [gold]Block[/gold] from a {BlueIcon} card, deal {CounterPlayPower:diff()} damage to ALL enemies.",
+  "ACE-COUNTERPLAY.description": "Whenever you gain [gold]Block[/gold] from {BlueIcon}, deal {CounterPlayPower:diff()} damage to ALL enemies.",
   "ACE-COUNTERPLAY.title": "Counterplay",
   
-  "ACE-ONE_FOR_ONE.description": "Whenever you Exhaust a card, draw {OneForOnePower:diff()} card(s).",
+  "ACE-ONE_FOR_ONE.description": "Whenever you Exhaust a card, draw {OneForOnePower:diff()} {OneForOnePower:plural:card|cards}.",
   "ACE-ONE_FOR_ONE.title": "One for One",
   
   "ACE-RAISING_STAKES.description": "At the start of your turn, if {RedIcon} is your [gold]Majority[/gold], gain {RaisingStakesPower:diff()} [gold]Vigor[/gold].",
@@ -263,15 +261,15 @@
   "ACE-DOUBLE_PLAY.description": "The first {DoublePlayPower:diff()} {RedIcon} card(s) you play each turn are played twice.",
   "ACE-DOUBLE_PLAY.title": "Double Play",
   
-  "ACE-GOLDEN_OPPORTUNITY.description": "At the start of your turn, gain {GoldenOpportunityPower:diff()} [gold]Energy[/gold].",
+  "ACE-GOLDEN_OPPORTUNITY.description": "At the start of your turn, gain {GoldenOpportunityPower:diff()} {Energy:energyIcons()}.",
   "ACE-GOLDEN_OPPORTUNITY.title": "Golden Opportunity",
   
   "ACE-NO_FOLD.description": "You no longer discard your hand at the end of your turn.",
   "ACE-NO_FOLD.title": "No Fold",
   
-  "ACE-SAFE_BET.description": "The first {SafeBetPower:diff()} time(s) you gain [gold]Block[/gold] from a {BlueIcon} card each turn, double that [gold]Block[/gold].",
+  "ACE-SAFE_BET.description": "The first time you gain [gold]Block[/gold] from a {BlueIcon} each turn, double that [gold]Block[/gold].",
   "ACE-SAFE_BET.title": "Safe Bet",
   
-  "ACE-WINNING_STREAK.description": "The first time you play a {RedIcon} card each turn, gain {WinningStreakPower:diff()} [gold]Strength[/gold].",
+  "ACE-WINNING_STREAK.description": "The first time you play {RedIcon} each turn, gain {WinningStreakPower:diff()} [gold]Strength[/gold].",
   "ACE-WINNING_STREAK.title": "Winning Streak"
 }

@@ -29,10 +29,11 @@ public class AceInTheHole() : AceCard(2, CardType.Skill, CardRarity.Rare, Target
     [
         HoverTipFactory.FromCard<JackpotShot>(),
         AceStaticHoverTip.Flip,
-    ];
+    ];  
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        SfxCmd.Play("res://Ace/sounds/open.wav");
         Consume.All(base.Owner);
         var js = CombatState.CreateCard<JackpotShot>(base.Owner);
         await CardCmd.AutoPlay(choiceContext, js, play.Target);

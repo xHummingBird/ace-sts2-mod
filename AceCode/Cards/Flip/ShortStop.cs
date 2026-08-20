@@ -20,8 +20,8 @@ public class ShortStop() : AceFlipCard(0, CardType.Skill,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<WeakPower>(1m),
-        new PowerVar<VulnerablePower>(1m)
+        new PowerVar<WeakPower>(2m),
+        new PowerVar<VulnerablePower>(2m)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

@@ -4,6 +4,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -17,6 +18,12 @@ public class ChainLightning() : AceYellowCard(2, CardType.Attack, CardRarity.Unc
         new DamageVar(3m, ValueProp.Move),
         new RepeatVar(4)
     ];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        AceStaticHoverTip.Consume,
+    ];
+    
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var ownerCreature = Owner?.Creature;

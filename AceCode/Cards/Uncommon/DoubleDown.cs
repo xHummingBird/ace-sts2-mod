@@ -15,6 +15,7 @@ public class DoubleDown() : AceYellowCard(0, CardType.Skill, CardRarity.Uncommon
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        SfxCmd.Play("res://Ace/sounds/draw.wav");
         IEnumerable<CardModel> cards = (await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.IntValue, base.Owner)).Where(c => c is not AceYellowCard);
         
         await CardCmd.Discard(choiceContext, cards);

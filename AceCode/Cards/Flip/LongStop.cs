@@ -18,7 +18,7 @@ public class LongStop() : AceFlipCard(0, CardType.Skill,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<BreaksightPower>(1m),
+        new PowerVar<BreaksightPower>(2m),
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

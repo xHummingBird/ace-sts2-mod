@@ -24,4 +24,9 @@ public static class AceStaticHoverTip
         new LocString("static_hover_tips", "ACE_MAJORITY.title"),
         new LocString("static_hover_tips", "ACE_MAJORITY.description")
     );
+    
+    public static readonly IHoverTip Consume = new HoverTip(
+        new LocString("static_hover_tips", "ACE_CONSUME.title"),
+        new LocString("static_hover_tips", "ACE_CONSUME.description")
+    );
 }

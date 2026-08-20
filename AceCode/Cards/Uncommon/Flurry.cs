@@ -5,6 +5,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -19,6 +20,12 @@ public class Flurry() : AceRedCard(2, CardType.Attack,
         new DamageVar(3m, ValueProp.Move),
         new RepeatVar(4),
         new EnergyVar(1)
+    ];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        AceStaticHoverTip.Flip,
+        AceStaticHoverTip.Unstockable
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -38,7 +45,7 @@ public class Flurry() : AceRedCard(2, CardType.Attack,
                 "res://Ace/scenes/vfx.tscn",
                 "card_hit_1"
             );
-            await DamageCmd.Attack(damage).FromCard(this, play).Targeting(play.Target)
+            DamageCmd.Attack(damage).FromCard(this, play).Targeting(play.Target)
                 .WithValueProp(ValueProp.Unpowered)
                 .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                 .Execute(choiceContext);

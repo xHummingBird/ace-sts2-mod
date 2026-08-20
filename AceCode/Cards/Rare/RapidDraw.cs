@@ -19,6 +19,7 @@ public class RapidDraw() : AceRedCard(0, CardType.Skill, CardRarity.Rare, Target
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        SfxCmd.Play("res://Ace/sounds/draw.wav");
         CardModel cardModel;
         do
         {

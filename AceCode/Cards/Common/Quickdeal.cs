@@ -23,6 +23,7 @@ public class Quickdeal() : AceRedCard(1, CardType.Skill, CardRarity.Common, Targ
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        SfxCmd.Play("res://Ace/sounds/open.wav");
        await CardPileCmd.AutoPlayFromDrawPile(choiceContext, base.Owner, 1, CardPilePosition.Top, forceExhaust: true);
        if (Stock.Majority(base.Owner) == AceColor.Red)
            await CardPileCmd.AutoPlayFromDrawPile(choiceContext, base.Owner, 1, CardPilePosition.Top, forceExhaust: true);

@@ -1,3 +1,4 @@
+using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,7 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common;
 
-public class Firebrand() : AceRedCard(1, CardType.Attack, CardRarity.Common, TargetType.Self), IFlipCard
+public class Firebrand() : AceRedCard(1, CardType.Attack, CardRarity.Common, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<VigorPower>(5m)
@@ -18,7 +19,8 @@ public class Firebrand() : AceRedCard(1, CardType.Attack, CardRarity.Common, Tar
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<VigorPower>()
+        HoverTipFactory.FromPower<VigorPower>(),
+        AceStaticHoverTip.Stock
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

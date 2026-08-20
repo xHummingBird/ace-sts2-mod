@@ -28,26 +28,40 @@ public class BreaksightPower : AcePower
         new DynamicVar("DamageIncrease", 1.75m)
     ];
     
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
+    public override decimal ModifyDamageMultiplicative(
+        Creature? target,
+        decimal amount,
+        ValueProp props,
+        Creature? dealer,
+        CardModel? cardSource,
+        CardPlay? cardPlay)
     {
-        if (dealer != base.Owner)
-        {
-            return 1m;
-        }
         if (!props.IsPoweredAttack())
         {
             return 1m;
         }
-        
-        decimal num1 = base.DynamicVars["DamageDecrease"].BaseValue;
-        decimal num2 = base.DynamicVars["DamageIncrease"].BaseValue;
 
-        if (target == base.Owner)
-            return num2;
-        
-        return num1;
+        //
+        // Weak portion
+        // Owner deals 75% less damage
+        //
+        if (dealer == Owner)
+        {
+            return DynamicVars["DamageDecrease"].BaseValue; // 0.25
+        }
+
+        //
+        // Vulnerable portion
+        // Owner takes 75% more damage
+        //
+        if (target == Owner)
+        {
+            return DynamicVars["DamageIncrease"].BaseValue; // 1.75
+        }
+
+        return 1m;
     }
-
+    
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (side == CombatSide.Enemy)

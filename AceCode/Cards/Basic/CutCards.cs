@@ -23,6 +23,7 @@ public class CutCards() : AceCard(1, CardType.Skill, CardRarity.Basic, TargetTyp
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
         {
+            SfxCmd.Play("res://Ace/sounds/draw.wav");
             var cards = (await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner));
             foreach (var card in cards)
             {

@@ -15,11 +15,6 @@ public class Charge() : AceFlipCard(0, CardType.Skill,
         CardKeyword.Exhaust
     ];
     
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new EnergyVar(1),
-    ];
-    
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CardPileCmd.Draw(choiceContext, 2, base.Owner);

@@ -1,6 +1,7 @@
 using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -26,6 +27,7 @@ public class TwinDeal() : AceCard(1, CardType.Skill, CardRarity.Common, TargetTy
     {
         if (Stock.IsRainbow(Owner))
         {
+            SfxCmd.Play("res://Ace/sounds/open.wav");
             await Ace.AceCode.Mechanics.Flip.Spectrum(
                 choiceContext,
                 this,
@@ -33,6 +35,7 @@ public class TwinDeal() : AceCard(1, CardType.Skill, CardRarity.Common, TargetTy
         }
         else
         {
+            SfxCmd.Play("res://Ace/sounds/open.wav");
             await Ace.AceCode.Mechanics.Flip.Majority(choiceContext, this, play, 0, 2);
         }
         

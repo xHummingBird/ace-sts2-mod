@@ -13,16 +13,17 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Ace.AceCode.Cards.Rare;
 
 //Exhaust. Put a skill from your draw pile into your hand. If it's a yellow card, play it instead.
-public class MarkTheDeck() : AceYellowCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self), IStockingCard
+public class MarkTheDeck() : AceYellowCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust
     ];
     
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        CardModel cardModel = (await CardSelectCmd.FromCombatPile(prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 1), context: choiceContext, pile: PileType.Draw.GetPile(base.Owner), player: base.Owner, filter: (CardModel c) => c.Type == CardType.Skill)).FirstOrDefault();
+        SfxCmd.Play("res://Ace/sounds/draw.wav");
+        CardModel? cardModel = (await CardSelectCmd.FromCombatPile(prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 1), context: choiceContext, pile: PileType.Draw.GetPile(base.Owner), player: base.Owner, filter: (CardModel c) => c.Type == CardType.Skill)).FirstOrDefault();
         if (cardModel != null)
         {
             if (cardModel is AceYellowCard)
