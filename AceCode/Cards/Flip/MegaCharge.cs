@@ -1,12 +1,13 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using Ace.AceCode.Mechanics;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Ace.AceCode.Cards.Flip;
 
-public class MegaCharge() : AceFlipCard(0, CardType.Skill,
-    CardRarity.Common, TargetType.Self)
+public class MegaCharge() : AceYellowCard(0, CardType.Skill,
+    CardRarity.Token, TargetType.Self), IFlipCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

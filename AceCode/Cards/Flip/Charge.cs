@@ -7,8 +7,8 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Flip;
 
-public class Charge() : AceFlipCard(0, CardType.Skill,
-    CardRarity.Common, TargetType.Self)
+public class Charge() : AceYellowCard(0, CardType.Skill,
+    CardRarity.Token, TargetType.Self), IFlipCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

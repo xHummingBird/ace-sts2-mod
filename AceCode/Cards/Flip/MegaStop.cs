@@ -1,4 +1,5 @@
-﻿using Ace.AceCode.Powers;
+﻿using Ace.AceCode.Mechanics;
+using Ace.AceCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -8,8 +9,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Ace.AceCode.Cards.Flip;
 
-public class MegaStop() : AceFlipCard(0, CardType.Skill,
-    CardRarity.Uncommon, TargetType.AllEnemies)
+public class MegaStop() : AceWhiteCard(0, CardType.Skill,
+    CardRarity.Token, TargetType.AllEnemies), IFlipCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

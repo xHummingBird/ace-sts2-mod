@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Ace.AceCode.Cards.Ancient;
 
-public class Fullstop() : AceFlipCard(0, CardType.Skill,
+public class Fullstop() : AceCard(0, CardType.Skill,
     CardRarity.Ancient, TargetType.AllEnemies)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

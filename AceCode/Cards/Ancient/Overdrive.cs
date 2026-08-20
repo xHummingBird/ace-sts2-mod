@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Ace.AceCode.Cards.Ancient;
 
-public class Overdrive() : AceFlipCard(0, CardType.Skill,
+public class Overdrive() : AceCard(0, CardType.Skill,
     CardRarity.Ancient, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

@@ -7,8 +7,8 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Flip;
 
-public class Barrier() : AceFlipCard(0, CardType.Skill,
-    CardRarity.Common, TargetType.Self)
+public class Barrier() : AceBlueCard(0, CardType.Skill,
+    CardRarity.Token, TargetType.Self), IFlipCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(10, ValueProp.Move)];
     

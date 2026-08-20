@@ -7,8 +7,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Ace.AceCode.Cards.Flip;
 
-public class MegaBarrier() : AceFlipCard(0, CardType.Skill,
-    CardRarity.Uncommon, TargetType.Self)
+public class MegaBarrier() : AceBlueCard(0, CardType.Skill,
+    CardRarity.Token, TargetType.Self), IFlipCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
