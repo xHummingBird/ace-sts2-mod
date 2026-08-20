@@ -26,7 +26,6 @@ public partial class CardDisplayOverlay : Control {
   private RichTextLabel? _orbLabel;
   
   private IHoverTip? _flipHoverTip;
-  private IHoverTip? _stockHoverTip;
 
   private Player? _player;
 
@@ -52,11 +51,13 @@ public partial class CardDisplayOverlay : Control {
   }
   
   private void OnHovered(
-    Control? control,
+    Control? owner,
+    Control? anchor,
     IHoverTip? hoverTip,
     Vector2 offset)
   {
-    if (control == null ||
+    if (owner == null ||
+        anchor == null ||
         hoverTip == null)
     {
       return;
@@ -64,36 +65,62 @@ public partial class CardDisplayOverlay : Control {
 
     NHoverTipSet.Clear();
 
-    var tip =
-      NHoverTipSet.CreateAndShow(
-        control,
-        hoverTip);
+    var tip = NHoverTipSet.CreateAndShow(
+      owner,
+      hoverTip);
 
     if (tip != null)
     {
-      tip.MouseFilter =
-        MouseFilterEnum.Ignore;
+      tip.MouseFilter = MouseFilterEnum.Ignore;
 
       tip.GlobalPosition =
-        control.GlobalPosition +
-        offset;
+        anchor.GlobalPosition + offset;
     }
   }
   
-  private void ShowStockTip()
+  private static readonly Dictionary<AceColor, IHoverTip> StockColorHoverTips =
+    new()
+    {
+      [AceColor.Red] = AceStaticHoverTip.Red,
+      [AceColor.Blue] = AceStaticHoverTip.Blue,
+      [AceColor.Yellow] = AceStaticHoverTip.Yellow,
+      [AceColor.White] = AceStaticHoverTip.White,
+    };
+  
+  private void ShowStockColorTip(
+    TextureRect slot,
+    int slotIndex)
   {
-    OnHovered(
-      _cardDisplay,
-      _stockHoverTip,
-      new Vector2(60f, -250f));
-  }
+    if (slotIndex < 0 ||
+        slotIndex >= _shown.Count)
+    {
+      return;
+    }
 
+    var color =
+      _shown[slotIndex];
+
+    if (!StockColorHoverTips.TryGetValue(
+          color,
+          out var hoverTip))
+    {
+      return;
+    }
+
+    OnHovered(
+    slot, // owner
+    _cardDisplay, // anchor position
+    hoverTip,
+    new Vector2(60f, -400f));
+  }
+  
   private void ShowFlipTip()
   {
     OnHovered(
       _orb,
+      _cardDisplay,
       _flipHoverTip,
-      new Vector2(20f, -450f));
+      new Vector2(60f, -350f));
   }
 
   private void OnUnhovered(
@@ -238,7 +265,7 @@ public partial class CardDisplayOverlay : Control {
 
     AddChild(_cardDisplay);
 
-    _cardDisplay.MouseFilter = MouseFilterEnum.Pass;
+    _cardDisplay.MouseFilter = MouseFilterEnum.Stop;
 
     _cardDisplay.SetAnchorsPreset(LayoutPreset.BottomLeft);
 
@@ -248,18 +275,6 @@ public partial class CardDisplayOverlay : Control {
     _cardDisplay.Position = new Vector2(-135, -120);
 
     _orb = _cardDisplay.GetNodeOrNull<TextureRect>("Orb");
-    
-    _stockHoverTip =
-      AceStaticHoverTip.Stock;
-
-    _cardDisplay.MouseFilter =
-      MouseFilterEnum.Pass;
-
-    _cardDisplay.MouseEntered += ShowStockTip;
-
-    _cardDisplay.MouseExited +=
-      () => OnUnhovered(
-        _cardDisplay);
 
     //
     // The node names do not follow the layout, so the slots are ordered by
@@ -271,6 +286,27 @@ public partial class CardDisplayOverlay : Control {
                  .OrderBy(rect => rect!.Position.X)
                  .ToArray()!;
     
+    for (int i = 0; i < _slots.Length; i++)
+    {
+      var slot =
+        _slots[i];
+
+      var slotIndex =
+        i;
+
+      slot.MouseFilter =
+        MouseFilterEnum.Stop;
+
+      slot.MouseEntered +=
+        () => ShowStockColorTip(
+          slot,
+          slotIndex);
+
+      slot.MouseExited +=
+        () => OnUnhovered(
+          slot);
+    }
+    
     _slotTweens = new Tween?[_slots.Length];
 
     CallDeferred(nameof(UpdateCardPivots));
@@ -280,7 +316,7 @@ public partial class CardDisplayOverlay : Control {
     if (_orb != null)
     {
       _orb.MouseFilter =
-        MouseFilterEnum.Pass;
+        MouseFilterEnum.Stop;
 
       _orb.MouseEntered += ShowFlipTip;
 
@@ -399,6 +435,9 @@ public partial class CardDisplayOverlay : Control {
 
         if (hasCard)
         {
+          slot.MouseFilter =
+            MouseFilterEnum.Stop;
+          
           slot.Texture =
             CardTextures[items[i]];
 
@@ -423,6 +462,11 @@ public partial class CardDisplayOverlay : Control {
         }
         else
         {
+          NHoverTipSet.Remove(slot);
+
+          slot.MouseFilter =
+            MouseFilterEnum.Ignore;
+
           if (slot.Visible &&
               slot.Modulate.A > 0.01f)
           {
@@ -485,17 +529,23 @@ public partial class CardDisplayOverlay : Control {
         : null;
   }
 
-  public override void _ExitTree() {
+  public override void _ExitTree()
+  {
     _exiting = true;
-    
+
     NHoverTipSet.Remove(_orb);
-    NHoverTipSet.Remove(_cardDisplay);
+
+    if (_slots != null)
+    {
+      foreach (var slot in _slots)
+      {
+        NHoverTipSet.Remove(slot);
+      }
+    }
 
     _flipHoverTip = null;
-    _stockHoverTip = null;
-
     _orb = null;
-    
+
     if (_slotTweens != null)
     {
       foreach (var tween in _slotTweens)
@@ -505,16 +555,12 @@ public partial class CardDisplayOverlay : Control {
     }
 
     _slots = null;
-
     _orbLabel = null;
-
     _cardDisplay = null;
     _player = null;
 
     if (Instance == this)
       Instance = null;
-    
-
   }
 }
 

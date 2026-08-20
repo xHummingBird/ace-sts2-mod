@@ -14,7 +14,7 @@ public class GigaBurst() : AceRedCard(0, CardType.Attack,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(20m, ValueProp.Move),
+        new DamageVar(25m, ValueProp.Move),
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
