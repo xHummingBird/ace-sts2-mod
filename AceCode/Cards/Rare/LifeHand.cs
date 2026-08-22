@@ -1,7 +1,10 @@
+using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
+using Ace.AceCode.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -16,6 +19,11 @@ public class LifeHand() : AceBlueCard(0, CardType.Skill, CardRarity.Rare, Target
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust
+    ];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        AceStaticHoverTip.Majority
     ];
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

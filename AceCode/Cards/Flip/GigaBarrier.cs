@@ -7,9 +7,11 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Ace.AceCode.Cards.Flip;
 
-public class GigaBarrier() : AceFlipCard(0, CardType.Skill,
-    CardRarity.Rare, TargetType.Self)
+public class GigaBarrier() : AceBlueCard(0, CardType.Skill,
+    CardRarity.Token, TargetType.Self), IFlipCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust

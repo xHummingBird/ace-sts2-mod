@@ -4,15 +4,22 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common;
 
-public class CardToss() : AceRedCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), IStockingCard
+public class CardToss() : AceRedCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), IFlipCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move)];
 
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        AceStaticHoverTip.Stock,
+        AceStaticHoverTip.Unstockable,
+    ];
+    
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var ownerCreature = Owner?.Creature;
@@ -34,7 +41,11 @@ public class CardToss() : AceRedCard(1, CardType.Attack, CardRarity.Common, Targ
             .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
             .Execute(choiceContext);
         await Task.Delay((int)(0.2f * 1000f));
-        await Ace.AceCode.Mechanics.Flip.Color(choiceContext, this, play, AceColor.Red, 0, 1);
+        if (Stock.Count(Owner, AceColor.Red) >= 1)
+        {
+            SfxCmd.Play("res://Ace/sounds/open.wav");
+            await Ace.AceCode.Mechanics.Flip.Color(choiceContext, this, play, AceColor.Red, 0, 1);
+        }
     }
 
     protected override void OnUpgrade()

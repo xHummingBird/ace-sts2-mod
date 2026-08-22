@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Ace.AceCode.Cards.Ancient;
 
-public class Aegis() : AceFlipCard(0, CardType.Skill,
+public class Aegis() : AceCard(0, CardType.Skill,
     CardRarity.Ancient, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

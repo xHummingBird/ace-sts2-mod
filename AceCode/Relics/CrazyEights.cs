@@ -1,7 +1,8 @@
-﻿namespace Ace.AceCode.Relics;
+using MegaCrit.Sts2.Core.Entities.Relics;
 
-//Rare whenever you flip rainbow or 4 of the same colors, gain 1 energy (this must be flip only, doesn't count consume. Ace in the hole card should count as flip)
-public class CrazyEights
+namespace Ace.AceCode.Relics;
+
+public class CrazyEights() : AceRelic
 {
-    
+    public override RelicRarity Rarity => RelicRarity.Rare;
 }

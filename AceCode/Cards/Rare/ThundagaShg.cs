@@ -3,6 +3,7 @@ using Ace.AceCode.Mechanics;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -10,9 +11,15 @@ namespace Ace.AceCode.Cards.Rare
 {
 public class ThundagaShg() : AceYellowCard(1, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
     {
+        protected override bool ShouldGlowGoldInternal => Stock.Majority(base.Owner) == AceColor.Yellow;
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new DamageVar(10m, ValueProp.Move),
+        ];
+        
+        protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [
+            AceStaticHoverTip.Majority
         ];
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
         {

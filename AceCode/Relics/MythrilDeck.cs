@@ -1,7 +1,8 @@
-﻿namespace Ace.AceCode.Relics;
+using MegaCrit.Sts2.Core.Entities.Relics;
 
-//Rare whenever you flip blue, increase flip level by 1
-public class MythrilDeck
+namespace Ace.AceCode.Relics;
+
+public class MythrilDeck() : AceRelic
 {
-    
+    public override RelicRarity Rarity => RelicRarity.Rare;
 }

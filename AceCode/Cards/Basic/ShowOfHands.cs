@@ -3,6 +3,7 @@ using Ace.AceCode.Character;
 using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -24,6 +25,7 @@ public class ShowOfHands()
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play) 
     {
+        SfxCmd.Play("res://Ace/sounds/open.wav");
         if (Stock.IsRainbow(Owner))
         {
             await Ace.AceCode.Mechanics.Flip.Spectrum(

@@ -1,4 +1,5 @@
 ﻿using Ace.AceCode.Extensions;
+using Ace.AceCode.Mechanics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -10,9 +11,11 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Flip;
 
-public class ShortStop() : AceFlipCard(0, CardType.Skill,
-    CardRarity.Common, TargetType.AnyEnemy)
+public class ShortStop() : AceWhiteCard(0, CardType.Skill,
+    CardRarity.Token, TargetType.AnyEnemy), IFlipCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust
@@ -20,8 +23,8 @@ public class ShortStop() : AceFlipCard(0, CardType.Skill,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<WeakPower>(1m),
-        new PowerVar<VulnerablePower>(1m)
+        new PowerVar<WeakPower>(2m),
+        new PowerVar<VulnerablePower>(2m)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

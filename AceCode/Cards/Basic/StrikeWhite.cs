@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Ace.AceCode.Cards.Basic
 {
     public class StrikeWhite() : AceWhiteCard(1, CardType.Attack,
-        CardRarity.Basic, TargetType.AnyEnemy), IStockingCard
+        CardRarity.Basic, TargetType.AnyEnemy)
     {
         protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
         protected override IEnumerable<DynamicVar> CanonicalVars =>

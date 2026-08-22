@@ -1,12 +1,13 @@
 ﻿using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Ace.AceCode.Cards.Ancient;
 
-public class MasterRules() : AceCard(2, CardType.Skill, CardRarity.Basic, TargetType.AnyEnemy), IFlipCard
+public class MasterRules() : AceCard(1, CardType.Skill, CardRarity.Ancient, TargetType.AnyEnemy), IFlipCard
 {
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -17,6 +18,7 @@ public class MasterRules() : AceCard(2, CardType.Skill, CardRarity.Basic, Target
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play) 
     {
+        SfxCmd.Play("res://Ace/sounds/open.wav");
         if (Stock.IsRainbow(Owner))
         {
             await Ace.AceCode.Mechanics.Flip.Spectrum(
@@ -38,6 +40,6 @@ public class MasterRules() : AceCard(2, CardType.Skill, CardRarity.Basic, Target
     
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        AddKeyword(CardKeyword.Retain);
     }
 }

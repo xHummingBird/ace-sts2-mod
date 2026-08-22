@@ -12,12 +12,17 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common;
 
-public class ChillDeal() : AceYellowCard(0, CardType.Skill, CardRarity.Common, TargetType.Self), IStockingCard
+public class ChillDeal() : AceYellowCard(1, CardType.Skill, CardRarity.Common, TargetType.Self), IStockingCard
 {
     protected override bool ShouldGlowGoldInternal => (Stock.Majority(base.Owner) == AceColor.Yellow);
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
+    ];
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -27,6 +32,7 @@ public class ChillDeal() : AceYellowCard(0, CardType.Skill, CardRarity.Common, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        SfxCmd.Play("res://Ace/sounds/draw.wav");
         await CardPileCmd.Draw(choiceContext, 1, base.Owner);
         if (Stock.Majority(base.Owner) == AceColor.Yellow) 
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner);

@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Uncommon;
 
-public class FiftyThree() : AceRedCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), IStockingCard
+public class FiftyThree() : AceYellowCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), IStockingCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new CalculationBaseVar(0m),

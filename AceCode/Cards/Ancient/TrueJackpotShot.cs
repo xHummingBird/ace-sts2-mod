@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Ancient;
 
-public class TrueJackpotShot() : AceFlipCard(0, CardType.Attack,
+public class TrueJackpotShot() : AceCard(0, CardType.Attack,
     CardRarity.Ancient, TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

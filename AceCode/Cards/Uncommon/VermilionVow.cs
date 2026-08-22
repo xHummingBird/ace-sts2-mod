@@ -17,6 +17,8 @@ public class VermilionVow() : AceCard(
     CardRarity.Uncommon,
     TargetType.Self)
 {
+    protected override bool ShouldGlowGoldInternal => (Stock.IsRainbow(Owner));
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<StrengthPower>(1m),

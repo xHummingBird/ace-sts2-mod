@@ -18,6 +18,7 @@ public class SleightOfHand() : AceBlueCard(1, CardType.Skill, CardRarity.Common,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
+        SfxCmd.Play("res://Ace/sounds/draw.wav");
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner);
     }
 

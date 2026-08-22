@@ -13,12 +13,17 @@ namespace Ace.AceCode.Cards.Uncommon;
 public class AnteUp() : AceRedCard(3, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [];
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         foreach (CardModel card in PileType.Hand.GetPile(base.Owner).Cards.ToList())
         {
-            if (card.Type == CardType.Attack && !card.EnergyCost.CostsX)
+            if (!card.EnergyCost.CostsX)
             {
                 card.SetToFreeThisTurn();
             }

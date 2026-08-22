@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Ancient;
 
-public class UltimateBurst() : AceFlipCard(0, CardType.Attack,
+public class UltimateBurst() : AceCard(0, CardType.Attack,
     CardRarity.Ancient, TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

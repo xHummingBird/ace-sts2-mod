@@ -1,7 +1,8 @@
-﻿namespace Ace.AceCode.Relics;
+using MegaCrit.Sts2.Core.Entities.Relics;
 
-//Uncommon whenever you consume or flip, stock a white
-public class ArcaneDeck
+namespace Ace.AceCode.Relics;
+
+public class ArcaneDeck() : AceRelic
 {
-    
+    public override RelicRarity Rarity => RelicRarity.Uncommon;
 }

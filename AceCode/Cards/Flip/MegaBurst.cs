@@ -1,4 +1,5 @@
 ﻿using Ace.AceCode.Extensions;
+using Ace.AceCode.Mechanics;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -8,9 +9,11 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Flip;
 
-public class MegaBurst() : AceFlipCard(0, CardType.Attack,
-    CardRarity.Uncommon, TargetType.AllEnemies)
+public class MegaBurst() : AceRedCard(0, CardType.Attack,
+    CardRarity.Token, TargetType.AllEnemies), IFlipCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(16m, ValueProp.Move),

@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Ace.AceCode.Cards.Ancient;
 
-public class Overdrive() : AceFlipCard(0, CardType.Skill,
+public class Overdrive() : AceCard(0, CardType.Skill,
     CardRarity.Ancient, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -15,6 +15,7 @@ public class Overdrive() : AceFlipCard(0, CardType.Skill,
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        SfxCmd.Play("res://Ace/sounds/draw.wav");
         await CardPileCmd.Draw(choiceContext, 2, base.Owner);
         foreach (CardModel card in PileType.Hand.GetPile(base.Owner).Cards.ToList())
         {

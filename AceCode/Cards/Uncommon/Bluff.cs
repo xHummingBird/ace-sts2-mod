@@ -1,3 +1,4 @@
+using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -20,6 +21,7 @@ public class Bluff() : AceWhiteCard(1, CardType.Skill, CardRarity.Uncommon, Targ
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
+        AceStaticHoverTip.Stock,
         HoverTipFactory.FromPower<VulnerablePower>(),
     ];
 

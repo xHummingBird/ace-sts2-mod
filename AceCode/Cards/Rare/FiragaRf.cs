@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
@@ -13,12 +14,18 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Ace.AceCode.Cards.Rare
 {
 public class FiragaRf() : AceRedCard(2, CardType.Attack,
-        CardRarity.Rare, TargetType.AnyEnemy), IConsumeCard
+        CardRarity.Rare, TargetType.AnyEnemy), IFlipCard
     {
+        protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [
+            AceStaticHoverTip.Flip,
+            AceStaticHoverTip.Unstockable
+        ];
+        
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new DamageVar(18m, ValueProp.Move),
-            new DynamicVar("FlipAmount", 1m)
+            new DynamicVar("FlipAmount", 2m)
         ];
     
         protected override async Task OnPlay(PlayerChoiceContext choiceContext,
@@ -40,8 +47,13 @@ public class FiragaRf() : AceRedCard(2, CardType.Attack,
                     SfxCmd.Play("event:/sfx/characters/attack_fire");
                 })
                 .Execute(choiceContext);
-            await Ace.AceCode.Mechanics.Flip.Color(choiceContext, this, play, AceColor.Red, 0, DynamicVars["FlipAmount"].IntValue);
-            
+            if (Stock.Count(Owner, AceColor.Red) >= 1)
+            {
+                SfxCmd.Play("res://Ace/sounds/open.wav");
+                await Ace.AceCode.Mechanics.Flip.Color(choiceContext, this, play, AceColor.Red, 0,
+                    DynamicVars["FlipAmount"].IntValue);
+            }
+
         }
 
         protected override void OnUpgrade()

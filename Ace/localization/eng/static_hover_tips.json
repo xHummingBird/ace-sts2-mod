@@ -3,11 +3,26 @@
   "ACE_STOCK.description": "Playing colored cards adds their colors to your Stock. Stock can be [gold]Consumed[/gold] by effects or [gold]Flipped[/gold] to trigger powerful effects based on the colors and amount of Stock available.",
 
   "ACE_FLIP.title": "Flip",
-  "ACE_FLIP.description": "Consume [gold]Stocks[/gold] and apply effects based on the color of the [gold]Stocks[/gold] consumed. Flip effects become stronger the more [gold]Stocks[/gold] of the same colour are Flipped.",
+  "ACE_FLIP.description": "Consume [gold]Stocks[/gold] and apply effects based on the color of the [gold]Stocks[/gold] consumed. Flip effects become stronger the more [gold]Stocks[/gold] of the same color are Flipped.",
 
   "ACE_UNSTOCKABLE.title": "Unstockable",
   "ACE_UNSTOCKABLE.description": "This card has a color but does not add its color to your [gold]Stock[/gold] when played.",
   
   "ACE_MAJORITY.title": "Majority",
-  "ACE_MAJORITY.description": "The color that appears most often in your Stock. If multiple colors are tied, the oldest tied color becomes the Majority."
+  "ACE_MAJORITY.description": "The color that appears most often in your Stock. If multiple colors are tied, the oldest tied color becomes the Majority.",
+
+  "ACE_CONSUME.title": "Consume",
+  "ACE_CONSUME.description": "Spend [gold]Stocks[/gold] to activate effects. Consumed [gold]Stocks[/gold] do NOT apply their [gold]Flip[/gold] effects.",
+
+  "ACE_RED.title": "Red Flip Effects:",
+  "ACE_RED.description": "\nLevel 1 - Deal 8 damage.\nLevel 2 - Deal 12 damage.\nLevel 3 - Deal 16 damage to ALL enemies.\nLevel 4 - Deal 25 damage to ALL enemies.\nLevel 5 - Deal 40 damage to ALL enemies.",
+
+  "ACE_YELLOW.title": "Yellow Flip Effects:",
+  "ACE_YELLOW.description": "\nLevel 1 - Draw 2 cards.\nLevel 2 - Draw 2 cards and gain 1 Energy.\nLevel 3 - Draw 2 cards. Your next 2 Skills cost 0 this turn.\nLevel 4 - Draw 2 cards. All Skills in your hand cost 0 this turn.\nLevel 5 - Draw 2 cards. All cards in your hand cost 0 this turn.",
+
+  "ACE_BLUE.title": "Blue Flip Effects:",
+  "ACE_BLUE.description": "\nLevel 1 - Gain 10 Block.\nLevel 2 - Gain 16 Block.\nLevel 3 - Gain 8 Plating.\nLevel 4 - Gain 2 Buffer.\nLevel 5 - Gain 1 Intangible.",
+
+  "ACE_WHITE.title": "White Flip Effects:",
+  "ACE_WHITE.description": "\nLevel 1 - Apply 2 Weak and Vulnerable to an enemy.\nLevel 2 - Apply 2 Breaksight and Weak to an enemy.\nLevel 3 - Apply 2 Breaksight and Weak to ALL enemies.\nLevel 4 - Apply 3 Breaksight and Weak to ALL enemies.\nLevel 5 - Stun all enemies.\n\n[gold]Breaksight[/gold] increases damage taken by 75%."
 }

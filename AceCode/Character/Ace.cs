@@ -110,7 +110,7 @@ public class Ace : PlaceholderCharacterModel
 	
 	public override NCreatureVisuals? CreateCustomVisuals()
 	{
-		// AceAssets.EnsurePreloaded();
+		AceAssets.EnsurePreloaded();
 		return NodeFactory<NCreatureVisuals>.CreateFromScene(CustomVisualScenePath);
 	}
 	

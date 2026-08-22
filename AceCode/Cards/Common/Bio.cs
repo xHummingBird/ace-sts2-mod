@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -20,6 +21,11 @@ public class Bio() : AceWhiteCard(1, CardType.Attack,
         [
             new DamageVar(5m, ValueProp.Move),
             new PowerVar<VulnerablePower>(1m)
+        ];
+        
+        protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [
+            HoverTipFactory.FromPower<VulnerablePower>(),
         ];
     
         protected override async Task OnPlay(PlayerChoiceContext choiceContext,

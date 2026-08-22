@@ -27,6 +27,7 @@ public class Replay() : AceCard(0, CardType.Skill, CardRarity.Rare, TargetType.S
         var amount = base.DynamicVars.Cards.BaseValue;
         if (Stock.IsRainbow(Owner))
             amount += 2;
+        SfxCmd.Play("res://Ace/sounds/draw.wav");
         await CardPileCmd.Draw(choiceContext, amount, base.Owner);
     }
 

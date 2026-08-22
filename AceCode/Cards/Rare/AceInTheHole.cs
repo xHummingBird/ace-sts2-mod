@@ -1,6 +1,7 @@
 using Ace.AceCode.Cards.Ancient;
 using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
+using Ace.AceCode.Relics;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,6 +9,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -29,13 +31,19 @@ public class AceInTheHole() : AceCard(2, CardType.Skill, CardRarity.Rare, Target
     [
         HoverTipFactory.FromCard<JackpotShot>(),
         AceStaticHoverTip.Flip,
-    ];
+    ];  
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        SfxCmd.Play("res://Ace/sounds/open.wav");
         Consume.All(base.Owner);
-        var js = CombatState.CreateCard<JackpotShot>(base.Owner);
+        CardModel js;
+        BlackTrump? blackTrump = Owner.GetRelic<BlackTrump>();
+        if (blackTrump != null)
+            js = CombatState.CreateCard<TrueJackpotShot>(base.Owner);
+        else js = CombatState.CreateCard<JackpotShot>(base.Owner);
         await CardCmd.AutoPlay(choiceContext, js, play.Target);
+        await AceRelicTriggers.OnFlipPayoff(base.Owner, Stock.MaxSlots, isSpectrum: true);
     }
 
     protected override void OnUpgrade()

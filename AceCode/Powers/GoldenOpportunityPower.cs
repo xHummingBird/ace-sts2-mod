@@ -1,7 +1,23 @@
-﻿namespace Ace.AceCode.Powers;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
-//At the start of your turn, gain 1 energy, 2 for ugpraded
-public class GoldenOpportunityPower
+namespace Ace.AceCode.Powers;
+
+public class GoldenOpportunityPower : AcePower
 {
-    
+    public override PowerType Type => PowerType.Buff;
+
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    public override async Task AfterPlayerTurnStart(
+        PlayerChoiceContext choiceContext,
+        Player player)
+    {
+        if (player != base.Owner.Player)
+            return;
+
+        await PlayerCmd.GainEnergy(base.Amount, player);
+    }
 }

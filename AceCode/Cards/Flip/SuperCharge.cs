@@ -1,13 +1,16 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using Ace.AceCode.Mechanics;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace Ace.AceCode.Cards.Flip;
 
-public class SuperCharge() : AceFlipCard(0, CardType.Skill,
-    CardRarity.Common, TargetType.Self)
+public class SuperCharge() : AceYellowCard(0, CardType.Skill,
+    CardRarity.Token, TargetType.Self), IFlipCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust
@@ -20,7 +23,8 @@ public class SuperCharge() : AceFlipCard(0, CardType.Skill,
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PlayerCmd.GainEnergy(2, base.Owner);
+        SfxCmd.Play("res://Ace/sounds/draw.wav");
+        await PlayerCmd.GainEnergy(1, base.Owner);
         await CardPileCmd.Draw(choiceContext, 2, base.Owner);
     }
 }
