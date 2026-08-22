@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4l51fxxsah71"
-path="res://.godot/imported/counterplay_power.png-5951f68fbf0802914678f713f1045ad8.ctex"
+uid="uid://c1r5ojo7o4fj3"
+path="res://.godot/imported/counter_play_power.png-172b9f452dd5b7d282abd2aa3f693820.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ace/images/powers/big/counterplay_power.png"
-dest_files=["res://.godot/imported/counterplay_power.png-5951f68fbf0802914678f713f1045ad8.ctex"]
+source_file="res://Ace/images/powers/big/counter_play_power.png"
+dest_files=["res://.godot/imported/counter_play_power.png-172b9f452dd5b7d282abd2aa3f693820.ctex"]
 
 [params]
 

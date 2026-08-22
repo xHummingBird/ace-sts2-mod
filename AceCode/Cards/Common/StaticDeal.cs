@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common;
 
-public class StaticDeal() : AceYellowCard(0, CardType.Attack, CardRarity.Common, TargetType.Self), IFlipCard
+public class StaticDeal() : AceYellowCard(0, CardType.Skill, CardRarity.Common, TargetType.Self), IFlipCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [];
     

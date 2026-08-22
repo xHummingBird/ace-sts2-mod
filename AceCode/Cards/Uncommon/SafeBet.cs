@@ -6,9 +6,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
-namespace Ace.AceCode.Cards.Rare;
+namespace Ace.AceCode.Cards.Uncommon;
 
-public class SafeBet() : AceBlueCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class SafeBet() : AceBlueCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<SafeBetPower>(1m)];
 

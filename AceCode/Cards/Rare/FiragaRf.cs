@@ -25,7 +25,7 @@ public class FiragaRf() : AceRedCard(2, CardType.Attack,
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new DamageVar(18m, ValueProp.Move),
-            new DynamicVar("FlipAmount", 1m)
+            new DynamicVar("FlipAmount", 2m)
         ];
     
         protected override async Task OnPlay(PlayerChoiceContext choiceContext,
@@ -47,8 +47,13 @@ public class FiragaRf() : AceRedCard(2, CardType.Attack,
                     SfxCmd.Play("event:/sfx/characters/attack_fire");
                 })
                 .Execute(choiceContext);
-            await Ace.AceCode.Mechanics.Flip.Color(choiceContext, this, play, AceColor.Red, 0, DynamicVars["FlipAmount"].IntValue);
-            
+            if (Stock.Count(Owner, AceColor.Red) >= 1)
+            {
+                SfxCmd.Play("res://Ace/sounds/open.wav");
+                await Ace.AceCode.Mechanics.Flip.Color(choiceContext, this, play, AceColor.Red, 0,
+                    DynamicVars["FlipAmount"].IntValue);
+            }
+
         }
 
         protected override void OnUpgrade()

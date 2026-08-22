@@ -15,6 +15,8 @@ namespace Ace.AceCode.Cards.Uncommon;
 //Gain 10 block. If current majority is blue, gain the same amount next turn. Use BlockNextTurn power. Stock check is only during activation 
 public class EvasiveManeuver() : AceBlueCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), IStockingCard
 {
+    protected override bool ShouldGlowGoldInternal => Stock.Majority(base.Owner) == AceColor.Blue;
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(10, ValueProp.Move)

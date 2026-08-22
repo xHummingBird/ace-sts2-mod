@@ -10,6 +10,8 @@ namespace Ace.AceCode.Cards.Flip;
 public class Barrier() : AceBlueCard(0, CardType.Skill,
     CardRarity.Token, TargetType.Self), IFlipCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(10, ValueProp.Move)];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

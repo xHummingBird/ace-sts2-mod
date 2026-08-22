@@ -47,7 +47,7 @@ public class BreaksightPower : AcePower
         //
         if (dealer == Owner)
         {
-            return DynamicVars["DamageDecrease"].BaseValue; // 0.25
+            return 1m; // 0.25
         }
 
         //

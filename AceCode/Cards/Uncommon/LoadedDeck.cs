@@ -14,7 +14,6 @@ namespace Ace.AceCode.Cards.Uncommon;
 
 public class LoadedDeck() : AceCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
 {
-    
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         AceStaticHoverTip.Consume

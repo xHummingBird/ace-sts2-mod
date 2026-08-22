@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Ace.AceCode.Cards.Common;
 
-public class Firebrand() : AceRedCard(1, CardType.Attack, CardRarity.Common, TargetType.Self)
+public class Firebrand() : AceRedCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<VigorPower>(5m)

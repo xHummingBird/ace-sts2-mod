@@ -32,7 +32,12 @@ public class SpiralGambit() : AceBlueCard(3, CardType.Attack,
             if (ownerCreature != null && Owner?.Character is Character.Ace ace)
             {
                 AudioHelper.PlayRandomLimitBreak();
-                float duration = ace.PlayAnimation(ownerCreature, "spiral_gambit").total;
+                float duration = ace.PlayAnimation(ownerCreature, "cast").total;
+                ace.PlayVfxOnTarget(
+                    play.Target,
+                    "res://Ace/scenes/vfx.tscn",
+                    "spiral_gambit"
+                );
                 SfxCmd.Play("res://Ace/sfx/card_flip.wav");
                 await Task.Delay((int)(0.333f * 1000f));
                 SfxCmd.Play("res://Ace/sfx/ragnarok_shoot.wav");

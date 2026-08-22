@@ -47,8 +47,11 @@ public class Quickdraw() : AceRedCard(0, CardType.Attack,
             .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
             .Execute(choiceContext);
         await Task.Delay((int)(0.2f * 1000f));
-        if (Stock.Majority(base.Owner) == AceColor.Red) 
+        if (Stock.Majority(base.Owner) == AceColor.Red)
+        {
+            SfxCmd.Play("res://Ace/sounds/draw.wav");
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner);
+        }
     }
 
     protected override void OnUpgrade()

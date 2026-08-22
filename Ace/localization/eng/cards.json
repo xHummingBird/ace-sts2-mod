@@ -29,7 +29,7 @@
   "ACE-SHOW_OF_HANDS.description": "[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} or the [gold]Majority[/gold] color in your [gold]Stock[/gold]. \n[gold]Consume[/gold] the rest of your [gold]Stock[/gold].",
   "ACE-SHOW_OF_HANDS.title": "Show of Hands",
   
-  "ACE-FLURRY.description": "Deal {Damage:diff()} damage 4 times. \n[gold]Flip[/gold] up to 2 {RedIcon}.",
+  "ACE-FLURRY.description": "Deal {Damage:diff()} damage 4 times. \n[gold]Flip[/gold] up to 2 {YellowIcon}.",
   "ACE-FLURRY.title": "Flurry",
   
   "ACE-CARD_BARRIER.description": "Gain {Block:diff()} [gold]Block[/gold]. \nGain 2 additional [gold]Block[/gold] for each {BlueIcon} [gold]Stocked[/gold].",
@@ -65,7 +65,7 @@
   "ACE-BLIZZARD_BOM.description": "Deal {Damage:diff()} damage. \nGain {Block:diff()} [gold]Block[/gold].",
   "ACE-BLIZZARD_BOM.title": "Blizzard BOM",
 
-  "ACE-EVASIVE_MANEUVER.description": "Gain {Block:diff()} [gold]Block[/gold]. \nIf {BlueIcon} is [gold]Majority[/gold], gain {Block:diff()} next turn.",
+  "ACE-EVASIVE_MANEUVER.description": "Gain {Block:diff()} [gold]Block[/gold]. \nIf {BlueIcon} is [gold]Majority[/gold], gain {Block:diff()} [gold]Block[/gold] next turn.",
   "ACE-EVASIVE_MANEUVER.title": "Evasive Maneuver",
 
   "ACE-LAST_STAND.description": "Consume 4 [gold]Stocks[/gold]. \nGain {BufferPower:diff()} [gold]Buffer[/gold].",
@@ -96,7 +96,7 @@
   "ACE-LIFE_HAND.description": "Gain {Block:diff()} [gold]Block[/gold]. \nIf {BlueIcon} is [gold]Majority[/gold], gain [gold]Block[/gold] another time.",
   "ACE-LIFE_HAND.title": "Life Hand",
   
-  "ACE-LAST_CARD.description": "[gold]Flip[/gold] all {YellowIcon}. If you have 0 cards in your [gold]Draw Pile[/gold].",
+  "ACE-LAST_CARD.description": "[gold]Flip[/gold] all {YellowIcon}. If you have 0 cards in your [gold]Draw Pile[/gold], increase its effect by {Level:diff()} level.",
   "ACE-LAST_CARD.title": "Last Card",
   
   "ACE-HIGH_CARD.description": "Deal {Damage:diff()} damage. \n[gold]Flip[/gold] up to 2 {WhiteIcon}.",
@@ -105,10 +105,10 @@
   "ACE-DISCARD_READ.description": "Apply {WeakPower:diff()} [gold]Weak[/gold]. \n[gold]Exhaust[/gold] 1 card in your hand. \nIf [gold]Exhausted[/gold] card is {WhiteIcon}, [gold]Stock[/gold] it.",
   "ACE-DISCARD_READ.title": "Discard Read",
 
-  "ACE-ROYAL_FLUSH.description": "[gold]Flip[/gold] all your {RedIcon} [gold]Stock[/gold] and increase its effect by 1 level.",
+  "ACE-ROYAL_FLUSH.description": "[gold]Flip[/gold] all {RedIcon} and increase its effect by 1 level.",
   "ACE-ROYAL_FLUSH.title": "Royal Flush",
   
-  "ACE-MEMENTO.description": "Deal damage equal to your [gold]Block[/gold]. \nDeal 3 additional damage for each {BlueIcon} [gold]Stocked[/gold].",
+  "ACE-MEMENTO.description": "Deal damage equal to your [gold]Block[/gold]. \nFlip all {BlueIcon}.",
   "ACE-MEMENTO.title": "Memento",
   
   "ACE-VERMILION_VOW.description": "Gain 1 [gold]Strength[/gold] and [gold]Dexterity[/gold]. Gain 2 additional [gold]Strength[/gold] and [gold]Dexterity[/gold] if you have {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon}.",
@@ -123,7 +123,7 @@
   "ACE-SLEIGHT_OF_HAND.description": "Gain {Block:diff()} [gold]Block[/gold]. \nDraw {Cards:diff()} {Cards:plural:card|cards}",
   "ACE-SLEIGHT_OF_HAND.title": "Sleight of Hand",
   
-  "ACE-EVASIVE_DEAL.description": "Gain {Block:diff()} [gold]Block[/gold]. \nif {BlueIcon} is [gold]Majority[/gold], gain the same [gold]Block[/gold] next turn",
+  "ACE-EVASIVE_DEAL.description": "Gain {Block:diff()} [gold]Block[/gold]. \nFlip 1 {BlueIcon}.",
   "ACE-EVASIVE_DEAL.title": "Evasive Deal",
   
   "ACE-REPLAY.description": "Shuffle ALL your cards into your Draw Pile. \nDraw 4 cards. \nIf you have {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} [gold]Stocked[/gold], draw 2 more cards.",
@@ -147,8 +147,11 @@
   "ACE-VERMILION_BIRD.description": "Gain {StrengthPower:diff()} [gold]Strength[/gold]. \n[gold]Consume[/gold] all {RedIcon} [gold]Stocks[/gold] and gain additional [gold]Strength[/gold] equal to amount consumed.",
   "ACE-VERMILION_BIRD.title": "Vermilion Bird",
 
-  "ACE-KILLSIGHT.description": "Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold]. \nThe next Attack you play costs 0 {Energy:energyIcons()}.",
+  "ACE-KILLSIGHT.description": "Deal {Damage:diff()} damage. \nKill the enemy if it has [gold]{hpPercent:diff()}%[/gold] HP or less.",
   "ACE-KILLSIGHT.title": "Killsight",
+
+  "ACE-BREAKSIGHT.description": "Apply {BreaksightPower:diff()} [gold]Breaksight[/gold]. \nThe next Attack you play costs 0 {Energy:energyIcons()}.",
+  "ACE-BREAKSIGHT.title": "Breaksight",
 
   "ACE-CUT_CARDS.description": "Draw {Cards:diff()} {Cards:plural:card|cards}. \n[gold]Stock[/gold] the color of cards drawn this way.",
   "ACE-CUT_CARDS.title": "Cut Cards",
@@ -159,7 +162,7 @@
   "ACE-JACKPOT_SHOT.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies. \nDeal additional damage equal to the number of cards played this combat.",
   "ACE-JACKPOT_SHOT.title": "Jackpot Shot",
   
-  "ACE-MYSTIC_VOLLEY.description": "Deal {Damage:diff()} damage to ALL enemies. \n[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon}.",
+  "ACE-MYSTIC_VOLLEY.description": "Deal {Damage:diff()} damage to ALL enemies. \n[gold]Flip[/gold] all {WhiteIcon}.",
   "ACE-MYSTIC_VOLLEY.title": "Mystic Volley",
   
   "ACE-THUNDER_SHG.description": "Deal {Damage:diff()} damage to ALL enemies.",
@@ -189,10 +192,10 @@
   "ACE-BIO.description": "Deal {Damage:diff()} damage. \nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
   "ACE-BIO.title": "Bio",
 
-  "ACE-FIRAGA_RF.description": "Deal {Damage:diff()} damage. \n[gold]Flip up to {FlipAmount:diff()} {RedIcon}.",
+  "ACE-FIRAGA_RF.description": "Deal {Damage:diff()} damage. \n[gold]Flip[/gold] up to {FlipAmount:diff()} {RedIcon}.",
   "ACE-FIRAGA_RF.title": "Firaga RF",
 
-  "ACE-BIOGA.description": "Deal {Damage:diff()} damage. \nApply [gold]Breaksight[/gold]. \nApply additional [gold]Breaksight[/gold] equal to {WhiteIcon} [gold]Stocked[/gold].",
+  "ACE-BIOGA.description": "Deal {Damage:diff()} damage. \nApply [gold]Breaksight[/gold]. \nIf {WhiteIcon} is your current [gold]Majority[/gold], apply an additional [gold]Breaksight[/gold].",
   "ACE-BIOGA.title": "Bioga",
 
   "ACE-TRIPLE_THREAT.description": "[gold]Flip[/gold] {RedIcon}{YellowIcon}{BlueIcon}{WhiteIcon} or up to 3 [gold]Stocks[/gold] of your [gold]Majority[/gold] color.",
@@ -217,11 +220,11 @@
   "ACE-SUPER_BARRIER.title": "Super Barrier",
   "ACE-GIGA_BARRIER.description": "[gold]Flip Level 4[/gold] \nGain 2 [gold]Buffer[/gold].",
   "ACE-GIGA_BARRIER.title": "Giga Barrier",
-  "ACE-GIGA_STOP.description": "[gold]Flip Level 4[/gold] \nApply 3 [gold]Breaksight[/gold] to ALL enemies.",
+  "ACE-GIGA_STOP.description": "[gold]Flip Level 4[/gold] \nApply 3 [gold]Breaksight[/gold] and [gold]Weak[/gold] to ALL enemies.",
   "ACE-GIGA_STOP.title": "Giga Stop",
   "ACE-MEGA_BURST.description": "[gold]Flip Level 3[/gold] \nDeal {Damage:diff()} damage to ALL enemies.",
   "ACE-MEGA_BURST.title": "Mega Burst",
-  "ACE-LONG_STOP.description": "[gold]Flip Level 2[/gold] \nApply 2 [gold]Breaksight[/gold].",
+  "ACE-LONG_STOP.description": "[gold]Flip Level 2[/gold] \nApply 2 [gold]Breaksight[/gold] and [gold]Weak[/gold].",
   "ACE-LONG_STOP.title": "Long Stop",
   "ACE-SUPER_CHARGE.description": "[gold]Flip Level 2[/gold] \nDraw 2 cards. \nGain {Energy:energyIcons()}.",
   "ACE-SUPER_CHARGE.title": "Super Force",
@@ -233,7 +236,7 @@
   "ACE-SHORT_STOP.title": "Short Stop",
   "ACE-SUPER_BURST.description": "[gold]Flip Level 2[/gold] \nDeal {Damage:diff()} damage.",
   "ACE-SUPER_BURST.title": "Super Burst",
-  "ACE-MEGA_STOP.description": "[gold]Flip Level 3[/gold] \nApply 2 [gold]Breaksight[/gold] to ALL enemies.",
+  "ACE-MEGA_STOP.description": "[gold]Flip Level 3[/gold] \nApply 2 [gold]Breaksight[/gold] and [gold]Weak[/gold] to ALL enemies.",
   "ACE-MEGA_STOP.title": "Mega Stop",
   "ACE-ULTIMATE_BURST.description": "[gold]Flip Level 5[/gold] \nDeal {Damage:diff()} damage to ALL enemies.",
   "ACE-ULTIMATE_BURST.title": "Ultimate Burst",
@@ -258,7 +261,7 @@
   "ACE-TELL.description": "Whenever you apply [gold]Vulnerable[/gold] or [gold]Weak[/gold], draw {TellPower:diff()} card(s).",
   "ACE-TELL.title": "Tell",
   
-  "ACE-DOUBLE_PLAY.description": "The first {DoublePlayPower:diff()} {RedIcon} card(s) you play each turn are played twice.",
+  "ACE-DOUBLE_PLAY.description": "The first {RedIcon} card you play each turn is played twice.",
   "ACE-DOUBLE_PLAY.title": "Double Play",
   
   "ACE-GOLDEN_OPPORTUNITY.description": "At the start of your turn, gain {GoldenOpportunityPower:diff()} {Energy:energyIcons()}.",

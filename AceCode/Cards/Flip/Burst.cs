@@ -15,6 +15,8 @@ namespace Ace.AceCode.Cards.Flip;
 public class Burst() : AceRedCard(0, CardType.Attack,
     CardRarity.Token, TargetType.AnyEnemy), IFlipCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(8m, ValueProp.Move),

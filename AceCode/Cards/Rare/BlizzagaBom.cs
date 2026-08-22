@@ -16,6 +16,8 @@ namespace Ace.AceCode.Cards.Rare
 public class BlizzagaBom() : AceBlueCard(2, CardType.Attack,
         CardRarity.Rare, TargetType.AllEnemies)
     {
+        protected override bool ShouldGlowGoldInternal => Stock.Majority(base.Owner) == AceColor.Blue;
+        
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new DamageVar(12m, ValueProp.Move),

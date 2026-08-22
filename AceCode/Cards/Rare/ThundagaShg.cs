@@ -11,6 +11,7 @@ namespace Ace.AceCode.Cards.Rare
 {
 public class ThundagaShg() : AceYellowCard(1, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
     {
+        protected override bool ShouldGlowGoldInternal => Stock.Majority(base.Owner) == AceColor.Yellow;
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new DamageVar(10m, ValueProp.Move),

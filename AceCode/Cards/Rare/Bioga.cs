@@ -18,6 +18,8 @@ namespace Ace.AceCode.Cards.Rare
 public class Bioga() : AceWhiteCard(2, CardType.Attack,
         CardRarity.Rare, TargetType.AnyEnemy), IStockingCard
     {
+        protected override bool ShouldGlowGoldInternal => Stock.Count(base.Owner, AceColor.White) >= 1;
+        
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new DamageVar(12m, ValueProp.Move),
@@ -50,8 +52,12 @@ public class Bioga() : AceWhiteCard(2, CardType.Attack,
                     SfxCmd.Play("event:/sfx/characters/attack_fire");
                 })
                 .Execute(choiceContext);
-            int powerAmount = Stock.Count(Owner, AceColor.White) + 1;
-            
+            int powerAmount = DynamicVars["BreaksightPower"].IntValue;
+            if (Stock.Majority(Owner) == AceColor.White)
+            {
+                powerAmount += 1;
+            }
+
             await PowerCmd.Apply<BreaksightPower>(choiceContext, play.Target, powerAmount, base.Owner.Creature, this);
         }
 

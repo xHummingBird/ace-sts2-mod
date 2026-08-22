@@ -10,6 +10,8 @@ namespace Ace.AceCode.Cards.Flip;
 public class GigaCharge() : AceYellowCard(0, CardType.Skill,
   CardRarity.Token, TargetType.Self), IFlipCard
 {
+  public override bool CanBeGeneratedInCombat => false;
+  
   public override IEnumerable<CardKeyword> CanonicalKeywords =>
   [
     CardKeyword.Exhaust
@@ -17,6 +19,7 @@ public class GigaCharge() : AceYellowCard(0, CardType.Skill,
     
   protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
   {
+    SfxCmd.Play("res://Ace/sounds/draw.wav");
     await CardPileCmd.Draw(choiceContext, 2, base.Owner);
     foreach (CardModel card in PileType.Hand.GetPile(base.Owner).Cards.ToList())
     {

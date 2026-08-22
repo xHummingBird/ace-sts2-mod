@@ -12,6 +12,8 @@ namespace Ace.AceCode.Cards.Flip;
 public class SuperBurst() : AceRedCard(0, CardType.Attack,
     CardRarity.Token, TargetType.AnyEnemy), IFlipCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(12m, ValueProp.Move),

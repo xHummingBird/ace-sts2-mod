@@ -3,7 +3,7 @@
   "ACE_STOCK.description": "Playing colored cards adds their colors to your Stock. Stock can be [gold]Consumed[/gold] by effects or [gold]Flipped[/gold] to trigger powerful effects based on the colors and amount of Stock available.",
 
   "ACE_FLIP.title": "Flip",
-  "ACE_FLIP.description": "Consume [gold]Stocks[/gold] and apply effects based on the color of the [gold]Stocks[/gold] consumed. Flip effects become stronger the more [gold]Stocks[/gold] of the same colour are Flipped.",
+  "ACE_FLIP.description": "Consume [gold]Stocks[/gold] and apply effects based on the color of the [gold]Stocks[/gold] consumed. Flip effects become stronger the more [gold]Stocks[/gold] of the same color are Flipped.",
 
   "ACE_UNSTOCKABLE.title": "Unstockable",
   "ACE_UNSTOCKABLE.description": "This card has a color but does not add its color to your [gold]Stock[/gold] when played.",
@@ -24,5 +24,5 @@
   "ACE_BLUE.description": "\nLevel 1 - Gain 10 Block.\nLevel 2 - Gain 16 Block.\nLevel 3 - Gain 8 Plating.\nLevel 4 - Gain 2 Buffer.\nLevel 5 - Gain 1 Intangible.",
 
   "ACE_WHITE.title": "White Flip Effects:",
-  "ACE_WHITE.description": "\nLevel 1 - Apply 2 Weak and Vulnerable to an enemy.\nLevel 2 - Apply 2 Breaksight to an enemy.\nLevel 3 - Apply 2 Breaksight to ALL enemies.\nLevel 4 - Apply 3 Breaksight to ALL enemies.\nLevel 5 - Stun all enemies.\n\nBreaksight reduces damage dealt by 75% and increases damage taken by 75%."
+  "ACE_WHITE.description": "\nLevel 1 - Apply 2 Weak and Vulnerable to an enemy.\nLevel 2 - Apply 2 Breaksight and Weak to an enemy.\nLevel 3 - Apply 2 Breaksight and Weak to ALL enemies.\nLevel 4 - Apply 3 Breaksight and Weak to ALL enemies.\nLevel 5 - Stun all enemies.\n\n[gold]Breaksight[/gold] increases damage taken by 75%."
 }

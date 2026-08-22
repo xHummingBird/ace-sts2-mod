@@ -1,29 +1,21 @@
 using Ace.AceCode.Extensions;
 using Ace.AceCode.Mechanics;
-using BaseLib.Extensions;
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Ace.AceCode.Cards.Uncommon;
+namespace Ace.AceCode.Cards.Rare;
 
-public class Memento() : AceBlueCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), IStockingCard
+public class Memento() : AceBlueCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy), IFlipCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new CalculationBaseVar(0m),
         new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => (card.Owner.Creature.Block + (Stock.Count(card.Owner, AceColor.Blue) * 3)))
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Exhaust
     ];
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -48,6 +40,9 @@ public class Memento() : AceBlueCard(1, CardType.Attack, CardRarity.Uncommon, Ta
             .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
             .Execute(choiceContext);
         await Task.Delay((int)(0.2f * 1000f));
+        if (Stock.Count(Owner, AceColor.Blue) >= 1)
+            SfxCmd.Play("res://Ace/sounds/open.wav");
+        await Ace.AceCode.Mechanics.Flip.Color(choiceContext, this, play, AceColor.Blue);
     }
 
     protected override void OnUpgrade()

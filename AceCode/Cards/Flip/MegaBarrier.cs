@@ -10,6 +10,8 @@ namespace Ace.AceCode.Cards.Flip;
 public class MegaBarrier() : AceBlueCard(0, CardType.Skill,
     CardRarity.Token, TargetType.Self), IFlipCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust

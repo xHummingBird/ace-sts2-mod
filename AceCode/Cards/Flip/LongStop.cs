@@ -12,6 +12,8 @@ namespace Ace.AceCode.Cards.Flip;
 public class LongStop() : AceWhiteCard(0, CardType.Skill,
     CardRarity.Token, TargetType.AnyEnemy), IFlipCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust
@@ -20,15 +22,18 @@ public class LongStop() : AceWhiteCard(0, CardType.Skill,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<BreaksightPower>(2m),
+        new PowerVar<WeakPower>(2m),
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<BreaksightPower>(),
+        HoverTipFactory.FromPower<WeakPower>()
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<BreaksightPower>(choiceContext, play.Target, DynamicVars["BreaksightPower"].BaseValue, base.Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(choiceContext, play.Target, DynamicVars.Weak.BaseValue, base.Owner.Creature, this);
     }
 }

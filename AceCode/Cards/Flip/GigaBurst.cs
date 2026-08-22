@@ -12,6 +12,8 @@ namespace Ace.AceCode.Cards.Flip;
 public class GigaBurst() : AceRedCard(0, CardType.Attack,
     CardRarity.Token, TargetType.AllEnemies), IFlipCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(25m, ValueProp.Move),
