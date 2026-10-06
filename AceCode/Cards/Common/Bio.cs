@@ -47,7 +47,7 @@ public class Bio() : AceWhiteCard(1, CardType.Attack,
                     SfxCmd.Play("event:/sfx/characters/attack_fire");
                 })
                 .Execute(choiceContext);
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, 1, base.Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, DynamicVars.Vulnerable.BaseValue, base.Owner.Creature, this);
         }
         
         protected override void OnUpgrade()

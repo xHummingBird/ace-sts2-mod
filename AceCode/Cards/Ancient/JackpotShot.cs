@@ -23,7 +23,10 @@ public class JackpotShot() : AceCard(0, CardType.Attack,
     [
         new CalculationBaseVar(10m),
         new ExtraDamageVar(1m),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel _, Creature? _) => CombatManager.Instance.History.CardPlaysFinished.Count())
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) =>
+            CombatManager.Instance.History.CardPlaysFinished.Count(
+                entry => entry.CardPlay.Card.Owner == card.Owner
+            ))
     ];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

@@ -32,7 +32,7 @@
   "ACE-FLURRY.description": "Deal {Damage:diff()} damage 4 times. \n[gold]Flip[/gold] up to 2 {YellowIcon}.",
   "ACE-FLURRY.title": "Flurry",
   
-  "ACE-CARD_BARRIER.description": "Gain {Block:diff()} [gold]Block[/gold]. \nGain 2 additional [gold]Block[/gold] for each {BlueIcon} [gold]Stocked[/gold].",
+  "ACE-CARD_BARRIER.description": "Gain {Block:diff()} [gold]Block[/gold]. \nGain {BlockMultiplier:diff()} additional [gold]Block[/gold] for each {BlueIcon} [gold]Stocked[/gold].",
   "ACE-CARD_BARRIER.title": "Card Barrier",
   
   "ACE-CARD_TOSS.description": "Deal {Damage:diff()} damage. \nFlip 1 {RedIcon}.",
@@ -56,7 +56,7 @@
   "ACE-QUICKDRAW.description": "Deal {Damage:diff()} damage. \nIf current [gold]Majority[/gold] is {RedIcon}, draw 1 card.",
   "ACE-QUICKDRAW.title": "Quickdraw",
   
-  "ACE-ALL_IN.description": "Deal {Damage:diff()} damage to ALL enemies X times. \nConsume all {RedIcon} [gold]Stocks[/gold] and increase X by the number of {RedIcon} consumed.",
+  "ACE-ALL_IN.description": "Deal {Damage:diff()} damage X times. \nConsume all {RedIcon} [gold]Stocks[/gold] and increase X by the number of {RedIcon} consumed.",
   "ACE-ALL_IN.title": "All In",
   
   "ACE-CHILL_DEAL.description": "Draw 1 Card. \nIf current [gold]Majority[/gold] is {YellowIcon}, draw {Cards:diff()} additional {Cards:plural:card|cards}.",
@@ -120,7 +120,7 @@
   "ACE-CARD_FAN.description": "Deal {CalculatedDamage:diff()} damage to ALL enemies. \nDeal {ExtraDamage:diff:()} additional damage for every {RedIcon} [gold]Stocked[/gold].",
   "ACE-CARD_FAN.title": "Card Fan",
   
-  "ACE-SLEIGHT_OF_HAND.description": "Gain {Block:diff()} [gold]Block[/gold]. \nDraw {Cards:diff()} {Cards:plural:card|cards}",
+  "ACE-SLEIGHT_OF_HAND.description": "Gain {Block:diff()} [gold]Block[/gold]. \nDraw {Cards:diff()} {Cards:plural:card|cards}.",
   "ACE-SLEIGHT_OF_HAND.title": "Sleight of Hand",
   
   "ACE-EVASIVE_DEAL.description": "Gain {Block:diff()} [gold]Block[/gold]. \nFlip 1 {BlueIcon}.",

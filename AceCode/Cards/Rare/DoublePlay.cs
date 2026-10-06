@@ -18,6 +18,6 @@ public class DoublePlay() : AceRedCard(3, CardType.Power, CardRarity.Rare, Targe
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<DoublePlayPower>().UpgradeValueBy(1m);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

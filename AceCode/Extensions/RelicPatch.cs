@@ -27,10 +27,22 @@ internal static class AceArchaicToothTranscendencePatch
     [HarmonyPostfix]
     private static void Postfix(ref Dictionary<ModelId, CardModel> __result)
     {
-        __result[ModelDb.Card<ShowOfHands>().Id] = ModelDb.Card<MasterRules>();
+        __result[ModelDb.Card<CutCards>().Id] = ModelDb.Card<FalseCut>();
     }
 }
 
+[HarmonyPatch(typeof(DustyTome), nameof(DustyTome.SetupForPlayer))]
+public static class DustyTomeSetupPatch
+{
+    [HarmonyPostfix]
+    public static void Postfix(DustyTome __instance, Player player)
+    {
+        if (player.Character is not Character.Ace)
+            return;
+
+        __instance.AncientCard = ModelDb.Card<MasterRules>().Id;
+    }
+}
 
 [HarmonyPatch(typeof(DustyTome), nameof(DustyTome.AfterObtained))]
 public static class DustyTomePatch
@@ -41,6 +53,6 @@ public static class DustyTomePatch
         if (__instance.Owner?.Character is not Character.Ace)
             return;
         
-        __instance.AncientCard = ModelDb.Card<FalseCut>().Id;
+        __instance.AncientCard = ModelDb.Card<MasterRules>().Id;
     }
 }

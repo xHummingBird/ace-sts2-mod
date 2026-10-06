@@ -1,0 +1,20 @@
+{
+  "ACE_BLUE.description": "\nNiveau 1 - Gagnez 10 Armure.\nNiveau 2 - Gagnez 16 Armure.\nNiveau 3 - Gagnez 8 Placage.\nNiveau 4 - Gagnez 2 Tampon.\nNiveau 5 - Gagnez 1 Intangible.",
+  "ACE_BLUE.title": "Effets de Flip bleu :",
+  "ACE_CONSUME.description": "Dépensez des [gold]Stocks[/gold] pour activer des effets. Les [gold]Stocks[/gold] consommés n'appliquent PAS leurs effets de [gold]Flip[/gold].",
+  "ACE_CONSUME.title": "Consommer",
+  "ACE_FLIP.description": "Consommez des [gold]Stocks[/gold] et appliquez des effets selon la couleur des [gold]Stocks[/gold] consommés. Les effets de Flip sont plus forts si plus de [gold]Stocks[/gold] de la même couleur sont Flippés.",
+  "ACE_FLIP.title": "Flip",
+  "ACE_MAJORITY.description": "La couleur la plus présente dans votre Stock. En cas d'égalité, la couleur à égalité la plus ancienne devient la Majorité.",
+  "ACE_MAJORITY.title": "Majorité",
+  "ACE_RED.description": "\nNiveau 1 - Infligez 8 dégâts.\nNiveau 2 - Infligez 12 dégâts.\nNiveau 3 - Infligez 16 dégâts à TOUS les ennemis.\nNiveau 4 - Infligez 25 dégâts à TOUS les ennemis.\nNiveau 5 - Infligez 40 dégâts à TOUS les ennemis.",
+  "ACE_RED.title": "Effets de Flip rouge :",
+  "ACE_STOCK.description": "Jouer des cartes colorées ajoute leurs couleurs à votre Stock. Le Stock peut être [gold]Consommé[/gold] par des effets ou [gold]Flippé[/gold] pour déclencher de puissants effets selon les couleurs et la quantité de Stock disponible.",
+  "ACE_STOCK.title": "Stock de cartes",
+  "ACE_UNSTOCKABLE.description": "Cette carte a une couleur mais n'ajoute pas sa couleur à votre [gold]Stock[/gold] quand elle est jouée.",
+  "ACE_UNSTOCKABLE.title": "Non stockable",
+  "ACE_WHITE.description": "\nNiveau 1 - Appliquez 2 Faible et Vulnérable à un ennemi.\nNiveau 2 - Appliquez 2 Breaksight et Faible à un ennemi.\nNiveau 3 - Appliquez 2 Breaksight et Faible à TOUS les ennemis.\nNiveau 4 - Appliquez 3 Breaksight et Faible à TOUS les ennemis.\nNiveau 5 - Étourdit tous les ennemis.\n\n[gold]Breaksight[/gold] augmente les dégâts subis de 75%.",
+  "ACE_WHITE.title": "Effets de Flip blanc :",
+  "ACE_YELLOW.description": "\nNiveau 1 - Piochez 2 cartes.\nNiveau 2 - Piochez 2 cartes et gagnez 1 Énergie.\nNiveau 3 - Piochez 2 cartes. Vos 2 prochaines Compétences coûtent 0 ce tour.\nNiveau 4 - Piochez 2 cartes. Toutes les Compétences dans votre main coûtent 0 ce tour.\nNiveau 5 - Piochez 2 cartes. Toutes les cartes dans votre main coûtent 0 ce tour.",
+  "ACE_YELLOW.title": "Effets de Flip jaune :"
+}
