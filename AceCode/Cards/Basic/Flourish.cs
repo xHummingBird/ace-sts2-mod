@@ -19,7 +19,7 @@ public class Flourish() : AceCard(2, CardType.Attack,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(4m, ValueProp.Move),
-        new RepeatVar(3)
+        new HitCountVar(3)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -80,7 +80,7 @@ public class Flourish() : AceCard(2, CardType.Attack,
             
         }
         else
-            await CommonActions.CardAttack(this, play.Target, hitCount: DynamicVars.Repeat.IntValue)
+            await CommonActions.CardAttack(this, play.Target, hitCount: DynamicVars.HitCount.IntValue)
                 .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                 .Execute(choiceContext);
         await Ace.AceCode.Mechanics.Flip.Oldest(choiceContext, this, play);

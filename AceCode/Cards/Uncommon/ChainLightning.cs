@@ -16,7 +16,7 @@ public class ChainLightning() : AceYellowCard(2, CardType.Attack, CardRarity.Unc
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(3m, ValueProp.Move),
-        new RepeatVar(4)
+        new HitCountVar(4)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -27,7 +27,7 @@ public class ChainLightning() : AceYellowCard(2, CardType.Attack, CardRarity.Unc
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         var ownerCreature = Owner?.Creature;
-        int repeat = DynamicVars.Repeat.IntValue + Stock.Count(base.Owner, AceColor.Yellow);
+        int repeat = DynamicVars.HitCount.IntValue + Stock.Count(base.Owner, AceColor.Yellow);
 
         if (ownerCreature != null && Owner?.Character is Character.Ace ace)
         {

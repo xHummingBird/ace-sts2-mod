@@ -83,7 +83,7 @@
   "ACE-MP_CHARGE.description": "Gain {Energy:energyIcons()}. \nStock an additional {YellowIcon}.",
   "ACE-MP_CHARGE.title": "MP Charge",
   
-  "ACE-CHAIN_LIGHTNING.description": "Deal {Damage:diff()} damage to a random enemy {Repeat:diff()} times. \n[gold]Consume[/gold] all {YellowIcon}. Hit an additional time for each {YellowIcon} [gold]Consumed[/gold].",
+  "ACE-CHAIN_LIGHTNING.description": "Deal {Damage:diff()} damage to a random enemy {HitCount:diff()} times. \n[gold]Consume[/gold] all {YellowIcon}. Hit an additional time for each {YellowIcon} [gold]Consumed[/gold].",
   "ACE-CHAIN_LIGHTNING.title": "Chain Lightning",
   
   "ACE-RAPID_DRAW.description": "Draw cards until you draw a non-Attack card.",
@@ -168,7 +168,7 @@
   "ACE-THUNDER_SHG.description": "Deal {Damage:diff()} damage to ALL enemies.",
   "ACE-THUNDER_SHG.title": "Thunder SHG",
   
-  "ACE-CARD_VOLLEY.description": "Deal {Damage:diff()} damage to a random enemy {Repeat:diff()} times. \n[gold]Stock[/gold] an additional {RedIcon}",
+  "ACE-CARD_VOLLEY.description": "Deal {Damage:diff()} damage to a random enemy {HitCount:diff()} times. \n[gold]Stock[/gold] an additional {RedIcon}",
   "ACE-CARD_VOLLEY.title": "Card Volley",
   
   "ACE-CARD_WALL.description": "Gain {PlatingPower:diff()} [gold]Plating[/gold]. \nGain additional [gold]Plating[/gold] equal to {BlueIcon} [gold]Stocked[/gold].",

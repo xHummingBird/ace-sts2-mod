@@ -11,7 +11,7 @@ namespace Ace.AceCode.Cards.Common;
 
 public class CardVolley() : AceRedCard(2, CardType.Attack, CardRarity.Common, TargetType.RandomEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move), new RepeatVar(3)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move), new HitCountVar(3)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
@@ -29,7 +29,7 @@ public class CardVolley() : AceRedCard(2, CardType.Attack, CardRarity.Common, Ta
                 "res://Ace/scenes/vfx.tscn",
                 "card_hit_1"
             );
-            await CommonActions.CardAttack(this, play, hitCount: DynamicVars.Repeat.IntValue).WithHitFx(null, "res://Ace/sfx/card_hit.wav").Execute(choiceContext);
+            await CommonActions.CardAttack(this, play, hitCount: DynamicVars.HitCount.IntValue).WithHitFx(null, "res://Ace/sfx/card_hit.wav").Execute(choiceContext);
             await Task.Delay((int)(0.2f * 1000f));
             Stock.Push(Owner, AceColor.Red);
         };
@@ -37,6 +37,6 @@ public class CardVolley() : AceRedCard(2, CardType.Attack, CardRarity.Common, Ta
     
     protected override void OnUpgrade()
     {
-        DynamicVars.Repeat.UpgradeValueBy(1m);
+        DynamicVars.HitCount.UpgradeValueBy(1m);
     }
 }

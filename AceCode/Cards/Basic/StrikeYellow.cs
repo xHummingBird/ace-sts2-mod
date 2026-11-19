@@ -17,7 +17,7 @@ namespace Ace.AceCode.Cards.Basic
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new DamageVar(3m, ValueProp.Move),
-            new RepeatVar(2)
+            new HitCountVar(2)
         ];
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -58,7 +58,7 @@ namespace Ace.AceCode.Cards.Basic
                 await Task.Delay((int)(0.2f * 1000f));
             }
             else
-                await CommonActions.CardAttack(this, play.Target, hitCount: DynamicVars.Repeat.IntValue)
+                await CommonActions.CardAttack(this, play.Target, hitCount: DynamicVars.HitCount.IntValue)
                     .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                     .Execute(choiceContext);
         }

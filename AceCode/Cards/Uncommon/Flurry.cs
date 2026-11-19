@@ -18,7 +18,7 @@ public class Flurry() : AceYellowCard(2, CardType.Attack,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(3m, ValueProp.Move),
-        new RepeatVar(4),
+        new HitCountVar(4),
         new EnergyVar(1)
     ];
     
@@ -94,7 +94,7 @@ public class Flurry() : AceYellowCard(2, CardType.Attack,
             await Task.Delay((int)(0.25f * 1000f));
         }
         else
-            await CommonActions.CardAttack(this, play.Target, hitCount: DynamicVars.Repeat.IntValue)
+            await CommonActions.CardAttack(this, play.Target, hitCount: DynamicVars.HitCount.IntValue)
                 .WithHitFx(null, "res://Ace/sfx/card_hit.wav")
                 .Execute(choiceContext);
         await Ace.AceCode.Mechanics.Flip.Color(choiceContext, this, play, AceColor.Yellow, 0, 2);
